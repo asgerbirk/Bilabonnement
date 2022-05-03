@@ -7,7 +7,7 @@ import java.util.List;
 
 public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
     @Override
-    public List<Car> getAllEntities() {
+    public List<CustomerAgreement> getAllEntities() {
         return null;
     }
 }

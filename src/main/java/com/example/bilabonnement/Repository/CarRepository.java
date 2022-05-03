@@ -19,7 +19,7 @@ public class CarRepository  implements CRUD<Car>{
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM bil");
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()){
-                Car temporyCar = new Car(
+                Car temporaryCar = new Car(
                         rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
@@ -28,7 +28,7 @@ public class CarRepository  implements CRUD<Car>{
                         rs.getBoolean(6)
                 );
 
-                allCars.add(temporyCar);
+                allCars.add(temporaryCar);
             }
         }catch (SQLException e){
             e.printStackTrace();
