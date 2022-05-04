@@ -19,14 +19,12 @@ public class DatabaseConnectionManager {
         if(conn != null){
             return conn;
         }
-//
         try{
             url = System.getenv("db.url");
             username = System.getenv("db.username");
             password = System.getenv("db.password");
             conn = DriverManager.getConnection(url, username, password);
         }
-
         catch(SQLException e){
             e.printStackTrace();
         }
