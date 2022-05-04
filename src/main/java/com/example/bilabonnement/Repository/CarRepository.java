@@ -39,4 +39,16 @@ public class CarRepository  implements CRUD<Car> {
         System.out.println(allCars);
         return allCars;
     }
+
+    @Override
+    public Car getSingleEntity(int carNumber) {
+        List<Car> allCars = getAllEntities();
+        Car tempCar = null;
+        for (Car c : allCars) {
+            if(c.getCarNumber()==carNumber){
+                tempCar = c;
+            }
+        }
+        return tempCar;
+    }
 }
