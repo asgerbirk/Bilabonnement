@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Create new user</title>
@@ -9,6 +9,7 @@
 
 <form method="post" action="/index">
     <div class="container">
+        <h1>Opret ny bruger</h1>
         <label for="email"><b>Indtast email</b></label>
         <input type="text" placeholder="Enter email" name="email" required>
         <br><br/>

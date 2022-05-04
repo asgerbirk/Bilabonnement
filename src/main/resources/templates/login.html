@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{style.css}" href="../static/style.css">
+</head>
+<body>
+
+<form method="post" action="/loginSuccess">
+
+  <div class="container">
+    <h2> Log in</h2>
+    <label for="email"><b>Enter email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required minlength="1" maxlength="30">
+    <br><br/>
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required minlength="1" maxlength="30">
+    <br><br/>
+    <button type="submit">Log in</button>
+  </div>
+</form>
+
+</body>
+</html>
