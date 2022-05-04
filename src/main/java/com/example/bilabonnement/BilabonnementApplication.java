@@ -1,6 +1,7 @@
 package com.example.bilabonnement;
 
 import com.example.bilabonnement.Repository.CarRepository;
+import com.example.bilabonnement.Service.CarService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -11,6 +12,7 @@ public class BilabonnementApplication {
         SpringApplication.run(BilabonnementApplication.class, args);
         CarRepository test = new CarRepository();
         test.getAllEntities();
+
     }
 
 }
