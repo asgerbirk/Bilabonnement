@@ -17,7 +17,7 @@ public class CustomerRepository implements CRUD<Customer>{
         Connection connection = DatabaseConnectionManager.getConnection();
         List<Customer> allCustomers = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM lejer");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM customer");
             ResultSet rs = preparedStatement.executeQuery();
             while(rs.next()){
                 Customer tempCustomer = new Customer(

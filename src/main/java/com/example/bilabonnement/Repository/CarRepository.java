@@ -16,7 +16,7 @@ public class CarRepository  implements CRUD<Car> {
         Connection connection = DatabaseConnectionManager.getConnection();
         List<Car> allCars = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM bil");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM car");
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()){
                 Car temporaryCar = new Car(

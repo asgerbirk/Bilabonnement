@@ -9,6 +9,8 @@ public class Car {
     private int price;
     private boolean isDamaged;
 
+    private boolean isRented;
+
     public Car(int carNumber, String model, String brand, String color, int price, boolean isDamaged) {
         this.carNumber = carNumber;
         this.model = model;

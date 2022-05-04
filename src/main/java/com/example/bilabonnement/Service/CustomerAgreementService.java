@@ -14,7 +14,7 @@ public class CustomerAgreementService<CustomerAgreement> {
     }
 
     public CustomerAgreement RegisterNewAgreement(){
-
+        return null;
     }
 
 }
