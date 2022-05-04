@@ -27,6 +27,8 @@ public class CustomerRepository implements CRUD<Customer>{
                         rs.getString(4),
                         rs.getInt(5)
                 );
+
+                allCustomers.add(tempCustomer);
             }
         } catch (SQLException e){
             e.printStackTrace();
@@ -34,6 +36,6 @@ public class CustomerRepository implements CRUD<Customer>{
         }
 
 
-        return null;
+        return allCustomers;
     }
 }
