@@ -7,15 +7,16 @@ import java.sql.SQLException;
 
 
 public class DatabaseConnectionManager {
-    private static String url;
-    private static String username;
-    private static String password;
-    private static Connection conn;
-
+    
     private DatabaseConnectionManager(){
     }
 
     public static Connection getConnection(){
+        String url;
+        String username;
+        String password;
+        Connection conn = null;
+
         if(conn != null){
             return conn;
         }
