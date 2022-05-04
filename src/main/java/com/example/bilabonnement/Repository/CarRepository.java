@@ -25,7 +25,8 @@ public class CarRepository  implements CRUD<Car> {
                         rs.getString(3),
                         rs.getString(4),
                         rs.getInt(5),
-                        rs.getBoolean(6)
+                        rs.getBoolean(6),
+                        rs.getBoolean(7)
                 );
                 allCars.add(temporaryCar);
             }
