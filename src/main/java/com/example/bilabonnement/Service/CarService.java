@@ -29,5 +29,14 @@ public class CarService {
         return allRentedCars;
     }
 
+    public int totalPrice(){
+    int price = 0;
+    List<Car> allCars = allRentedCars();
+        for (Car c: allCars) {
+            price += c.getPrice();
+        }
+    return price;
+    }
+
 
 }
