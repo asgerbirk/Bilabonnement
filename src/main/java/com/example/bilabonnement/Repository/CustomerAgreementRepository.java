@@ -1,6 +1,5 @@
 package com.example.bilabonnement.Repository;
 
-import com.example.bilabonnement.Model.Car;
 import com.example.bilabonnement.Model.CustomerAgreement;
 import com.example.bilabonnement.Utility.DatabaseConnectionManager;
 
@@ -15,21 +14,25 @@ public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
 
     @Override
     public List<CustomerAgreement> getAllEntities() {
-       /* Connection connection = DatabaseConnectionManager.getConnection();
+        Connection connection = DatabaseConnectionManager.getConnection();
         List<CustomerAgreement> allCustomerAgreements = new ArrayList<>();
+        CustomerRepository customerRepository = new CustomerRepository();
+        CarRepository carRepository = new CarRepository();
+
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM rental_agreement");
             ResultSet rs = preparedStatement.executeQuery();
+
             while(rs.next()){
-                CustomerAgreement tempCustomerAgreement = new CustomerAgreement(
+                CustomerAgreement tempAgreement = new CustomerAgreement(
                         rs.getInt(1),
-                        rs.getInt(2),
-                        rs.getInt(3),
+                        customerRepository.getSingleEntity(rs.getInt(2)),
+                        carRepository.getSingleEntity(3),
                         rs.getInt(4),
                         rs.getInt(5)
                 );
 
-                allCustomerAgreements.add(tempCustomerAgreement);
+                allCustomerAgreements.add(tempAgreement);
 
             }
         } catch (SQLException e){
@@ -37,13 +40,19 @@ public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
             System.out.println("Something went wrong in rental_rentalagreement DB or REPO");
         }
 
-        return allCustomerAgreements;*/
-        return null;
+        return allCustomerAgreements;
     }
 
     @Override
-    public Object getSingleEntity(int T) {
-        return null;
+    public Object getSingleEntity(int agreementID) {
+        List<CustomerAgreement> allAgreements = getAllEntities();
+        CustomerAgreement tempAgreement = null;
+        for (CustomerAgreement c : allAgreements) {
+            if(c.getAgreementID() == agreementID){
+                tempAgreement = c;
+            }
+        }
+        return tempAgreement;
     }
 
 

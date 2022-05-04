@@ -1,80 +1,69 @@
 package com.example.bilabonnement.Model;
 
 public class CustomerAgreement {
-    private int customerID;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private int phoneNumber;
 
+    private int agreementID;
     private Customer customer;
     private Car car;
-    private String period;
+    private int period;
     private int price;
 
-    public CustomerAgreement(Customer customer, Car car, String period, int price) {
+    public CustomerAgreement(int agreementID, Customer customer, Car car, int period, int price) {
+        this.agreementID = agreementID;
         this.customer = customer;
         this.car = car;
         this.period = period;
         this.price = price;
     }
 
-    public CustomerAgreement(int customerID, String firstName, String lastName, String email, int phoneNumber) {
-        this.customerID = customerID;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
+    public int getAgreementID() {
+        return agreementID;
     }
 
-    public int getCustomerID() {
-        return customerID;
+    public void setAgreementID(int agreementID) {
+        this.agreementID = agreementID;
     }
 
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public Car getCar() {
+        return car;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setCar(Car car) {
+        this.car = car;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public int getPeriod() {
+        return period;
     }
 
-    public String getEmail() {
-        return email;
+    public void setPeriod(int period) {
+        this.period = period;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public int getPrice() {
+        return price;
     }
 
-    public int getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     @Override
     public String toString() {
         return "CustomerAgreement{" +
-                "customerID=" + customerID +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber=" + phoneNumber +
+                "agreementID=" + agreementID +
+                ", customer=" + customer +
+                ", car=" + car +
+                ", period=" + period +
+                ", price=" + price +
                 '}';
     }
 }
