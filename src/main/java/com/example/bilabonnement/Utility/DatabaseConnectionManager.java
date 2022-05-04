@@ -7,15 +7,16 @@ import java.sql.SQLException;
 
 
 public class DatabaseConnectionManager {
-    private static String url;
-    private static String username;
-    private static String password;
-    private static Connection conn;
-
+    
     private DatabaseConnectionManager(){
     }
 
     public static Connection getConnection(){
+        String url;
+        String username;
+        String password;
+        Connection conn = null;
+
         if(conn != null){
             return conn;
         }
@@ -24,9 +25,11 @@ public class DatabaseConnectionManager {
             username = System.getenv("db.username");
             password = System.getenv("db.password");
             conn = DriverManager.getConnection(url, username, password);
+            System.out.println("db connected");
         }
         catch(SQLException e){
             e.printStackTrace();
+            System.out.println("fejl i db con");
         }
         return conn;
     }

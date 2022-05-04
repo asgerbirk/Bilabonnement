@@ -27,15 +27,25 @@ public class CustomerRepository implements CRUD<Customer>{
                         rs.getString(4),
                         rs.getInt(5)
                 );
-
                 allCustomers.add(tempCustomer);
             }
         } catch (SQLException e){
             e.printStackTrace();
             System.out.println("Something went wrong in database for customers");
         }
-
-
         return allCustomers;
+    }
+
+    @Override
+    public Customer getSingleEntity(int customerId) {
+        List<Customer> allCustomers = getAllEntities();
+        Customer tempCustomer = null;
+        for (Customer c : allCustomers) {
+            if(c.getID()==customerId){
+                tempCustomer=c;
+            }
+
+        }
+        return tempCustomer;
     }
 }
