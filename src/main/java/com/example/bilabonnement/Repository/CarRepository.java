@@ -16,7 +16,7 @@ public class CarRepository  implements CRUD<Car> {
         Connection connection = DatabaseConnectionManager.getConnection();
         List<Car> allCars = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM bil");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM car");
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()){
                 Car temporaryCar = new Car(
@@ -36,5 +36,17 @@ public class CarRepository  implements CRUD<Car> {
         }
         System.out.println(allCars);
         return allCars;
+    }
+
+    @Override
+    public Car getSingleEntity(int carNumber) {
+        List<Car> allCars = getAllEntities();
+        Car tempCar = null;
+        for (Car c : allCars) {
+            if(c.getCarNumber()==carNumber){
+                tempCar = c;
+            }
+        }
+        return tempCar;
     }
 }

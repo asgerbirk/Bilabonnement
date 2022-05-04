@@ -17,7 +17,7 @@ public class CustomerRepository implements CRUD<Customer>{
         Connection connection = DatabaseConnectionManager.getConnection();
         List<Customer> allCustomers = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM lejer");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM customer");
             ResultSet rs = preparedStatement.executeQuery();
             while(rs.next()){
                 Customer tempCustomer = new Customer(
@@ -27,15 +27,25 @@ public class CustomerRepository implements CRUD<Customer>{
                         rs.getString(4),
                         rs.getInt(5)
                 );
-
                 allCustomers.add(tempCustomer);
             }
         } catch (SQLException e){
             e.printStackTrace();
             System.out.println("Something went wrong in database for customers");
         }
-
-
         return allCustomers;
+    }
+
+    @Override
+    public Customer getSingleEntity(int customerId) {
+        List<Customer> allCustomers = getAllEntities();
+        Customer tempCustomer = null;
+        for (Customer c : allCustomers) {
+            if(c.getID()==customerId){
+                tempCustomer=c;
+            }
+
+        }
+        return tempCustomer;
     }
 }
