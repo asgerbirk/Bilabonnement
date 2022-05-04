@@ -7,6 +7,18 @@ public class CustomerAgreement {
     private String email;
     private int phoneNumber;
 
+    private Customer customer;
+    private Car car;
+    private String period;
+    private int price;
+
+    public CustomerAgreement(Customer customer, Car car, String period, int price) {
+        this.customer = customer;
+        this.car = car;
+        this.period = period;
+        this.price = price;
+    }
+
     public CustomerAgreement(int customerID, String firstName, String lastName, String email, int phoneNumber) {
         this.customerID = customerID;
         this.firstName = firstName;
