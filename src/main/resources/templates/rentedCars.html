@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+<h1> all rented cars</h1>
+<table>
+    <tr
+            th:each="rentedcars : ${rentedcars}">
+        <td th:text="${rentedcars.getCarNumber()}"></td>
+        <td th:text="${rentedcars.getModel()}"></td>
+        <td th:text="${rentedcars.getBrand()}"></td>
+        <td th:text="${rentedcars.getColor()}"></td>
+        <td th:text="${rentedcars.getPrice()}"></td>
+
+
+    </tr>
+</table>
+</body>
+</html>

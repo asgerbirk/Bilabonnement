@@ -9,13 +9,16 @@ public class Car {
     private int price;
     private boolean isDamaged;
 
-    public Car(int carNumber, String model, String brand, String color, int price, boolean isDamaged) {
+    private boolean isRented;
+
+    public Car(int carNumber, String model, String brand, String color, int price, boolean isDamaged, boolean isRented) {
         this.carNumber = carNumber;
         this.model = model;
         this.brand = brand;
         this.color = color;
         this.price = price;
         this.isDamaged = isDamaged;
+        this.isRented = isRented;
     }
 
     public int getCarNumber() {
@@ -66,6 +69,14 @@ public class Car {
         isDamaged = damaged;
     }
 
+    public boolean isRented() {
+        return isRented;
+    }
+
+    public void setRented(boolean rented) {
+        isRented = rented;
+    }
+
     @Override
     public String toString() {
         return "Car{" +
@@ -75,6 +86,7 @@ public class Car {
                 ", color='" + color + '\'' +
                 ", price=" + price +
                 ", isDamaged=" + isDamaged +
+                ", isRented=" + isRented +
                 '}';
     }
 }

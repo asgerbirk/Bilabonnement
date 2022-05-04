@@ -2,6 +2,7 @@ package com.example.bilabonnement.Repository;
 
 import com.example.bilabonnement.Model.Car;
 import com.example.bilabonnement.Utility.DatabaseConnectionManager;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class CarRepository  implements CRUD<Car> {
     @Override
     public List<Car> getAllEntities() {
@@ -25,9 +27,9 @@ public class CarRepository  implements CRUD<Car> {
                         rs.getString(3),
                         rs.getString(4),
                         rs.getInt(5),
-                        rs.getBoolean(6)
+                        rs.getBoolean(6),
+                        rs.getBoolean(7)
                 );
-
                 allCars.add(temporaryCar);
             }
         }catch (SQLException e){

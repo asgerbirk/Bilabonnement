@@ -19,7 +19,6 @@ public class DatabaseConnectionManager {
         if(conn != null){
             return conn;
         }
-//
         try{
             url = System.getenv("db.url");
             username = System.getenv("db.username");
@@ -27,7 +26,6 @@ public class DatabaseConnectionManager {
             conn = DriverManager.getConnection(url, username, password);
             System.out.println("db connected");
         }
-
         catch(SQLException e){
             e.printStackTrace();
             System.out.println("fejl i db con");
