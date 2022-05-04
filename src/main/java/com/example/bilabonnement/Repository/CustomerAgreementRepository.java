@@ -27,7 +27,7 @@ public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
                 CustomerAgreement tempAgreement = new CustomerAgreement(
                         rs.getInt(1),
                         customerRepository.getSingleEntity(rs.getInt(2)),
-                        carRepository.getSingleEntity(3),
+                        carRepository.getSingleEntity(rs.getInt(3)),
                         rs.getInt(4),
                         rs.getInt(5)
                 );
