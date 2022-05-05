@@ -8,6 +8,6 @@ public interface CRUD <T>{
 
     public Object getSingleEntity(int T);
 
-    public Object createEntity(Object obj);
+    //public Object createEntity(Object T);
 
 }

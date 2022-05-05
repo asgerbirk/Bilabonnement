@@ -25,7 +25,7 @@ public class CustomerRepository implements CRUD<Customer>{
                         rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
-                        rs.getInt(5)
+                        rs.getString(5)
                 );
                 allCustomers.add(tempCustomer);
             }
@@ -46,18 +46,33 @@ public class CustomerRepository implements CRUD<Customer>{
             }
 
         }
+
         return tempCustomer;
     }
 
-    @Override
-    public Customer createEntity(Object obj){
+    //@Override
+    public void createEntity(Customer customer){
+            String firstname = customer.getFirstname();
+            String surname = customer.getSurname();
+            String email = customer.getEmail();
+            String number = customer.getPhoneNumber();
+            String password = customer.getPassword();
+            //Customer testcustomer = new Customer(firstname, surname, email, number, password);
+
             Connection conn = DatabaseConnectionManager.getConnection();
             try{
-                PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO customer VALUES ()");
-                
+                PreparedStatement stmt = conn.prepareStatement("INSERT INTO customer (`firstname`, `lastname`, `email`, `phone_number`, `password`) VALUES (?,?,?,?,?)");
+                stmt.setString(1,firstname);
+                stmt.setString(2,surname);
+                stmt.setString(3,email);
+                stmt.setString(4,number);
+                stmt.setString(5,password);
+                //System.out.println(stmt);
+                stmt.execute();
+
             }catch(Exception e){
                 e.printStackTrace();
             }
-        return null;
+            //return testcustomer;
     }
 }

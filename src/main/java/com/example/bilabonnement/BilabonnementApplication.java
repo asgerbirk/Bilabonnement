@@ -12,13 +12,6 @@ public class BilabonnementApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(BilabonnementApplication.class, args);
-        CarRepository car = new CarRepository();
-        CustomerRepository customer = new CustomerRepository();
-        CustomerAgreementRepository agreement = new CustomerAgreementRepository();
-
-        System.out.println(agreement.getSingleEntity(1));
-
-
     }
 
 }

@@ -6,21 +6,25 @@ public class Customer {
     private String firstname;
     private String surname;
     private String email;
-    private int phoneNumber;
+    private String phoneNumber;
 
-    public Customer(int ID, String firstname, String surname, String email, int phoneNumber) {
+    private String password;
+
+    public Customer(int ID, String firstname, String surname, String email, String phoneNumber) {
         this.ID = ID;
         this.firstname = firstname;
         this.surname = surname;
         this.email = email;
         this.phoneNumber = phoneNumber;
+
     }
 
-    public Customer(String firstname, String surname, String email, int phoneNumber){
+    public Customer(String firstname, String surname, String email, String phoneNumber, String password){
         this.firstname = firstname;
         this.surname = surname;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.password = password;
     }
 
     public int getID() {
@@ -51,12 +55,16 @@ public class Customer {
         this.email = email;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getPassword(){
+        return password;
     }
 
     @Override
