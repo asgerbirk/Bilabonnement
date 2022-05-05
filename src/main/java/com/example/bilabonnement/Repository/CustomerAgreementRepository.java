@@ -34,6 +34,7 @@ public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
                         rs.getInt(5)
                 );
                 allCustomerAgreements.add(tempAgreement);
+
             }
         } catch (SQLException e){
             e.printStackTrace();
@@ -66,7 +67,6 @@ public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
             System.out.println("Something is wrong in creation of customeragreementrepo");
         }
     }
-
 
 
 }
