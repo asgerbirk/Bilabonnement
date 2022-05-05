@@ -51,4 +51,10 @@ public class CarRepository  implements CRUD<Car> {
         }
         return tempCar;
     }
+
+    @Override
+    public Car createEntity(){
+        return null;
+    }
+
 }

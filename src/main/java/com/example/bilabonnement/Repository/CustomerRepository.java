@@ -48,4 +48,9 @@ public class CustomerRepository implements CRUD<Customer>{
         }
         return tempCustomer;
     }
+
+    @Override
+    public Customer createEntity(){
+        return null;
+    }
 }

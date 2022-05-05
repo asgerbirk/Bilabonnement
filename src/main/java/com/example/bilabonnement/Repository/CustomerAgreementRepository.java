@@ -1,5 +1,6 @@
 package com.example.bilabonnement.Repository;
 
+import com.example.bilabonnement.Model.Customer;
 import com.example.bilabonnement.Model.CustomerAgreement;
 import com.example.bilabonnement.Utility.DatabaseConnectionManager;
 
@@ -53,6 +54,11 @@ public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
             }
         }
         return tempAgreement;
+    }
+
+    @Override
+    public CustomerAgreement createEntity(){
+        return null;
     }
 
 
