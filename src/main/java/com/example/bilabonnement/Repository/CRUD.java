@@ -1,5 +1,7 @@
 package com.example.bilabonnement.Repository;
 
+import com.example.bilabonnement.Model.Car;
+
 import java.util.List;
 
 public interface CRUD <T>{
@@ -8,6 +10,8 @@ public interface CRUD <T>{
 
     public Object getSingleEntity(int T);
 
-    public Object createEntity(Object obj);
+    public void createEntity(T entity);
+
+
 
 }

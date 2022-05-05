@@ -1,7 +1,9 @@
 package com.example.bilabonnement.Repository;
 
 import com.example.bilabonnement.Model.Employee;
+import com.example.bilabonnement.Utility.DatabaseConnectionManager;
 
+import java.sql.Connection;
 import java.util.List;
 
 public class EmployeeRepository implements CRUD<Employee>{
@@ -16,7 +18,9 @@ public class EmployeeRepository implements CRUD<Employee>{
     }
 
     @Override
-    public Object createEntity(Object obj) {
-        return null;
+    public void createEntity(Employee entity) {
+
     }
+
+
 }

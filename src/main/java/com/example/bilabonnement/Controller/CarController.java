@@ -22,6 +22,4 @@ public class CarController {
         model.addAttribute("rentedcars", carService.allRentedCars());
         return "rentedCars";
     }
-
-
 }
