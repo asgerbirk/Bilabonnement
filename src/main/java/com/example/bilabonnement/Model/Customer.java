@@ -31,6 +31,9 @@ public class Customer {
         return ID;
     }
 
+    public void setID(int ID){
+        this.ID = ID;
+    }
     public String getFirstname() {
         return firstname;
     }
