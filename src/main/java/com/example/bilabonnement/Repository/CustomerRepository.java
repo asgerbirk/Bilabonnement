@@ -45,7 +45,6 @@ public class CustomerRepository implements CRUD<Customer>{
             if(c.getID()==customerId){
                 tempCustomer=c;
             }
-
         }
         return tempCustomer;
     }
@@ -55,7 +54,7 @@ public class CustomerRepository implements CRUD<Customer>{
             Connection conn = DatabaseConnectionManager.getConnection();
             try{
                 PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO customer VALUES ()");
-                
+                preparedStatement.executeQuery();
             }catch(Exception e){
                 e.printStackTrace();
             }

@@ -55,7 +55,7 @@ public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
     }
 
     @Override
-    public void createEntity(CustomerAgreement obj){
+    public void createEntity(CustomerAgreement x) {
         Connection connection = DatabaseConnectionManager.getConnection();
         try{
             PreparedStatement preparedStatement = connection.prepareStatement("insert into rental_agreement values()");
@@ -65,7 +65,5 @@ public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
             System.out.println("Something is wrong in creation of customeragreementrepo");
         }
     }
-
-
 
 }

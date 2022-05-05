@@ -64,9 +64,9 @@ public class CarRepository  implements CRUD<Car> {
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("insert into car (`model`, `brand`, `color`, `price`, `damaged`, `rented`) values("+model+", "+brand+", "+color+", "+price+", "+isDamaged+", "+isRented+")");
+            preparedStatement.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
 }
