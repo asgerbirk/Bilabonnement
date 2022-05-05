@@ -2,8 +2,10 @@ package com.example.bilabonnement.Controller;
 
 
 import com.example.bilabonnement.Model.Customer;
+import com.example.bilabonnement.Repository.CustomerRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
 
 import static java.lang.Integer.parseInt;
@@ -13,19 +15,22 @@ public class CustomerController {
 
 
     @GetMapping("/createuser")
-    public String createUser(WebRequest data){
+    public String createUser(){
+        return "createuser";
+    }
+
+    @PostMapping("/createsuccess")
+    public String createsuccess(WebRequest data){
+        CustomerRepository cRepo = new CustomerRepository();
         String email = data.getParameter("email");
         String password = data.getParameter("password");
         String firstName = data.getParameter("firstname");
         String lastName = data.getParameter("lastname");
-        String phoneNumber = data.getParameter("number");
-        int number = 0;
-        if(phoneNumber != null) {
-            number = parseInt(phoneNumber);
-        }
-        Customer newCustomer = new Customer(firstName,lastName,email, number);
+        String number = data.getParameter("number");
+        Customer newCustomer = new Customer(firstName,lastName,email, number, password);
+        cRepo.createEntity(newCustomer);
+        return "redirect:/index";
 
-        return "createuser";
     }
 
     @GetMapping("/login")

@@ -1,5 +1,6 @@
 package com.example.bilabonnement.Repository;
 
+import com.example.bilabonnement.Model.Customer;
 import com.example.bilabonnement.Model.CustomerAgreement;
 import com.example.bilabonnement.Utility.DatabaseConnectionManager;
 import org.springframework.stereotype.Repository;
@@ -55,7 +56,7 @@ public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
     }
 
     @Override
-    public void createEntity(CustomerAgreement x) {
+    public void createEntity(CustomerAgreement obj){
         Connection connection = DatabaseConnectionManager.getConnection();
         try{
             PreparedStatement preparedStatement = connection.prepareStatement("insert into rental_agreement values()");
