@@ -6,12 +6,7 @@ import java.util.List;
 
 public interface CRUD <T>{
 
-    public List<T> getAllEntities();
-
-    public Object getSingleEntity(int T);
-
-    public void createEntity(T entity);
-
-
-
+    List<T> getAllEntities();
+    Object getSingleEntity(int T);
+    void createEntity(T x);
 }

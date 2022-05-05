@@ -53,9 +53,20 @@ public class CarRepository  implements CRUD<Car> {
     }
 
     @Override
-    public void createEntity(Car entity) {
+    public void createEntity(Car T) {
+        Connection connection = DatabaseConnectionManager.getConnection();
+        String model = T.getModel();
+        String brand = T.getBrand();
+        String color = T.getColor();
+        int price = T.getPrice();
+        boolean isDamaged = T.isDamaged();
+        boolean isRented = T.isRented();
 
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into car (`model`, `brand`, `color`, `price`, `damaged`, `rented`) values("+model+", "+brand+", "+color+", "+price+", "+isDamaged+", "+isRented+")");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
-
 
 }
