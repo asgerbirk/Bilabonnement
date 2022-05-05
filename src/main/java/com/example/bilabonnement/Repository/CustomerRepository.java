@@ -50,7 +50,14 @@ public class CustomerRepository implements CRUD<Customer>{
     }
 
     @Override
-    public Customer createEntity(){
+    public Customer createEntity(Object obj){
+            Connection conn = DatabaseConnectionManager.getConnection();
+            try{
+                PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO customer VALUES ()");
+                
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         return null;
     }
 }

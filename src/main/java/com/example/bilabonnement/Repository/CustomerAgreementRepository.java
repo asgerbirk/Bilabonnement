@@ -45,7 +45,7 @@ public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
     }
 
     @Override
-    public Object getSingleEntity(int agreementID) {
+    public CustomerAgreement getSingleEntity(int agreementID) {
         List<CustomerAgreement> allAgreements = getAllEntities();
         CustomerAgreement tempAgreement = null;
         for (CustomerAgreement c : allAgreements) {
@@ -57,7 +57,7 @@ public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
     }
 
     @Override
-    public CustomerAgreement createEntity(){
+    public CustomerAgreement createEntity(Object obj){
         return null;
     }
 

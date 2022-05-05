@@ -53,7 +53,7 @@ public class CarRepository  implements CRUD<Car> {
     }
 
     @Override
-    public Car createEntity(){
+    public Car createEntity(Object obj){
         return null;
     }
 

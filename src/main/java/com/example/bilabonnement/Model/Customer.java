@@ -16,6 +16,13 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
+    public Customer(String firstname, String surname, String email, int phoneNumber){
+        this.firstname = firstname;
+        this.surname = surname;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
     public int getID() {
         return ID;
     }
