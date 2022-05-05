@@ -25,7 +25,6 @@ public class CustomerController {
         }
         Customer newCustomer = new Customer(firstName,lastName,email, number);
 
-
         return "createuser";
     }
 
