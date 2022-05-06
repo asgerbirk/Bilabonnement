@@ -20,6 +20,7 @@ public class CarController {
     @GetMapping("/rentedCars")
     public String rentedCars(Model model){
         model.addAttribute("rentedcars", carService.allRentedCars());
+        model.addAttribute("price", carService.totalPrice());
         return "rentedCars";
     }
 }

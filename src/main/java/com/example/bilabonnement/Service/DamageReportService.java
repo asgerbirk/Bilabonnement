@@ -22,16 +22,15 @@ public class DamageReportService {
 
     public void createDamageReport(DamageReport damageReport){
         damageReportRepository.createEntity(damageReport);
-
     }
 
 //bruges ikke, men skal måske bruges.
-    public void getAllCars(String damage, int price,DamageReport damageReport){
+    public List<Car> getAllCars(){
         List<Car> cars = carRepository.getAllEntities();
        List<Car> allCars =  cars.stream()
-                .filter(damagedCars -> damagedCars.isDamaged() == true && damagedCars.isRented() == false)
+                .filter(damagedCars -> damagedCars.isDamaged() == false && damagedCars.isRented() == false)
                .collect(Collectors.toList());
-       damageReportRepository.createEntity(damageReport);
-
+       allCars.forEach(System.out::println);
+       return allCars;
     }
 }
