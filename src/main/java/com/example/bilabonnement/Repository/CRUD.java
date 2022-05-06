@@ -6,5 +6,5 @@ public interface CRUD <T>{
 
     List<T> getAllEntities();
     Object getSingleEntity(int T);
-    void createEntity(T x); //TODO SPØRG NIKLAS OM HJÆLP TIL DETTE
+    void createEntity(T x);
 }
