@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
 
+import java.util.Objects;
+
 @Controller
 public class CustomerAgreementController {
 
@@ -30,8 +32,8 @@ public class CustomerAgreementController {
     @PostMapping("/registeredAgreement")
     public String succesfullyRegisteredAgreement(WebRequest data) {
         customerAgreementService.registerNewAgreement(
-                customerService.getCustomerFromID(Integer.parseInt((data.getParameter("customerID")))),
-                carService.getCarFromCarNumber(Integer.parseInt(data.getParameter("carNumber"))),
+                customerService.getCustomerFromID(Integer.parseInt((Objects.requireNonNull(data.getParameter("customerID"))))),
+                carService.getCarFromCarNumber(Integer.parseInt(Objects.requireNonNull(data.getParameter("carNumber")))),
                 data.getParameter("period"),
                 data.getParameter("price"));
 
