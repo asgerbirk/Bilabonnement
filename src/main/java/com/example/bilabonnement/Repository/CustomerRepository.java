@@ -61,7 +61,7 @@ public class CustomerRepository implements CRUD<Customer>{
 
             Connection conn = DatabaseConnectionManager.getConnection();
             try{
-                PreparedStatement stmt = conn.prepareStatement("INSERT INTO customer (`firstname`, `lastname`, `email`, `phone_number`) VALUES ("+firstname+", "+surname+", "+email+", "+number+")");
+                PreparedStatement stmt = conn.prepareStatement("INSERT INTO customer (`firstname`, `lastname`, `email`, `phone_number`, `password`) VALUES (?, ?, ?, ?, ?)");
                 stmt.setString(1,firstname);
                 stmt.setString(2,surname);
                 stmt.setString(3,email);
