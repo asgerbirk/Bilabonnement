@@ -5,11 +5,18 @@ public class CustomerAgreement {
     private int agreementID;
     private Customer customer;
     private Car car;
-    private int period;
-    private int price;
+    private String period;
+    private String price;
 
-    public CustomerAgreement(int agreementID, Customer customer, Car car, int period, int price) {
+    public CustomerAgreement(int agreementID, Customer customer, Car car, String period, String price) {
         this.agreementID = agreementID;
+        this.customer = customer;
+        this.car = car;
+        this.period = period;
+        this.price = price;
+    }
+
+    public CustomerAgreement(Customer customer, Car car, String period, String price) {
         this.customer = customer;
         this.car = car;
         this.period = period;
@@ -40,19 +47,19 @@ public class CustomerAgreement {
         this.car = car;
     }
 
-    public int getPeriod() {
+    public String getPeriod() {
         return period;
     }
 
-    public void setPeriod(int period) {
+    public void setPeriod(String period) {
         this.period = period;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

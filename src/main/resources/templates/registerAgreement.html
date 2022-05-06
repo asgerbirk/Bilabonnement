@@ -1,13 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Create new agreement</title>
+    <title>Register new agreement</title>
+    <link rel="stylesheet" th:href="@{style.css}" href="../static/style.css">
 </head>
 <body>
 
-<form method="post" action=""
-
+<form method="post" action="/registeredAgreement">
+    <div class="container">
+        <h1>Opret nyt agreement</h1>
+        <label for="customerID"><b>Indtast kunde ID</b></label>
+        <input type="number" placeholder="customerId" name="kunde id" required>
+        <br><br/>
+        <label for="carNumber"><b>Indtast vogn nummer</b></label>
+        <input type="number" placeholder="carNumber" name="vogn nummre" required>
+        <br><br/>
+        <label for="period"><b>Indtast øsnkede period</b></label>
+        <input type="text" placeholder="period" name="periode" required>
+        <br><br/>
+        <label for="price"><b>Indtast total prisen</b></label>
+        <input type="text" placeholder="price" name="total pris" required>
+        <br><br/>
+        <button type="submit">Opret ny bruger</button>
+    </div>
+</form>
 
 </body>
 </html>

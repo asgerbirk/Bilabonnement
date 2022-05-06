@@ -18,4 +18,16 @@ public class CustomerService {
         return customerRepository.getAllEntities();
     }
 
+    public void createCustomer(String firstname, String lastname, String email, String number, String password){
+        Customer newCustomer = new Customer(firstname, lastname, email, number, password);
+        customerRepository.createEntity(newCustomer);
+    }
+
+    public Customer getCustomerFromID(int id){
+        Customer test = customerRepository.getSingleEntity(id);
+        System.out.println(test.getID());
+        return test;
+
+    }
+
 }

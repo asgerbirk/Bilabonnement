@@ -37,4 +37,11 @@ public class CarService {
         }
     return price;
     }
+
+    public Car getCarFromCarNumber(int carNumber){
+            Car tempcar = carRepository.getSingleEntity(carNumber);
+    return tempcar;
+    }
+
+
 }

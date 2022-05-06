@@ -46,7 +46,6 @@ public class CustomerRepository implements CRUD<Customer>{
                 tempCustomer=c;
                 tempCustomer.setID(c.getID());
             }
-
         }
         return tempCustomer;
     }

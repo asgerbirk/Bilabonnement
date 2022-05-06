@@ -30,8 +30,8 @@ public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
                         rs.getInt(1),
                         customerRepository.getSingleEntity(rs.getInt(2)),
                         carRepository.getSingleEntity(rs.getInt(3)),
-                        rs.getInt(4),
-                        rs.getInt(5)
+                        rs.getString(4),
+                        rs.getString(5)
                 );
                 allCustomerAgreements.add(tempAgreement);
             }
@@ -58,8 +58,19 @@ public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
     @Override
     public void createEntity(CustomerAgreement obj){
         Connection connection = DatabaseConnectionManager.getConnection();
+        int customerID = obj.getCustomer().getID();
+        int carNumber = obj.getCar().getCarNumber();
+        String period = obj.getPeriod();
+        String price = obj.getPrice();
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into rental_agreement values()");
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "insert into rental_agreement " +
+                            "(`customer_id`, `car_number`, `rental_period`, `total_price`)" +
+                            " values(?, ?, ?, ?)");
+            preparedStatement.setInt(1, customerID);
+            preparedStatement.setInt(2, carNumber);
+            preparedStatement.setString(3, period);
+            preparedStatement.setString(4, price);
             preparedStatement.executeQuery();
         } catch (SQLException e){
             e.printStackTrace();

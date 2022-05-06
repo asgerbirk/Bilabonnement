@@ -1,7 +1,8 @@
 package com.example.bilabonnement.Controller;
 
-import com.example.bilabonnement.Repository.CustomerAgreementRepository;
-import com.example.bilabonnement.Repository.CustomerRepository;
+import com.example.bilabonnement.Service.CarService;
+import com.example.bilabonnement.Service.CustomerAgreementService;
+import com.example.bilabonnement.Service.CustomerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,15 +11,33 @@ import org.springframework.web.context.request.WebRequest;
 @Controller
 public class CustomerAgreementController {
 
-    @GetMapping
-    public String registerAgreement(){
+    private final CustomerAgreementService customerAgreementService;
+    private final CustomerService customerService;
+    private final CarService carService;
+
+    public CustomerAgreementController(CustomerAgreementService customerAgreementService, CustomerService customerService, CarService carService) {
+        this.customerAgreementService = customerAgreementService;
+        this.customerService = customerService;
+        this.carService = carService;
+    }
+
+    @GetMapping("/registerAgreement")
+    public String registerAgreement() {
         return "registerAgreement";
     }
-/*
-    @PostMapping
-    public String succesfullyRegisteredAgreement(WebRequest data){
-        CustomerAgreementRepository agreementRepo = new CustomerAgreementRepository();
+
+
+    @PostMapping("/registeredAgreement")
+    public String succesfullyRegisteredAgreement(WebRequest data) {
+        customerAgreementService.registerNewAgreement(
+                customerService.getCustomerFromID(Integer.parseInt((data.getParameter("customerID")))),
+                carService.getCarFromCarNumber(Integer.parseInt(data.getParameter("carNumber"))),
+                data.getParameter("period"),
+                data.getParameter("price"));
+
+        return "redirect:/index";
+
 
     }
-*/
+
 }
