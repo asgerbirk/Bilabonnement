@@ -31,7 +31,7 @@ public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
                         customerRepository.getSingleEntity(rs.getInt(2)),
                         carRepository.getSingleEntity(rs.getInt(3)),
                         rs.getString(4),
-                        rs.getString(5)
+                        rs.getInt(5)
                 );
                 allCustomerAgreements.add(tempAgreement);
             }
@@ -61,7 +61,7 @@ public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
         int customerID = obj.getCustomer().getID();
         int carNumber = obj.getCar().getCarNumber();
         String period = obj.getPeriod();
-        String price = obj.getPrice();
+        int price = obj.getPrice();
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "insert into rental_agreement " +
@@ -70,12 +70,29 @@ public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
             preparedStatement.setInt(1, customerID);
             preparedStatement.setInt(2, carNumber);
             preparedStatement.setString(3, period);
-            preparedStatement.setString(4, price);
+            preparedStatement.setInt(4, price);
             preparedStatement.executeUpdate();
         } catch (SQLException e){
             e.printStackTrace();
             System.out.println("Something is wrong in creation of customeragreementrepo");
         }
+    }
+
+    @Override
+    public void updateEntity(int id, int value){
+        CustomerAgreement current = getSingleEntity(id);
+        int newPrice = current.getPrice()+value;
+        current.setPrice(newPrice);
+
+        Connection connection = DatabaseConnectionManager.getConnection();
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE rental_agreement SET total_price ="+newPrice+" WHERE agreement_id = "+id+";");
+            preparedStatement.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
     }
 
 }

@@ -33,6 +33,8 @@ public class DamageController {
 
     @PostMapping("/damageReportCreated")
     public String registernewcase(Model model, WebRequest data){
+        int agreementID = Integer.parseInt(data.getParameter("agreementID"));
+        int userID = Integer.parseInt(data.getParameter("userID"));
         String damage = data.getParameter("damage");
         int price = Integer.parseInt(data.getParameter("price"));
         DamageReport damageReport = new DamageReport(damage,price);

@@ -6,7 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -15,12 +17,38 @@ public class DamageReportRepository implements CRUD<DamageReport>{
 
     @Override
     public List<DamageReport> getAllEntities() {
-        return null;
+        Connection connection = DatabaseConnectionManager.getConnection();
+        List<DamageReport> allReports = new ArrayList<>();
+        DamageReportRepository damageRepo = new DamageReportRepository();
+
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM damage_report");
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                DamageReport tempReport = new DamageReport(
+                        rs.getInt("id"),
+                        rs.getString("damage"),
+                        rs.getInt("price")
+                );
+                allReports.add(tempReport);
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return allReports;
     }
 
     @Override
-    public Object getSingleEntity(int T) {
-        return null;
+    public DamageReport getSingleEntity(int reportID) {
+        List<DamageReport> allReports = getAllEntities();
+        DamageReport tempReport = null;
+        for (DamageReport rep: allReports) {
+            if(rep.getId() == reportID){
+                tempReport = rep;
+            }
+        }
+        return tempReport;
     }
 
     @Override
@@ -39,5 +67,20 @@ public class DamageReportRepository implements CRUD<DamageReport>{
         }
     }
 
+    @Override
+    public void updateEntity(int id, int value){
+        DamageReport current = getSingleEntity(id);
+        int newPrice = current.getPrice()+value;
+        //current.setPrice(newPrice);
+
+        Connection connection = DatabaseConnectionManager.getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE damage_report SET price = " + newPrice + " WHERE damage_report_id ="+id+";");
+            preparedStatement.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+    }
 
 }

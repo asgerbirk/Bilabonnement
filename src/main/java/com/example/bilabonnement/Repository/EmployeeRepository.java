@@ -19,4 +19,8 @@ public class EmployeeRepository implements CRUD<Employee>{
     public void createEntity(Employee entity) {
 
     }
+    @Override
+    public void updateEntity(int id, int value){
+
+    }
 }
