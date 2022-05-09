@@ -80,13 +80,11 @@ public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
 
     @Override
     public void updateEntity(int id, int value){
-        CustomerAgreement current = getSingleEntity(id);
-        int newPrice = current.getPrice()+value;
-        current.setPrice(newPrice);
-
         Connection connection = DatabaseConnectionManager.getConnection();
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE rental_agreement SET total_price ="+newPrice+" WHERE agreement_id = "+id+";");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE rental_agreement SET total_price = ? WHERE agreement_id = ?;");
+            preparedStatement.setInt(1,value);
+            preparedStatement.setInt(2, id);
             preparedStatement.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();

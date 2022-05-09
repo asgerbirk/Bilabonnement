@@ -69,14 +69,12 @@ public class DamageReportRepository implements CRUD<DamageReport>{
 
     @Override
     public void updateEntity(int id, int value){
-        DamageReport current = getSingleEntity(id);
-        int newPrice = current.getPrice()+value;
-        //current.setPrice(newPrice);
-
         Connection connection = DatabaseConnectionManager.getConnection();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE damage_report SET price = " + newPrice + " WHERE damage_report_id ="+id+";");
-            preparedStatement.executeUpdate();
+            PreparedStatement pstmt = connection.prepareStatement("UPDATE damage_report SET price=? WHERE damage_report_id=?");
+            pstmt.setInt(1,value);
+            pstmt.setInt(2, id);
+            pstmt.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();
         }

@@ -29,4 +29,12 @@ public class CustomerAgreementService{
         CustomerAgreement newAgreement = new CustomerAgreement(customer, car, period, price);
         customerAgreementRepository.createEntity(newAgreement);
     }
+
+    public void update(int id, int value){
+        CustomerAgreement current = customerAgreementRepository.getSingleEntity(id);
+        int newPrice = current.getPrice()+value;
+        customerAgreementRepository.updateEntity(id,newPrice);
+
+
+    }
 }

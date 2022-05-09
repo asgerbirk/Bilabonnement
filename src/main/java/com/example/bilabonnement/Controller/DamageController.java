@@ -3,6 +3,7 @@ package com.example.bilabonnement.Controller;
 
 import com.example.bilabonnement.Model.DamageReport;
 import com.example.bilabonnement.Service.CarService;
+import com.example.bilabonnement.Service.CustomerAgreementService;
 import com.example.bilabonnement.Service.DamageReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,11 +15,14 @@ import org.springframework.web.context.request.WebRequest;
 @Controller
 public class DamageController {
     private final DamageReportService damageReportService;
+
+    private final CustomerAgreementService customerAgreementService;
     private final CarService carService;
 
 @Autowired
-    public DamageController(DamageReportService damageReportService, CarService carService) {
-        this.damageReportService = damageReportService;
+    public DamageController(DamageReportService damageReportService, CustomerAgreementService customerAgreementService, CarService carService) {
+    this.damageReportService = damageReportService;
+    this.customerAgreementService = customerAgreementService;
 
     this.carService = carService;
 }
@@ -39,6 +43,7 @@ public class DamageController {
         int price = Integer.parseInt(data.getParameter("price"));
         DamageReport damageReport = new DamageReport(damage,price);
         damageReportService.createDamageReport(damageReport);
+        customerAgreementService.update(userID,price);
         return "redirect:/index";
     }
 }
