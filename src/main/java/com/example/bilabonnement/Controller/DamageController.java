@@ -13,7 +13,6 @@ import org.springframework.web.context.request.WebRequest;
 
 @Controller
 public class DamageController {
-
     private final DamageReportService damageReportService;
     private final CarService carService;
 

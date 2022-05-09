@@ -7,37 +7,14 @@
 </head>
 <body>
 
-<h1> all rented cars</h1>
-<table>
-    <tr
-            th:each="rentedcars : ${rentedcars}">
-        <td th:text="${rentedcars.getCarNumber()}"></td>
-        <td th:text="${rentedcars.getModel()}"></td>
-        <td th:text="${rentedcars.getBrand()}"></td>
-        <td th:text="${rentedcars.getColor()}"></td>
-        <td th:text="${rentedcars.getPrice()}"></td>
-    </tr>
-</table>
-
-<table>
-    <tr th:each="totalPrice : ${totalPrice}">
-        <td th:text="${totalPrice.totalPrice()}"> </td>
-
-
-
-    </tr>
-
-
-</table>
-
 <form method="post" action="/damageReportCreated">
     <div class="container">
         <h1>Opret ny skaderapport</h1>
         <label for="damage"><b>skade</b></label>
-        <input type="text" placeholder="damage" name="damage" required>
+        <input type="text" placeholder="skade" name="damage" required>
         <br><br/>
         <label for="price"><b>Indtast password</b></label>
-        <input type="text" placeholder="price" name="price" required>
+        <input type="text" placeholder="pris" name="price" required>
         <br><br/>
         <button type="submit">Opret ny skaderapport</button>
     </div>
