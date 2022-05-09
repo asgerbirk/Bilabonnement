@@ -23,8 +23,6 @@ public class DamageReportService {
     public void createDamageReport(DamageReport damageReport){
         damageReportRepository.createEntity(damageReport);
     }
-
-//bruges ikke, men skal måske bruges.
     public List<Car> getAllCars(){
         List<Car> cars = carRepository.getAllEntities();
        List<Car> allCars =  cars.stream()
