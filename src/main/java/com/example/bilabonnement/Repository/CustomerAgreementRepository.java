@@ -71,7 +71,7 @@ public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
             preparedStatement.setInt(2, carNumber);
             preparedStatement.setString(3, period);
             preparedStatement.setString(4, price);
-            preparedStatement.executeQuery();
+            preparedStatement.executeUpdate();
         } catch (SQLException e){
             e.printStackTrace();
             System.out.println("Something is wrong in creation of customeragreementrepo");
