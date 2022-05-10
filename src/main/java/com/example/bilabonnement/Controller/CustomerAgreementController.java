@@ -34,9 +34,11 @@ public class CustomerAgreementController {
         customerAgreementService.registerNewAgreement(
                 customerService.getCustomerFromID(Integer.parseInt((Objects.requireNonNull(data.getParameter("customerID"))))),
                 data.getParameter("period"),
-                data.getParameter("price"),
+                Integer.parseInt(Objects.requireNonNull(data.getParameter("price"))),
                 carService.getCarFromCarNumber(Integer.parseInt(Objects.requireNonNull(data.getParameter("carNumber")))),
                 data.getParameter("location"));
+                );
+
 
         return "redirect:/index";
 

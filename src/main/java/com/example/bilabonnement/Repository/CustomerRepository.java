@@ -72,4 +72,10 @@ public class CustomerRepository implements CRUD<Customer>{
                 e.printStackTrace();
             }
     }
+
+    @Override
+    public void updateEntity(int id, int value){
+
+    }
 }
+

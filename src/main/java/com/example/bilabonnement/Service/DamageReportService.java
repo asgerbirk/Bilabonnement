@@ -31,4 +31,8 @@ public class DamageReportService {
        allCars.forEach(System.out::println);
        return allCars;
     }
+
+    public void update(int id, int value){
+
+    }
 }
