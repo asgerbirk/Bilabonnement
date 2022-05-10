@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CustomerAgreementService{
+public class AgreementService {
 
 
     private final AgreementRepository agreementRepository;
@@ -18,7 +18,7 @@ public class CustomerAgreementService{
 
 
     @Autowired
-    public CustomerAgreementService(AgreementRepository agreementRepository, CustomerService customerService, CarService carService) {
+    public AgreementService(AgreementRepository agreementRepository, CustomerService customerService, CarService carService) {
         this.agreementRepository = agreementRepository;
         this.customerService = customerService;
         this.carService = carService;
