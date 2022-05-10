@@ -1,10 +1,6 @@
 package com.example.bilabonnement;
 
-import com.example.bilabonnement.Repository.CarRepository;
-import com.example.bilabonnement.Repository.CustomerAgreementRepository;
 import com.example.bilabonnement.Repository.CustomerRepository;
-import com.example.bilabonnement.Service.CarService;
-import com.example.bilabonnement.Service.DamageReportService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
