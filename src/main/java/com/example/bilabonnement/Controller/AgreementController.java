@@ -11,13 +11,13 @@ import org.springframework.web.context.request.WebRequest;
 import java.util.Objects;
 
 @Controller
-public class CustomerAgreementController {
+public class AgreementController {
 
     private final AgreementService agreementService;
     private final CustomerService customerService;
     private final CarService carService;
 
-    public CustomerAgreementController(AgreementService agreementService, CustomerService customerService, CarService carService) {
+    public AgreementController(AgreementService agreementService, CustomerService customerService, CarService carService) {
         this.agreementService = agreementService;
         this.customerService = customerService;
         this.carService = carService;
