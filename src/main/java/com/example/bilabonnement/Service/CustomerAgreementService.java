@@ -4,7 +4,7 @@ import com.example.bilabonnement.Model.Car;
 import com.example.bilabonnement.Model.CarAgreement;
 import com.example.bilabonnement.Model.Customer;
 import com.example.bilabonnement.Model.Agreement;
-import com.example.bilabonnement.Repository.CustomerAgreementRepository;
+import com.example.bilabonnement.Repository.AgreementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,14 +12,14 @@ import org.springframework.stereotype.Service;
 public class CustomerAgreementService{
 
 
-    private final CustomerAgreementRepository customerAgreementRepository;
+    private final AgreementRepository agreementRepository;
     private final CustomerService customerService;
     private final CarService carService;
 
 
     @Autowired
-    public CustomerAgreementService(CustomerAgreementRepository customerAgreementRepository, CustomerService customerService, CarService carService) {
-        this.customerAgreementRepository = customerAgreementRepository;
+    public CustomerAgreementService(AgreementRepository agreementRepository, CustomerService customerService, CarService carService) {
+        this.agreementRepository = agreementRepository;
         this.customerService = customerService;
         this.carService = carService;
     }
@@ -28,13 +28,13 @@ public class CustomerAgreementService{
 
     public void registerNewAgreement(Customer customer, String period, int price, Car car, String locaion){
         CarAgreement newAgreement = new CarAgreement(customer, period, price, car, locaion);
-        customerAgreementRepository.createEntity(newAgreement);
+        agreementRepository.createEntity(newAgreement);
     }
 
     public void update(int id, int value){
-        Agreement current = customerAgreementRepository.getSingleEntity(id);
+        Agreement current = agreementRepository.getSingleEntity(id);
         int newPrice = current.getPrice()+value;
-        customerAgreementRepository.updateEntity(id,newPrice);
+        agreementRepository.updateEntity(id,newPrice);
 
 
     }

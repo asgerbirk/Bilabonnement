@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 @Repository
-public class CustomerAgreementRepository implements CRUD<CarAgreement>{
+public class AgreementRepository implements CRUD<CarAgreement>{
 
     @Override
     public List<CarAgreement> getAllEntities() {
@@ -29,7 +29,7 @@ public class CustomerAgreementRepository implements CRUD<CarAgreement>{
                         rs.getInt(1),
                         customerRepository.getSingleEntity(rs.getInt(2)),
                         rs.getString(4),
-                        rs.getString(5),
+                        rs.getInt(5),
                         carRepository.getSingleEntity(rs.getInt(3)),
                         rs.getString(6)
                 );

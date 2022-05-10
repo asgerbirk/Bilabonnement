@@ -37,7 +37,6 @@ public class CustomerAgreementController {
                 Integer.parseInt(Objects.requireNonNull(data.getParameter("price"))),
                 carService.getCarFromCarNumber(Integer.parseInt(Objects.requireNonNull(data.getParameter("carNumber")))),
                 data.getParameter("location"));
-                );
 
 
         return "redirect:/index";
