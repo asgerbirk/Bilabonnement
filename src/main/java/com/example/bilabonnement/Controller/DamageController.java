@@ -1,7 +1,10 @@
 package com.example.bilabonnement.Controller;
 
 
+import com.example.bilabonnement.Model.Car;
+import com.example.bilabonnement.Model.CustomerAgreement;
 import com.example.bilabonnement.Model.DamageReport;
+import com.example.bilabonnement.Repository.CustomerAgreementRepository;
 import com.example.bilabonnement.Service.CarService;
 import com.example.bilabonnement.Service.AgreementService;
 import com.example.bilabonnement.Service.DamageReportService;
@@ -43,6 +46,10 @@ public class DamageController {
         int price = Integer.parseInt(data.getParameter("price"));
         DamageReport damageReport = new DamageReport(damage,price);
         damageReportService.createDamageReport(damageReport);
+        customerAgreementService.update(userID,price);
+        CustomerAgreement temp =  damageReportService.temp(agreementID);
+        int carID = temp.getCar().getCarNumber();
+        damageReportService.setDamaged(carID, true);
         agreementService.update(userID,price);
         return "redirect:/index";
     }
