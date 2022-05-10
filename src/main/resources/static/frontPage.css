@@ -20,6 +20,9 @@ ul {
 
 .menubar a.bilabonnement{
     color: black;
+    margin: auto;
+    flex-direction: row;
+    float: right;
 
 }
 
