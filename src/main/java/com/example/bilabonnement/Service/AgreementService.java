@@ -34,7 +34,12 @@ public class AgreementService {
     public void update(int id, int value){
         Agreement current = agreementRepository.getSingleEntity(id);
         int newPrice = current.getPrice()+value;
-        agreementRepository.updateEntity(id,newPrice);
+        agreementRepository.updateEntity(id,newPrice, "total_price");
 
     }
+
+    public void setRented(int id, boolean available){
+        carService.update(id, available, "rented");
+    }
 }
+
