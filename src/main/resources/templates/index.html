@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Homepage</title>
+    <link rel="stylesheet" th:href="@{frontPage.css}" href="../static/frontPage.css.css">
 </head>
 <body>
-<h1>Eow G, hvad sker der habibi</h1>
+
+<div class="menubar">
+<ul>
+    <li><a class="menubar" href="/index"> Hjem</a></li>
+    <li><a class="menubar" href="/createuser">Opret bruger</a></li>
+    <li><a class="menubar" href="/damageReport">Opret skade</a></li>
+    <li><a class="menubar" href="/registerAgreement">Opret lejeaftale</a></li>
+
+    <li><a class="bilabonnement" href="/index">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        Bilabonnement</a></li>
+
+</ul>
+</div>
+
+
+
 </body>
 </html>
