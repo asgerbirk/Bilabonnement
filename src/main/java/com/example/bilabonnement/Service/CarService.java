@@ -43,5 +43,24 @@ public class CarService {
     return tempcar;
     }
 
+    public void update (int id, boolean available, String type){ // 1 er true, 0 er false
+        //Car tempCar = carRepository.getSingleEntity(id);
+        int value = 0;
+        if(available){
+            value = 1;
+        }
+        carRepository.updateEntity(id,value, type);
+    }
+
+    public String rentOrDamage(String type){
+    String result;
+    if(type.equals("damaged")){
+        result = "damaged";
+    }else {
+        result = "rented";
+    }
+    return result;
+    }
+
 
 }

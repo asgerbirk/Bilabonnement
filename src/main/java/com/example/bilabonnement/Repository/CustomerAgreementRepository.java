@@ -79,13 +79,15 @@ public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
     }
 
     @Override
-    public void updateEntity(int id, int value){
+    public void updateEntity(int id, int value, String type){
         Connection connection = DatabaseConnectionManager.getConnection();
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE rental_agreement SET total_price = ? WHERE agreement_id = ?;");
-            preparedStatement.setInt(1,value);
-            preparedStatement.setInt(2, id);
-            preparedStatement.executeUpdate();
+            PreparedStatement stmst = connection.prepareStatement("UPDATE rental_agreement SET "+type+" = ? WHERE agreement_id = ?;");
+            //stmst.setString(1, type);
+            stmst.setInt(1,value);
+            stmst.setInt(2, id);
+            System.out.println(stmst);
+            stmst.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();
         }

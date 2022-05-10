@@ -71,6 +71,28 @@ public class CarRepository  implements CRUD<Car> {
     }
 
     @Override
-    public void updateEntity(int id, int value){
+    public void updateEntity(int id, int value, String type){
+        String test;
+        if(type.equals("damaged")){
+            test = "damaged";
+        }else{
+            test = "rented";
+        }
+        Connection connection = DatabaseConnectionManager.getConnection();
+        try{
+            PreparedStatement stsmt = connection.prepareStatement("UPDATE car SET "+test+" = ? WHERE car_number = ?");
+            //stsmt.setInt(1, type);
+            stsmt.setInt(1, value);
+            stsmt.setInt(2, id);
+            System.out.println(stsmt);
+            stsmt.executeUpdate();
+            stsmt.close();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
+
     }
 }

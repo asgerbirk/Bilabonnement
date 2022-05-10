@@ -37,6 +37,8 @@ public class CustomerAgreementController {
                 data.getParameter("period"),
                 Integer.parseInt(Objects.requireNonNull(data.getParameter("price"))));
 
+        customerAgreementService.setRented(Integer.parseInt(data.getParameter("carNumber")),true);
+
 
         return "redirect:/index";
 
