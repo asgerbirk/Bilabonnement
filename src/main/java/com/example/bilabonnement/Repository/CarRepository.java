@@ -69,4 +69,8 @@ public class CarRepository  implements CRUD<Car> {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void updateEntity(int id, int value){
+    }
 }

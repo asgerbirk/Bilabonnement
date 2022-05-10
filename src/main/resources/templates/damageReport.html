@@ -7,13 +7,15 @@
 </head>
 <body>
 
-
-
-
-
 <form method="post" action="/damageReportCreated">
     <div class="container">
         <h1>Opret ny skaderapport</h1>
+        <label for="agreementID"><b>Lejeaftale ID</b></label>
+        <input type="text" placeholder="Lejeaftale ID" name="agreementID">
+        <br><br/>
+        <label for="userID"><b>Kunde ID</b></label>
+        <input type="text" placeholder="kunde ID" name="userID">
+        <br><br/>
         <label for="damage"><b>skade</b></label>
         <input type="text" placeholder="damage" name="damage" required>
         <br><br/>
