@@ -1,7 +1,6 @@
 package com.example.bilabonnement.Repository;
 
-import com.example.bilabonnement.Model.Customer;
-import com.example.bilabonnement.Model.CustomerAgreement;
+import com.example.bilabonnement.Model.CarAgreement;
 import com.example.bilabonnement.Utility.DatabaseConnectionManager;
 import org.springframework.stereotype.Repository;
 
@@ -12,12 +11,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 @Repository
-public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
+public class CustomerAgreementRepository implements CRUD<CarAgreement>{
 
     @Override
-    public List<CustomerAgreement> getAllEntities() {
+    public List<CarAgreement> getAllEntities() {
         Connection connection = DatabaseConnectionManager.getConnection();
-        List<CustomerAgreement> allCustomerAgreements = new ArrayList<>();
+        List<CarAgreement> allAgreements = new ArrayList<>();
         CustomerRepository customerRepository = new CustomerRepository();
         CarRepository carRepository = new CarRepository();
 
@@ -26,28 +25,29 @@ public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
             ResultSet rs = preparedStatement.executeQuery();
 
             while(rs.next()){
-                CustomerAgreement tempAgreement = new CustomerAgreement(
+                CarAgreement tempAgreement = new CarAgreement(
                         rs.getInt(1),
                         customerRepository.getSingleEntity(rs.getInt(2)),
-                        carRepository.getSingleEntity(rs.getInt(3)),
                         rs.getString(4),
-                        rs.getString(5)
+                        rs.getString(5),
+                        carRepository.getSingleEntity(rs.getInt(3)),
+                        rs.getString(6)
                 );
-                allCustomerAgreements.add(tempAgreement);
+                allAgreements.add(tempAgreement);
             }
         } catch (SQLException e){
             e.printStackTrace();
             System.out.println("Something went wrong in rental_agreement DB or REPO");
         }
 
-        return allCustomerAgreements;
+        return allAgreements;
     }
 
     @Override
-    public CustomerAgreement getSingleEntity(int agreementID) {
-        List<CustomerAgreement> allAgreements = getAllEntities();
-        CustomerAgreement tempAgreement = null;
-        for (CustomerAgreement c : allAgreements) {
+    public CarAgreement getSingleEntity(int agreementID) {
+        List<CarAgreement> allAgreements = getAllEntities();
+        CarAgreement tempAgreement = null;
+        for (CarAgreement c : allAgreements) {
             if(c.getAgreementID() == agreementID){
                 tempAgreement = c;
             }
@@ -56,21 +56,23 @@ public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
     }
 
     @Override
-    public void createEntity(CustomerAgreement obj){
+    public void createEntity(CarAgreement obj){
         Connection connection = DatabaseConnectionManager.getConnection();
         int customerID = obj.getCustomer().getID();
         int carNumber = obj.getCar().getCarNumber();
         String period = obj.getPeriod();
         String price = obj.getPrice();
+        String location = obj.getLocation();
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "insert into rental_agreement " +
-                            "(`customer_id`, `car_number`, `rental_period`, `total_price`)" +
-                            " values(?, ?, ?, ?)");
+                            "(`customer_id`, `car_number`, `rental_period`, `total_price`, `location`)" +
+                            " values(?, ?, ?, ?, ?)");
             preparedStatement.setInt(1, customerID);
             preparedStatement.setInt(2, carNumber);
             preparedStatement.setString(3, period);
             preparedStatement.setString(4, price);
+            preparedStatement.setString(5, location);
             preparedStatement.executeUpdate();
         } catch (SQLException e){
             e.printStackTrace();

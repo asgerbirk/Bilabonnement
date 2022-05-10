@@ -1,8 +1,9 @@
 package com.example.bilabonnement.Service;
 
 import com.example.bilabonnement.Model.Car;
+import com.example.bilabonnement.Model.CarAgreement;
 import com.example.bilabonnement.Model.Customer;
-import com.example.bilabonnement.Model.CustomerAgreement;
+import com.example.bilabonnement.Model.Agreement;
 import com.example.bilabonnement.Repository.CustomerAgreementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,8 +26,8 @@ public class CustomerAgreementService{
 
 
 
-    public void registerNewAgreement(Customer customer, Car car, String period, String price){
-        CustomerAgreement newAgreement = new CustomerAgreement(customer, car, period, price);
+    public void registerNewAgreement(Customer customer, String period, String price, Car car, String locaion){
+        CarAgreement newAgreement = new CarAgreement(customer, period, price, car, locaion);
         customerAgreementRepository.createEntity(newAgreement);
     }
 }

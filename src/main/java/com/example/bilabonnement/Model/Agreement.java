@@ -1,24 +1,21 @@
 package com.example.bilabonnement.Model;
 
-public class CustomerAgreement {
+public class Agreement {
 
     private int agreementID;
     private Customer customer;
-    private Car car;
     private String period;
     private String price;
 
-    public CustomerAgreement(int agreementID, Customer customer, Car car, String period, String price) {
+    public Agreement(int agreementID, Customer customer, String period, String price) {
         this.agreementID = agreementID;
         this.customer = customer;
-        this.car = car;
         this.period = period;
         this.price = price;
     }
 
-    public CustomerAgreement(Customer customer, Car car, String period, String price) {
+    public Agreement(Customer customer, String period, String price) {
         this.customer = customer;
-        this.car = car;
         this.period = period;
         this.price = price;
     }
@@ -37,14 +34,6 @@ public class CustomerAgreement {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }
-
-    public Car getCar() {
-        return car;
-    }
-
-    public void setCar(Car car) {
-        this.car = car;
     }
 
     public String getPeriod() {
@@ -68,7 +57,6 @@ public class CustomerAgreement {
         return "CustomerAgreement{" +
                 "agreementID=" + agreementID +
                 ", customer=" + customer +
-                ", car=" + car +
                 ", period=" + period +
                 ", price=" + price +
                 '}';
