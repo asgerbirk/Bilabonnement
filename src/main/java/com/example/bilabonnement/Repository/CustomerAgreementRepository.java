@@ -39,7 +39,6 @@ public class CustomerAgreementRepository implements CRUD<CustomerAgreement>{
             e.printStackTrace();
             System.out.println("Something went wrong in rental_agreement DB or REPO");
         }
-
         return allCustomerAgreements;
     }
 

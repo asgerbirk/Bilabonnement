@@ -23,8 +23,6 @@ public class CustomerAgreementService{
         this.carService = carService;
     }
 
-
-
     public void registerNewAgreement(Customer customer, Car car, String period, String price){
         CustomerAgreement newAgreement = new CustomerAgreement(customer, car, period, price);
         customerAgreementRepository.createEntity(newAgreement);
