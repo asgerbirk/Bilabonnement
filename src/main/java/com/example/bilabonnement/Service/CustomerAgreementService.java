@@ -33,8 +33,12 @@ public class CustomerAgreementService{
     public void update(int id, int value){
         CustomerAgreement current = customerAgreementRepository.getSingleEntity(id);
         int newPrice = current.getPrice()+value;
-        customerAgreementRepository.updateEntity(id,newPrice);
+        customerAgreementRepository.updateEntity(id,newPrice,"total_price");
 
 
+    }
+
+    public void setRented(int id, boolean available){
+        carService.update(id, available, "rented");
     }
 }

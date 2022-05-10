@@ -1,7 +1,7 @@
 package com.example.bilabonnement.Controller;
 
 import com.example.bilabonnement.Service.CarService;
-import com.example.bilabonnement.Service.CustomerAgreementService;
+import com.example.bilabonnement.Service.AgreementService;
 import com.example.bilabonnement.Service.CustomerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +13,12 @@ import java.util.Objects;
 @Controller
 public class CustomerAgreementController {
 
-    private final CustomerAgreementService customerAgreementService;
+    private final AgreementService agreementService;
     private final CustomerService customerService;
     private final CarService carService;
 
-    public CustomerAgreementController(CustomerAgreementService customerAgreementService, CustomerService customerService, CarService carService) {
-        this.customerAgreementService = customerAgreementService;
+    public CustomerAgreementController(AgreementService agreementService, CustomerService customerService, CarService carService) {
+        this.agreementService = agreementService;
         this.customerService = customerService;
         this.carService = carService;
     }
@@ -31,11 +31,14 @@ public class CustomerAgreementController {
 
     @PostMapping("/registeredAgreement")
     public String succesfullyRegisteredAgreement(WebRequest data) {
-        customerAgreementService.registerNewAgreement(
+        agreementService.registerNewAgreement(
                 customerService.getCustomerFromID(Integer.parseInt((Objects.requireNonNull(data.getParameter("customerID"))))),
-                carService.getCarFromCarNumber(Integer.parseInt(Objects.requireNonNull(data.getParameter("carNumber")))),
                 data.getParameter("period"),
-                Integer.parseInt(Objects.requireNonNull(data.getParameter("price"))));
+                Integer.parseInt(Objects.requireNonNull(data.getParameter("price"))),
+                carService.getCarFromCarNumber(Integer.parseInt(Objects.requireNonNull(data.getParameter("carNumber")))),
+                data.getParameter("location"));
+
+        customerAgreementService.setRented(Integer.parseInt(data.getParameter("carNumber")),true);
 
 
         return "redirect:/index";

@@ -25,9 +25,7 @@ public class CustomerService {
 
     public Customer getCustomerFromID(int id){
         Customer test = customerRepository.getSingleEntity(id);
-        System.out.println(test.getID());
         return test;
-
     }
 
 }

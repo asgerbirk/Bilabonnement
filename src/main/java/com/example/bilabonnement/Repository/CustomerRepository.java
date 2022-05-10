@@ -74,7 +74,7 @@ public class CustomerRepository implements CRUD<Customer>{
     }
 
     @Override
-    public void updateEntity(int id, int value){
+    public void updateEntity(int id, int value, String type){
 
     }
 }

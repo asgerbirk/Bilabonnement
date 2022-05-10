@@ -1,9 +1,12 @@
 package com.example.bilabonnement.Controller;
 
 
+import com.example.bilabonnement.Model.Car;
+import com.example.bilabonnement.Model.CustomerAgreement;
 import com.example.bilabonnement.Model.DamageReport;
+import com.example.bilabonnement.Repository.CustomerAgreementRepository;
 import com.example.bilabonnement.Service.CarService;
-import com.example.bilabonnement.Service.CustomerAgreementService;
+import com.example.bilabonnement.Service.AgreementService;
 import com.example.bilabonnement.Service.DamageReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,13 +19,13 @@ import org.springframework.web.context.request.WebRequest;
 public class DamageController {
     private final DamageReportService damageReportService;
 
-    private final CustomerAgreementService customerAgreementService;
+    private final AgreementService agreementService;
     private final CarService carService;
 
 @Autowired
-    public DamageController(DamageReportService damageReportService, CustomerAgreementService customerAgreementService, CarService carService) {
+    public DamageController(DamageReportService damageReportService, AgreementService agreementService, CarService carService) {
     this.damageReportService = damageReportService;
-    this.customerAgreementService = customerAgreementService;
+    this.agreementService = agreementService;
 
     this.carService = carService;
 }
@@ -44,6 +47,10 @@ public class DamageController {
         DamageReport damageReport = new DamageReport(damage,price);
         damageReportService.createDamageReport(damageReport);
         customerAgreementService.update(userID,price);
+        CustomerAgreement temp =  damageReportService.temp(agreementID);
+        int carID = temp.getCar().getCarNumber();
+        damageReportService.setDamaged(carID, true);
+        agreementService.update(userID,price);
         return "redirect:/index";
     }
 }
