@@ -5,6 +5,8 @@ import com.example.bilabonnement.Repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
+
 @Service
 public class CustomerService {
 
@@ -23,8 +25,8 @@ public class CustomerService {
         customerRepository.createEntity(newCustomer);
     }
 
-    public Customer getCustomerFromID(int id){
-        Customer test = customerRepository.getSingleEntity(id);
+    public Customer getCustomerFromID(String paramname){
+        Customer test = customerRepository.getSingleEntity(Integer.parseInt((Objects.requireNonNull(paramname))));
         return test;
     }
 

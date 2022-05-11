@@ -8,6 +8,8 @@ import com.example.bilabonnement.Repository.AgreementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service
 public class AgreementService {
 
@@ -38,8 +40,8 @@ public class AgreementService {
 
     }
 
-    public void setRented(int id, boolean available){
-        carService.update(id, available, "rented");
+    public void setRented(String paramName, boolean available){
+        carService.update(Integer.parseInt(paramName), available, "rented");
     }
 }
 

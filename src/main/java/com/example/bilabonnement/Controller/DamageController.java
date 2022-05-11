@@ -38,6 +38,7 @@ public class DamageController {
 
     @PostMapping("/damageReportCreated")
     public String registernewcase(Model model, WebRequest data){
+    try {
         int agreementID = Integer.parseInt(data.getParameter("agreementID"));
         int userID = Integer.parseInt(data.getParameter("userID"));
         String damage = data.getParameter("damage");
@@ -49,6 +50,11 @@ public class DamageController {
         int carID = temp.getCar().getCarNumber();
         damageReportService.setDamaged(carID, true);
         agreementService.update(userID,price);
+    } catch (Exception e){
+        e.printStackTrace();
+        return "redirect:/damageReport";
+    }
+
         return "redirect:/index";
     }
 }

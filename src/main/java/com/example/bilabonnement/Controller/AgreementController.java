@@ -31,15 +31,18 @@ public class AgreementController {
 
     @PostMapping("/registeredAgreement")
     public String succesfullyRegisteredAgreement(WebRequest data) {
+        try{
         agreementService.registerNewAgreement(
-                customerService.getCustomerFromID(Integer.parseInt((Objects.requireNonNull(data.getParameter("customerID"))))),
+                customerService.getCustomerFromID(data.getParameter("customerID")),
                 data.getParameter("period"),
                 Integer.parseInt(Objects.requireNonNull(data.getParameter("price"))),
-                carService.getCarFromCarNumber(Integer.parseInt(Objects.requireNonNull(data.getParameter("carNumber")))),
+                carService.getCarFromCarNumber(data.getParameter("carNumber")),
                 data.getParameter("location"));
-
-        agreementService.setRented(Integer.parseInt(data.getParameter("carNumber")),true);
-
+        agreementService.setRented(data.getParameter("carNumber"),true);
+        } catch (Exception e){
+            e.printStackTrace();
+            return "redirect:/registerAgreement";
+        }
 
         return "redirect:/index";
 
