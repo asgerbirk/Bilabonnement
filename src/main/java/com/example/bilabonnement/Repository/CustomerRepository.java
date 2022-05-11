@@ -15,11 +15,11 @@ public class CustomerRepository implements CRUD<Customer>{
 
     @Override
     public List<Customer> getAllEntities() {
-        Connection connection = DatabaseConnectionManager.getConnection();
+        Connection con = DatabaseConnectionManager.getConnection();
         List<Customer> allCustomers = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM customer");
-            ResultSet rs = preparedStatement.executeQuery();
+            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM customer");
+            ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
                 Customer tempCustomer = new Customer(
                         rs.getInt(1),
@@ -58,15 +58,15 @@ public class CustomerRepository implements CRUD<Customer>{
             String number = customer.getPhoneNumber();
             String password = customer.getPassword();
 
-            Connection conn = DatabaseConnectionManager.getConnection();
+            Connection con = DatabaseConnectionManager.getConnection();
             try{
-                PreparedStatement stmt = conn.prepareStatement("INSERT INTO customer (`firstname`, `lastname`, `email`, `phone_number`, `password`) VALUES (?, ?, ?, ?, ?)");
-                stmt.setString(1,firstname);
-                stmt.setString(2,surname);
-                stmt.setString(3,email);
-                stmt.setString(4,number);
-                stmt.setString(5,password);
-                stmt.execute();
+                PreparedStatement pstmt = con.prepareStatement("INSERT INTO customer (`firstname`, `lastname`, `email`, `phone_number`, `password`) VALUES (?, ?, ?, ?, ?)");
+                pstmt.setString(1,firstname);
+                pstmt.setString(2,surname);
+                pstmt.setString(3,email);
+                pstmt.setString(4,number);
+                pstmt.setString(5,password);
+                pstmt.execute();
 
             }catch(Exception e){
                 e.printStackTrace();

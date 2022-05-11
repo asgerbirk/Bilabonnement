@@ -15,11 +15,11 @@ import java.util.List;
 public class CarRepository  implements CRUD<Car> {
     @Override
     public List<Car> getAllEntities() {
-        Connection connection = DatabaseConnectionManager.getConnection();
+        Connection con = DatabaseConnectionManager.getConnection();
         List<Car> allCars = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM car");
-            ResultSet rs = preparedStatement.executeQuery();
+            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM car");
+            ResultSet rs = pstmt.executeQuery();
             while (rs.next()){
                 Car temporaryCar = new Car(
                         rs.getInt(1),
@@ -54,7 +54,7 @@ public class CarRepository  implements CRUD<Car> {
 
     @Override
     public void createEntity(Car T) {
-        Connection connection = DatabaseConnectionManager.getConnection();
+        Connection con = DatabaseConnectionManager.getConnection();
         String model = T.getModel();
         String brand = T.getBrand();
         String color = T.getColor();
@@ -63,8 +63,8 @@ public class CarRepository  implements CRUD<Car> {
         boolean isRented = T.isRented();
 
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into car (`model`, `brand`, `color`, `price`, `damaged`, `rented`) values("+model+", "+brand+", "+color+", "+price+", "+isDamaged+", "+isRented+")");
-            preparedStatement.executeQuery();
+            PreparedStatement pstmt = con.prepareStatement("insert into car (`model`, `brand`, `color`, `price`, `damaged`, `rented`) values("+model+", "+brand+", "+color+", "+price+", "+isDamaged+", "+isRented+")");
+            pstmt.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -78,15 +78,14 @@ public class CarRepository  implements CRUD<Car> {
         }else{
             test = "rented";
         }
-        Connection connection = DatabaseConnectionManager.getConnection();
+        Connection con = DatabaseConnectionManager.getConnection();
         try{
-            PreparedStatement stsmt = connection.prepareStatement("UPDATE car SET "+test+" = ? WHERE car_number = ?");
-            //stsmt.setInt(1, type);
-            stsmt.setInt(1, value);
-            stsmt.setInt(2, id);
-            System.out.println(stsmt);
-            stsmt.executeUpdate();
-            stsmt.close();
+            PreparedStatement pstmt = con.prepareStatement("UPDATE car SET "+test+" = ? WHERE car_number = ?");
+            pstmt.setInt(1, value);
+            pstmt.setInt(2, id);
+            System.out.println(pstmt);
+            pstmt.executeUpdate();
+            pstmt.close();
 
         }catch (SQLException e){
             e.printStackTrace();
