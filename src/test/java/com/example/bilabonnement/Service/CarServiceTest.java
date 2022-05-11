@@ -43,12 +43,18 @@ class CarServiceTest {
         Car rentedCar = new Car(2,"bmw","John", "black",1000,true,true);
         Car rentedCar1 = new Car(2,"bmw","John", "black",1000,true,true);
 
-        assertEquals(underTest.allRentedCars().stream().allMatch(Car::isRented)
+        //checking if the car is rented
+        assertEquals(underTest.allRentedCars().stream().allMatch(Car -> Car.isRented()==true)
                 ,rentedCar.isRented()==true && rentedCar1.isRented() == true);
 
         assertEquals(rentedCar.isRented() == true, rentedCar1.isRented()==true);
 
+
+        //Checking if the car is not rented
         assertEquals(notRentedCar.isRented() == false, notRentedCar1.isRented()==false);
+
+        assertEquals(underTest.allRentedCars().stream().allMatch(Car -> Car.isRented()==false)
+                ,notRentedCar.isRented()==false && notRentedCar1.isRented() == false);
 
 
 
