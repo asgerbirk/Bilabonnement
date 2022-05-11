@@ -1,6 +1,7 @@
 package com.example.bilabonnement.Controller;
 
 
+import com.example.bilabonnement.Model.AccessLevel;
 import com.example.bilabonnement.Service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,22 +18,21 @@ public class IndexController {
     @PostMapping("/logintest")
     public String logintest(WebRequest data){
         EmployeeService es = new EmployeeService();
-        String email = data.getParameter("email");
-        String password = data.getParameter("password");
-        String login = es.loginValidator(email, password);
-        System.out.println(login);
-        switch(login){
-            case "sales":
+        AccessLevel userAccessLevel = es.loginValidator(data.getParameter("email"), data.getParameter("password"));
+        switch(userAccessLevel){
+            case MASTER:
                 return "redirect:/registerAgreement";
-            case "damage":
+            case ADMIN:
                 return "redirect:/damageReport";
-            case "stats":
+            case EMPLOYEE:
+                return "redirect:/rentedCars";
+            case USER:
                 return "redirect:/rentedCars";
             default:
-                System.out.println(login);
                 return "index";
-
         }
+
+        //TODO check accesslevel på current user for at styre controllerne til at kunne bestemme hvor useren kan gå hen og ikke kan gå hen, evt en if employeeaccesslevel equals ved return
     }
 
     @PostMapping("/error")

@@ -1,5 +1,6 @@
 package com.example.bilabonnement.Repository;
 
+import com.example.bilabonnement.Model.AccessLevel;
 import com.example.bilabonnement.Model.Employee;
 import com.example.bilabonnement.Utility.DatabaseConnectionManager;
 
@@ -55,14 +56,14 @@ public class EmployeeRepository implements CRUD<Employee>{
     public void createEntity(Employee employee) {
         String email = employee.getEmail();
         String password = employee.getPassword();
-        String department = employee.getDepartment();
+        AccessLevel accessLevel = employee.getAccessLevel();
 
         Connection connection = DatabaseConnectionManager.getConnection();
         try{
-            PreparedStatement stmt = connection.prepareStatement("INSERT INTO employee (`email`, `password`, `department`) VALUES (?, ?, ?)");
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO employee (`email`, `password`, `access_level`) VALUES (?, ?, ?)");
             stmt.setString(1, email);
             stmt.setString(2, password);
-            stmt.setString(3, department);
+            stmt.setString(3, String.valueOf(accessLevel));
             stmt.execute();
         }catch (SQLException e){
             e.printStackTrace();

@@ -8,19 +8,19 @@ public class Employee {
 
     private String password;
 
-    private String department;
+    private AccessLevel accessLevel;
 
-    public Employee (String email, String password, String department){
+    public Employee (String email, String password, AccessLevel accessLevel){
         this.email = email;
         this.password = password;
-        this.department = department;
+        this.accessLevel = accessLevel;
     }
 
     public Employee (int employee_id, String email, String password, String department){
         this.employee_id = employee_id;
         this.email = email;
         this.password = password;
-        this.department = department;
+        this.accessLevel = accessLevel;
     }
 
     public int getEmployee_id() {
@@ -47,11 +47,11 @@ public class Employee {
         this.password = password;
     }
 
-    public String getDepartment() {
-        return department;
+    public AccessLevel getAccessLevel() {
+        return accessLevel;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
+    public void setAccessLevel(AccessLevel accessLevel) {
+        this.accessLevel = accessLevel;
     }
 }
