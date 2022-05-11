@@ -1,10 +1,8 @@
 package com.example.bilabonnement.Repository;
 
-import com.example.bilabonnement.Model.AccessLevel;
 import com.example.bilabonnement.Model.Employee;
 import com.example.bilabonnement.Utility.DatabaseConnectionManager;
 
-import javax.xml.crypto.Data;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -52,8 +50,10 @@ public class EmployeeRepository implements CRUD<Employee>{
         return tempEmployee;
     }
 
+
     @Override
     public void createEntity(Employee employee) {
+        /*
         String email = employee.getEmail();
         String password = employee.getPassword();
         AccessLevel accessLevel = employee.getAccessLevel();
@@ -76,6 +76,15 @@ public class EmployeeRepository implements CRUD<Employee>{
     }
     @Override
     public void updateEntity(int id, int value,String type){
+
+    }
+    /*
+
+         */
+    }
+
+    @Override
+    public void updateEntity(int id, int newValue, String type) {
 
     }
 }
