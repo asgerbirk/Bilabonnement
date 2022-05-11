@@ -1,6 +1,5 @@
 package com.example.bilabonnement.Service;
 
-import com.example.bilabonnement.Model.Agreement;
 import com.example.bilabonnement.Model.Car;
 import com.example.bilabonnement.Model.CarAgreement;
 import com.example.bilabonnement.Model.DamageReport;
@@ -9,6 +8,7 @@ import com.example.bilabonnement.Repository.CarRepository;
 import com.example.bilabonnement.Repository.DamageReportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
