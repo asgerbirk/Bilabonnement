@@ -15,11 +15,11 @@ import java.util.List;
 public class EmployeeRepository implements CRUD<Employee>{
     @Override
     public List<Employee> getAllEntities() {
-        Connection connection = DatabaseConnectionManager.getConnection();
+        Connection con = DatabaseConnectionManager.getConnection();
         List<Employee> allEmployees = new ArrayList<>();
         try{
-            PreparedStatement psmt = connection.prepareStatement("SELECT * FROM employee");
-            ResultSet rs = psmt.executeQuery();
+            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM employee");
+            ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
                 Employee tempEmployee = new Employee(
                     rs.getInt(1),
@@ -57,14 +57,19 @@ public class EmployeeRepository implements CRUD<Employee>{
         String email = employee.getEmail();
         String password = employee.getPassword();
         AccessLevel accessLevel = employee.getAccessLevel();
-
-        Connection connection = DatabaseConnectionManager.getConnection();
+//TODO DER ER ARBEJDE HER, DER ER DOUBLE MERGE
+        Connection con = DatabaseConnectionManager.getConnection();
         try{
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO employee (`email`, `password`, `access_level`) VALUES (?, ?, ?)");
             stmt.setString(1, email);
             stmt.setString(2, password);
             stmt.setString(3, String.valueOf(accessLevel));
             stmt.execute();
+            PreparedStatement pstmt = con.prepareStatement("INSERT INTO employee (`email`, `password`, `department`) VALUES (?, ?, ?)");
+            pstmt.setString(1, email);
+            pstmt.setString(2, password);
+            pstmt.setString(3, department);
+            pstmt.execute();
         }catch (SQLException e){
             e.printStackTrace();
         }
