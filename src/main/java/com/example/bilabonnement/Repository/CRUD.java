@@ -9,4 +9,6 @@ public interface CRUD <T>{
     void createEntity(T x);
 
     void updateEntity(int id, int newValue, String type);
+
+    void deleteEntity(int id);
 }
