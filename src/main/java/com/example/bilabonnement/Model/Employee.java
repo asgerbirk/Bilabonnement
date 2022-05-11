@@ -16,6 +16,13 @@ public class Employee {
         this.department = department;
     }
 
+    public Employee (int employee_id, String email, String password, String department){
+        this.employee_id = employee_id;
+        this.email = email;
+        this.password = password;
+        this.department = department;
+    }
+
     public int getEmployee_id() {
         return employee_id;
     }
