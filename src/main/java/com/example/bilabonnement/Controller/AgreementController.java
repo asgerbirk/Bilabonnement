@@ -11,13 +11,13 @@ import org.springframework.web.context.request.WebRequest;
 import java.util.Objects;
 
 @Controller
-public class CustomerAgreementController {
+public class AgreementController {
 
     private final AgreementService agreementService;
     private final CustomerService customerService;
     private final CarService carService;
 
-    public CustomerAgreementController(AgreementService agreementService, CustomerService customerService, CarService carService) {
+    public AgreementController(AgreementService agreementService, CustomerService customerService, CarService carService) {
         this.agreementService = agreementService;
         this.customerService = customerService;
         this.carService = carService;
@@ -31,15 +31,18 @@ public class CustomerAgreementController {
 
     @PostMapping("/registeredAgreement")
     public String succesfullyRegisteredAgreement(WebRequest data) {
+        try{
         agreementService.registerNewAgreement(
-                customerService.getCustomerFromID(Integer.parseInt((Objects.requireNonNull(data.getParameter("customerID"))))),
+                customerService.getCustomerFromID(data.getParameter("customerID")),
                 data.getParameter("period"),
                 Integer.parseInt(Objects.requireNonNull(data.getParameter("price"))),
-                carService.getCarFromCarNumber(Integer.parseInt(Objects.requireNonNull(data.getParameter("carNumber")))),
+                carService.getCarFromCarNumber(data.getParameter("carNumber")),
                 data.getParameter("location"));
-
-        agreementService.setRented(Integer.parseInt(data.getParameter("carNumber")),true);
-
+        agreementService.setRented(data.getParameter("carNumber"),true);
+        } catch (Exception e){
+            e.printStackTrace();
+            return "redirect:/registerAgreement";
+        }
 
         return "redirect:/index";
 

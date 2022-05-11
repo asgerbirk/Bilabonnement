@@ -17,13 +17,13 @@ public class DamageReportRepository implements CRUD<DamageReport>{
 
     @Override
     public List<DamageReport> getAllEntities() {
-        Connection connection = DatabaseConnectionManager.getConnection();
+        Connection con = DatabaseConnectionManager.getConnection();
         List<DamageReport> allReports = new ArrayList<>();
         DamageReportRepository damageRepo = new DamageReportRepository();
 
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM damage_report");
-            ResultSet rs = preparedStatement.executeQuery();
+            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM damage_report");
+            ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
                 DamageReport tempReport = new DamageReport(
                         rs.getInt("id"),
@@ -53,14 +53,14 @@ public class DamageReportRepository implements CRUD<DamageReport>{
 
     @Override
     public void createEntity(DamageReport damageReport) {
-        Connection connection = DatabaseConnectionManager.getConnection();
+        Connection con = DatabaseConnectionManager.getConnection();
         String damage = damageReport.getDamage();
         int price = damageReport.getPrice();
         try {
-            PreparedStatement stmt = connection.prepareStatement("INSERT INTO damage_report (`damage`, `price`) VALUES (?,?)");
-            stmt.setString(1,damage);
-            stmt.setInt(2,price);
-            stmt.execute();
+            PreparedStatement pstmt = con.prepareStatement("INSERT INTO damage_report (`damage`, `price`) VALUES (?,?)");
+            pstmt.setString(1,damage);
+            pstmt.setInt(2,price);
+            pstmt.execute();
 
         }catch (SQLException e){
             e.printStackTrace();
@@ -69,9 +69,9 @@ public class DamageReportRepository implements CRUD<DamageReport>{
 
     @Override
     public void updateEntity(int id, int value, String type){
-        Connection connection = DatabaseConnectionManager.getConnection();
+        Connection con = DatabaseConnectionManager.getConnection();
         try {
-            PreparedStatement pstmt = connection.prepareStatement("UPDATE damage_report SET ? = ? WHERE damage_report_id=?");
+            PreparedStatement pstmt = con.prepareStatement("UPDATE damage_report SET ? = ? WHERE damage_report_id=?");
             pstmt.setString(1, type);
             pstmt.setInt(2,value);
             pstmt.setInt(3, id);
