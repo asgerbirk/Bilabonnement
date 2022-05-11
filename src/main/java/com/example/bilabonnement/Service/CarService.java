@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -38,8 +39,9 @@ public class CarService {
     return price;
     }
 
-    public Car getCarFromCarNumber(int carNumber){
-            Car tempcar = carRepository.getSingleEntity(carNumber);
+    //Da vi får værdien på carnumber ind som en string fra webRequest, parser vi int i metoden her, fordi service klassen er hovedansvarlig for logikken bag
+    public Car getCarFromCarNumber(String paramName){
+            Car tempcar = carRepository.getSingleEntity(Integer.parseInt(Objects.requireNonNull(paramName)));
     return tempcar;
     }
 

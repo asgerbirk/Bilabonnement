@@ -25,6 +25,7 @@ public class CustomerController {
 
     @PostMapping("/createsuccess")
     public String createsuccess(WebRequest data){
+        try{
         service.createCustomer(
                 data.getParameter("firstname"),
                 data.getParameter("lastname"),
@@ -32,6 +33,10 @@ public class CustomerController {
                 data.getParameter("number"),
                 data.getParameter("password")
         );
+        } catch (Exception e){
+            e.printStackTrace();
+            return "redirect:/createuser";
+        }
         return "redirect:/index";
     }
 
@@ -43,7 +48,13 @@ public class CustomerController {
 
     @GetMapping("/allusers")
     public String allusers(Model model){
+        try{
         model.addAttribute("allusers",service.getAllCustomers());
+
+        } catch (Exception e){
+            e.printStackTrace();
+            return "redirect:/index";
+        }
         return "allusers";
     }
 
