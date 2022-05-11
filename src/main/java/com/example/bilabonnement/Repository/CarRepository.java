@@ -94,4 +94,18 @@ public class CarRepository  implements CRUD<Car> {
 
 
     }
+
+    @Override
+    public void deleteEntity(int id){
+        Connection con = DatabaseConnectionManager.getConnection();
+
+        try{
+            PreparedStatement pstmt = con.prepareStatement("DELETE FROM car WHERE car_number = ?");
+            pstmt.setInt(1, id);
+            pstmt.execute();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }

@@ -96,4 +96,18 @@ public class AgreementRepository implements CRUD<CarAgreement>{
 
     }
 
+    @Override
+    public void deleteEntity(int id){
+        Connection con = DatabaseConnectionManager.getConnection();
+
+        try{
+            PreparedStatement pstmt = con.prepareStatement("DELETE FROM rental_agreement WHERE agreement_id = ?");
+            pstmt.setInt(1, id);
+            pstmt.execute();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
 }

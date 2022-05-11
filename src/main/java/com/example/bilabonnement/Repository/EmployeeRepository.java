@@ -30,8 +30,6 @@ public class EmployeeRepository implements CRUD<Employee>{
                 allEmployees.add(tempEmployee);
             }
 
-
-
         }catch (SQLException e){
             e.printStackTrace();
             System.out.println("Something went wrong in database for employees");
@@ -60,7 +58,7 @@ public class EmployeeRepository implements CRUD<Employee>{
 //TODO DER ER ARBEJDE HER, DER ER DOUBLE MERGE
         Connection con = DatabaseConnectionManager.getConnection();
         try{
-            PreparedStatement stmt = connection.prepareStatement("INSERT INTO employee (`email`, `password`, `access_level`) VALUES (?, ?, ?)");
+            PreparedStatement stmt = con.prepareStatement("INSERT INTO employee (`email`, `password`, `access_level`) VALUES (?, ?, ?)");
             stmt.setString(1, email);
             stmt.setString(2, password);
             stmt.setString(3, String.valueOf(accessLevel));
@@ -68,7 +66,7 @@ public class EmployeeRepository implements CRUD<Employee>{
             PreparedStatement pstmt = con.prepareStatement("INSERT INTO employee (`email`, `password`, `department`) VALUES (?, ?, ?)");
             pstmt.setString(1, email);
             pstmt.setString(2, password);
-            pstmt.setString(3, department);
+            pstmt.setString(3, String.valueOf(accessLevel));
             pstmt.execute();
         }catch (SQLException e){
             e.printStackTrace();
@@ -77,5 +75,19 @@ public class EmployeeRepository implements CRUD<Employee>{
     @Override
     public void updateEntity(int id, int value,String type){
 
+    }
+
+    @Override
+    public void deleteEntity(int id){
+        Connection con = DatabaseConnectionManager.getConnection();
+
+        try{
+            PreparedStatement pstmt = con.prepareStatement("DELETE FROM employee WHERE employee_id = ?");
+            pstmt.setInt(1, id);
+            pstmt.execute();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 }

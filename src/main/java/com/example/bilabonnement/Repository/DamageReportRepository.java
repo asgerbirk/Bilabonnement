@@ -26,7 +26,7 @@ public class DamageReportRepository implements CRUD<DamageReport>{
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
                 DamageReport tempReport = new DamageReport(
-                        rs.getInt("id"),
+                         rs.getInt("id"),
                         rs.getString("damage"),
                         rs.getInt("price")
                 );
@@ -80,6 +80,21 @@ public class DamageReportRepository implements CRUD<DamageReport>{
             e.printStackTrace();
         }
 
+    }
+
+
+    @Override
+    public void deleteEntity(int id){
+        Connection con = DatabaseConnectionManager.getConnection();
+
+        try{
+            PreparedStatement pstmt = con.prepareStatement("DELETE FROM damage_report WHERE damage_report_id = ?");
+            pstmt.setInt(1, id);
+            pstmt.execute();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
 }

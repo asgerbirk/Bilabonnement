@@ -77,5 +77,19 @@ public class CustomerRepository implements CRUD<Customer>{
     public void updateEntity(int id, int value, String type){
 
     }
+
+    @Override
+    public void deleteEntity(int id){
+        Connection con = DatabaseConnectionManager.getConnection();
+
+        try{
+            PreparedStatement pstmt = con.prepareStatement("DELETE FROM customer WHERE customer_id = ?");
+            pstmt.setInt(1, id);
+            pstmt.execute();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }
 
