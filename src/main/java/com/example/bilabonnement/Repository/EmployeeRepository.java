@@ -58,12 +58,7 @@ public class EmployeeRepository implements CRUD<Employee>{
 //TODO DER ER ARBEJDE HER, DER ER DOUBLE MERGE
         Connection con = DatabaseConnectionManager.getConnection();
         try{
-            PreparedStatement stmt = con.prepareStatement("INSERT INTO employee (`email`, `password`, `access_level`) VALUES (?, ?, ?)");
-            stmt.setString(1, email);
-            stmt.setString(2, password);
-            stmt.setString(3, String.valueOf(accessLevel));
-            stmt.execute();
-            PreparedStatement pstmt = con.prepareStatement("INSERT INTO employee (`email`, `password`, `department`) VALUES (?, ?, ?)");
+            PreparedStatement pstmt = con.prepareStatement("INSERT INTO employee (`email`, `password`, `access_level`) VALUES (?, ?, ?)");
             pstmt.setString(1, email);
             pstmt.setString(2, password);
             pstmt.setString(3, String.valueOf(accessLevel));
