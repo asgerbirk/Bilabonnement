@@ -12,7 +12,7 @@
 
 <div th:replace="fragments/topnav :: navbar"></div>
 <h1> Udlejede biler</h1>
-<table id="cars">
+<table>
 
     <tr>
         <th>ID</th>
@@ -33,7 +33,10 @@
 
     </tr>
 </table>
-<p>samlet pris for alle udlejede biler er: <span th:text="${price}"></span> kr.</p>
+
+<table id="price">
+    <th>Pris for alle udlejede biler: <span th:text="${price}"></span>kr.</th>
+</table>
 
 </body>
 </html>
