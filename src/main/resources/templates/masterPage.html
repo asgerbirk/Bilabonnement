@@ -11,7 +11,13 @@
     <div class="container">
         <h1><b>Slet fra database!</b></h1>
         <label for="type"><b>Indtast hvilken ting du vil slette</b></label>
-        <input type="text" placeholder="Indtast her" name="type" required>
+        <select name="type" id="type">
+            <option value="employee">Employee</option>
+            <option value="car">Car</option>
+            <option value="rental agreement">Rental Agreement</option>
+            <option value="customer">Customer</option>
+            <option value="damage report">Damage report</option>
+        </select>
         <br><br/>
         <label for="id"><b>Indtast ID'et for det du vil slette</b></label>
         <input type="number" placeholder="Indtast ID" name="id" required>

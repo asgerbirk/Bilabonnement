@@ -73,6 +73,7 @@ public class CustomerController {
         int id = Integer.parseInt(Objects.requireNonNull(data.getParameter("id")));
         assert type != null;
         es.whichType(type, id);
+        // Kunne være blæret at lave type som en menu dropdown, således at man kun kan vælge ting der ikke fejler
         return "redirect:/masterPage";
     }
 
