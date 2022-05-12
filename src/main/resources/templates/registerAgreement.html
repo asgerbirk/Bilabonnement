@@ -19,14 +19,19 @@
         <label for="carNumber"><b>Indtast vogn nummer</b></label>
         <input type="number" placeholder="vogn nummer" name="carNumber" required id="carNumber">
         <br><br/>
-        <label for="period"><b>Indtast ønskede period</b></label>
-        <input type="text" placeholder="periode" name="period" required id="period">
+        <label for="period"><b>Indtast ønskede antal måneder at leje</b></label>
+        <input type="number" placeholder="periode" name="period" required id="period">
         <br><br/>
-        <label for="price"><b>Indtast total prisen</b></label>
-        <input type="text" placeholder="total pris" name="price" required id="price">
+        <label for="price"><b>Indtast pris pr måned</b></label>
+        <input type="number" placeholder="total pris" name="price" required id="price">
         <br><br/>
-        <label for="location"><b>Indtast lokationen på bilen</b></label>
-        <input type="text" placeholder="total pris" name="location" required id="location">
+        <label for="location"><b>Indtast hvor bilen skal hentes</b></label>
+        <select name="location" id="location">
+            <option value="FDM">FDM</option>
+            <option value="Home">Home</option>
+            <option value="DS1">DS salon 1</option>
+            <option value="DS2">DS salon 2</option>
+        </select>
         <br><br/>
         <button type="submit">Opret ny lejeaftale</button>
     </div>
