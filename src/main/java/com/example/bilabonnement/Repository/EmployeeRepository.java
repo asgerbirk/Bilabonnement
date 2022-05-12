@@ -73,7 +73,7 @@ public class EmployeeRepository implements CRUD<Employee>{
         }
     }
     @Override
-    public void updateEntity(int id, int value,String type){
+    public void updateEntity(int id, int value, String type){
 
     }
 

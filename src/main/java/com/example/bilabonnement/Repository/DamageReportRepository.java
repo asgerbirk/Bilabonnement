@@ -71,10 +71,9 @@ public class DamageReportRepository implements CRUD<DamageReport>{
     public void updateEntity(int id, int value, String type){
         Connection con = DatabaseConnectionManager.getConnection();
         try {
-            PreparedStatement pstmt = con.prepareStatement("UPDATE damage_report SET ? = ? WHERE damage_report_id=?");
-            pstmt.setString(1, type);
-            pstmt.setInt(2,value);
-            pstmt.setInt(3, id);
+            PreparedStatement pstmt = con.prepareStatement("UPDATE damage_report SET "+type+" = ? WHERE damage_report_id=?");
+            pstmt.setInt(1,value);
+            pstmt.setInt(2, id);
             pstmt.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();
