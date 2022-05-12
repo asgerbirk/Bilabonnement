@@ -1,12 +1,15 @@
 package com.example.bilabonnement.Controller;
 
 import com.example.bilabonnement.Service.CustomerService;
+import com.example.bilabonnement.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
+
+import java.util.Objects;
 
 @Controller
 public class CustomerController {
@@ -56,6 +59,22 @@ public class CustomerController {
             return "redirect:/index";
         }
         return "allusers";
+    }
+
+    @GetMapping("/masterPage")
+    public String masterPage(){
+        return "masterPage";
+    }
+
+    @PostMapping("/delete")
+    public String delete(WebRequest data){
+        EmployeeService es = new EmployeeService();
+        String type = data.getParameter("type");
+        int id = Integer.parseInt(Objects.requireNonNull(data.getParameter("id")));
+        assert type != null;
+        es.whichType(type, id);
+        // Kunne være blæret at lave type som en menu dropdown, således at man kun kan vælge ting der ikke fejler
+        return "redirect:/masterPage";
     }
 
 

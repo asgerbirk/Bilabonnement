@@ -2,7 +2,7 @@ package com.example.bilabonnement.Service;
 
 import com.example.bilabonnement.Model.AccessLevel;
 import com.example.bilabonnement.Model.Employee;
-import com.example.bilabonnement.Repository.EmployeeRepository;
+import com.example.bilabonnement.Repository.*;
 
 import java.util.List;
 
@@ -25,6 +25,28 @@ public class EmployeeService {
             return tempEmployee.getAccessLevel();
         }
         return AccessLevel.USER;
+    }
+
+    public void whichType(String type, int id){
+        switch (type) {
+            case "employee":
+                EmployeeRepository er = new EmployeeRepository();
+                er.deleteEntity(id);
+            case "car":
+                CarRepository cr = new CarRepository();
+                cr.deleteEntity(id);
+            case "rental agreement":
+                AgreementRepository ar = new AgreementRepository();
+                ar.deleteEntity(id);
+            case "customer":
+                CustomerRepository cur = new CustomerRepository();
+                cur.deleteEntity(id);
+            case "damage report":
+                DamageReportRepository dr = new DamageReportRepository();
+                dr.deleteEntity(id);
+
+
+        }
     }
 
 }
