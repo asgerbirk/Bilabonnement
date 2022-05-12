@@ -26,8 +26,9 @@ public class AgreementService {
 
 
 
-    public void registerNewAgreement(Customer customer, String period, int price, Car car, String location){
-        CarAgreement newAgreement = new CarAgreement(customer, period, price, car, location);
+    public void registerNewAgreement(Customer customer, int period, int price, Car car, String location){
+        int totalPrice = price*period;
+        CarAgreement newAgreement = new CarAgreement(customer, period, totalPrice, car, location);
         agreementRepository.createEntity(newAgreement);
     }
 

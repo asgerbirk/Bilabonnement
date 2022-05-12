@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>All users</title>
-    <link rel="stylesheet" th:href="@{navbarStyle.css}" href="../static/navbarStyle.css">
+    <link rel="stylesheet" th:href="@{fragmentStyle.css}" href="../static/fragmentStyle.css">
     <link rel="stylesheet" th:href="@{frontPage.css}" href="../static/frontPage.css">
 </head>
 <body>
@@ -19,6 +19,7 @@
 
 </table>
 
+<div th:replace="fragments/fragmentlibary :: footer"></div>
 
 
 </body>

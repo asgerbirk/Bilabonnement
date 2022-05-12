@@ -28,7 +28,7 @@ public class AgreementRepository implements CRUD<CarAgreement>{
                 CarAgreement tempAgreement = new CarAgreement(
                         rs.getInt(1),
                         customerRepository.getSingleEntity(rs.getInt(2)),
-                        rs.getString(4),
+                        rs.getInt(4),
                         rs.getInt(5),
                         carRepository.getSingleEntity(rs.getInt(3)),
                         rs.getString(6)
@@ -60,7 +60,7 @@ public class AgreementRepository implements CRUD<CarAgreement>{
         Connection con = DatabaseConnectionManager.getConnection();
         int customerID = obj.getCustomer().getID();
         int carNumber = obj.getCar().getCarNumber();
-        String period = obj.getPeriod();
+        int period = obj.getPeriod();
         int price = obj.getPrice();
         String location = obj.getLocation();
         try{
@@ -70,7 +70,7 @@ public class AgreementRepository implements CRUD<CarAgreement>{
                             " values(?, ?, ?, ?, ?)");
             pstmt.setInt(1, customerID);
             pstmt.setInt(2, carNumber);
-            pstmt.setString(3, period);
+            pstmt.setInt(3, period);
             pstmt.setInt(4, price);
             pstmt.setString(5, location);
             pstmt.executeUpdate();
