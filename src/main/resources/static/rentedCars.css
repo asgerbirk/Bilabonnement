@@ -9,9 +9,16 @@ table {
     border-collapse: collapse;
     width: 99%;
 }
-th, td {
+
+td {
     padding: 1rem;
     text-align: left;
+    border: 2px solid #ccc;
+}
+
+th {
+    padding: 1rem;
+    text-align: center;
     border: 2px solid #ccc;
 }
 
