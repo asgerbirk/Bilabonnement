@@ -12,7 +12,7 @@
 
 <div th:replace="fragments/topnav :: navbar"></div>
 <h1> Alle biler</h1>
-<table id="cars">
+<table>
 
     <tr>
         <th>ID</th>
@@ -21,7 +21,6 @@
         <th>Farve</th>
         <th>Pris</th>
     </tr>
-
 
     <tr
             th:each="allCars : ${allCars}">
