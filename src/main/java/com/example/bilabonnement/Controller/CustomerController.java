@@ -43,6 +43,19 @@ public class CustomerController {
         return "redirect:/index";
     }
 
+    @GetMapping("/createemployee")
+    public String createEmployee(){
+        return "createemployee";
+    }
+
+    @PostMapping("employeesuccess")
+    public String employeeSuccess(){
+
+
+
+        return "redirect:/index";
+    }
+
     @GetMapping("/login")
     public String login(){
         return "login";

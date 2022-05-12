@@ -34,7 +34,7 @@ public class AgreementController {
         try{
         agreementService.registerNewAgreement(
                 customerService.getCustomerFromID(data.getParameter("customerID")),
-                data.getParameter("period"),
+                Integer.parseInt(Objects.requireNonNull(data.getParameter("period"))),
                 Integer.parseInt(Objects.requireNonNull(data.getParameter("price"))),
                 carService.getCarFromCarNumber(data.getParameter("carNumber")),
                 data.getParameter("location"));

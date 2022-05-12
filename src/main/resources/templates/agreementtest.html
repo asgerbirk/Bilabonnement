@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register new agreement</title>
+    <link rel="stylesheet" th:href="@{navbarStyle.css}" href="../static/navbarStyle.css">
+    <link rel="stylesheet" th:href="@{frontPage.css}" href="../static/frontPage.css">
+</head>
+<body>
+
+<div th:replace="fragments/topnav :: navbar"></div>
+
+<form method="post" action="/registeredAgreement">
+    <div class="container">
+        <h1>Opret nyt agreement</h1>
+        <label for="customerID"><b>Indtast kunde ID</b></label>
+        <input type="number" placeholder="kunde ID" name="customerID" required id="customerID">
+        <br><br/>
+        <label for="carNumber"><b>Indtast vogn nummer</b></label>
+        <input type="number" placeholder="vogn nummer" name="carNumber" required id="carNumber">
+        <br><br/>
+        <label for="period"><b>Indtast ønskede period</b></label>
+        <input type="text" placeholder="periode" name="period" required id="period">
+        <br><br/>
+        <label for="price"><b>Indtast total prisen</b></label>
+        <input type="text" placeholder="total pris" name="price" required id="price">
+        <br><br/>
+        <label for="location"><b>Indtast lokationen på bilen</b></label>
+        <input type="text" placeholder="total pris" name="location" required id="location">
+        <br><br/>
+        <button type="submit">Opret ny lejeaftale</button>
+    </div>
+</form>
+
+</body>
+</html>

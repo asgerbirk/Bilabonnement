@@ -4,17 +4,17 @@ public class Agreement {
 
     private int agreementID;
     private Customer customer;
-    private String period;
+    private int period;
     private int price;
 
-    public Agreement(int agreementID, Customer customer, String period, int price) {
+    public Agreement(int agreementID, Customer customer, int period, int price) {
         this.agreementID = agreementID;
         this.customer = customer;
         this.period = period;
         this.price = price;
     }
 
-    public Agreement(Customer customer, String period, int price) {
+    public Agreement(Customer customer, int period, int price) {
         this.customer = customer;
         this.period = period;
         this.price = price;
@@ -36,11 +36,11 @@ public class Agreement {
         this.customer = customer;
     }
 
-    public String getPeriod() {
+    public int getPeriod() {
         return period;
     }
 
-    public void setPeriod(String period) {
+    public void setPeriod(int period) {
         this.period = period;
     }
 
