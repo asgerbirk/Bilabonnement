@@ -11,7 +11,7 @@
 <body>
 
 <div th:replace="fragments/topnav :: navbar"></div>
-<h1> Udlejede biler</h1>
+<h1> Alle biler</h1>
 <table id="cars">
 
     <tr>
@@ -24,16 +24,15 @@
 
 
     <tr
-            th:each="rentedcars : ${rentedcars}">
-        <td th:text="${rentedcars.getCarNumber()}"></td>
-        <td th:text="${rentedcars.getModel()}"></td>
-        <td th:text="${rentedcars.getBrand()}"></td>
-        <td th:text="${rentedcars.getColor()}"></td>
-        <td th:text="${rentedcars.getPrice()}"></td>
+            th:each="allCars : ${allCars}">
+        <td th:text="${allCars.getCarNumber()}"></td>
+        <td th:text="${allCars.getModel()}"></td>
+        <td th:text="${allCars.getBrand()}"></td>
+        <td th:text="${allCars.getColor()}"></td>
+        <td th:text="${allCars.getPrice()}"></td>
 
     </tr>
 </table>
-<p>samlet pris for alle udlejede biler er: <span th:text="${price}"></span> kr.</p>
 
 </body>
 </html>

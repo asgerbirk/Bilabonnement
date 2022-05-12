@@ -23,4 +23,12 @@ public class CarController {
         model.addAttribute("price", carService.totalPrice());
         return "rentedCars";
     }
+
+    @GetMapping("allCars")
+    public String allCars(Model model){
+        model.addAttribute("allCars", carService.getAllCars());
+        return "allCars";
+    }
+
+
 }
