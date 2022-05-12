@@ -32,7 +32,7 @@ public class DamageReportService {
         damageReportRepository.createEntity(damageReport);
     }
 
-    public List<Car> getAllCars(){
+    public List<Car> getAllDamagedCars(){
         List<Car> cars = carRepository.getAllEntities();
        List<Car> allCars =  cars.stream()
                 .filter(damagedCars -> damagedCars.isDamaged() == false && damagedCars.isRented() == false)

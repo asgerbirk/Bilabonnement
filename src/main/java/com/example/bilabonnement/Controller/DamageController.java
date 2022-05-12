@@ -23,13 +23,12 @@ public class DamageController {
     public DamageController(DamageReportService damageReportService, AgreementService agreementService, CarService carService) {
     this.damageReportService = damageReportService;
     this.agreementService = agreementService;
-
     this.carService = carService;
 }
 
     @GetMapping("/damageReport")
     public String damageReport(Model model){
-        model.addAttribute("rentedcars",damageReportService.getAllCars());
+        model.addAttribute("rentedcars",damageReportService.getAllDamagedCars());
         model.addAttribute("totalPrice", carService.totalPrice());
     return "damageReport";
     }

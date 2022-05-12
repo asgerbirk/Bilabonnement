@@ -1,14 +1,12 @@
 package com.example.bilabonnement.Service;
 
+import com.example.bilabonnement.Model.Agreement;
 import com.example.bilabonnement.Model.Car;
 import com.example.bilabonnement.Model.CarAgreement;
 import com.example.bilabonnement.Model.Customer;
-import com.example.bilabonnement.Model.Agreement;
 import com.example.bilabonnement.Repository.AgreementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Objects;
 
 @Service
 public class AgreementService {
@@ -37,7 +35,6 @@ public class AgreementService {
         Agreement current = agreementRepository.getSingleEntity(id);
         int newPrice = current.getPrice()+value;
         agreementRepository.updateEntity(id,newPrice, "total_price");
-
     }
 
     public void setRented(String paramName, boolean available){
