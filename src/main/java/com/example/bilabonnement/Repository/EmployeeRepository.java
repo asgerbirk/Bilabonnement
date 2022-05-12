@@ -55,7 +55,6 @@ public class EmployeeRepository implements CRUD<Employee>{
         String email = employee.getEmail();
         String password = employee.getPassword();
         AccessLevel accessLevel = employee.getAccessLevel();
-//TODO DER ER ARBEJDE HER, DER ER DOUBLE MERGE
         Connection con = DatabaseConnectionManager.getConnection();
         try{
             PreparedStatement pstmt = con.prepareStatement("INSERT INTO employee (`email`, `password`, `access_level`) VALUES (?, ?, ?)");

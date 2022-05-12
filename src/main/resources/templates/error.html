@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" th:href="@{navbarStyle.css}" href="../static/navbarStyle.css">
+    <link rel="stylesheet" th:href="@{fragmentStyle.css}" href="../static/fragmentStyle.css">
     <link rel="stylesheet" th:href="@{frontPage.css}" href="../static/frontPage.css">
 </head>
 <body>
 
-<div th:replace="fragments/topnav :: navbar"></div>
+<div th:replace="fragments/fragmentlibary :: navbar"></div>
 <h1>
   404 ERROR
 </h1>
+
+<div th:replace="fragments/fragmentlibary :: footer"></div>
+
 </body>
 </html>
