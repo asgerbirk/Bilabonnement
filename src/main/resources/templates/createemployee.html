@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create employee</title>
+    <link rel="stylesheet" th:href="@{navbarStyle.css}" href="../static/navbarStyle.css">
+    <link rel="stylesheet" th:href="@{frontPage.css}" href="../static/frontPage.css">
+</head>
+<body>
+
+<div th:replace="fragments/topnav :: navbar"></div>
+
+<form method="post" action="employeesuccess">
+    <div class="container">
+        <h1>Opret ny medarbejder</h1>
+        <label for="email"><b>Indtast email</b></label>
+        <input type="text" placeholder="Email" name="email" required id="email">
+        <br><br/>
+        <label for="password"><b>Indtast password</b></label>
+        <input type="password" placeholder="Password" name="password" required id="password">
+        <br><br/>
+        <label for="accesslevel"><b>Vælg access level</b></label>
+        <select name="accesslevel" id="accesslevel">
+            <option value="MASTER">Master</option>
+            <option value="ADMIN">Admin</option>
+            <option value="EMPLOYEE">Employee</option>
+            <option value="USER">User</option>
+        </select>
+        <br><br/>
+        <button type="submit">Opret ny medarbejder</button>
+
+    </div>
+
+</form>
+
+
+<div th:replace="fragments/topnav :: navbar"></div>
+
+</body>
+</html>
