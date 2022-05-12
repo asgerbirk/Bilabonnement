@@ -1,28 +1,20 @@
-body {
-    font: normal medium/1.5 Arial, Helvetica, sans-serif, sans-serif;
-}
-
 h1{
     text-align: center;
 }
+
+body {
+    font: normal medium/1.4 Arial, Helvetica, sans-serif,sans-serif;
+}
 table {
     border-collapse: collapse;
-    width: 99%;
+    width: 100%;
 }
-
-td {
+th, td {
     padding: 1rem;
     text-align: left;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
 }
-
-th {
-    padding: 1rem;
-    text-align: center;
-    border: 2px solid #ccc;
-}
-
-#price{
+h2{
     text-align: center;
 }
 
