@@ -30,7 +30,7 @@ class CarServiceTest {
     @Test
     void allCars() {
         underTest.getAllCars();
-         verify(carRepository).getAllEntities() ;
+         verify(carRepository).getAllEntities();
 
     }
 
@@ -63,9 +63,8 @@ class CarServiceTest {
     }
 
     @Test
-
+@Disabled
     void totalPrice() {
-
 
     }
 

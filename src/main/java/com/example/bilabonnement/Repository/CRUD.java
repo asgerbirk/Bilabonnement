@@ -11,4 +11,5 @@ public interface CRUD <T>{
     void updateEntity(int id, int newValue, String type);
 
     void deleteEntity(int id);
+
 }
