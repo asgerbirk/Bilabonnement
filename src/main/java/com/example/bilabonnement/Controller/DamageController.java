@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
 
+import java.util.Objects;
+
 @Controller
 public class DamageController {
     private final DamageReportService damageReportService;
@@ -35,12 +37,13 @@ public class DamageController {
 
 
     @PostMapping("/damageReportCreated")
-    public String registernewcase(Model model, WebRequest data){
+    public String registernewcase(WebRequest data){
     try {
-        int agreementID = Integer.parseInt(data.getParameter("agreementID"));
-        int userID = Integer.parseInt(data.getParameter("userID"));
+        int agreementID = Integer.parseInt(Objects.requireNonNull(data.getParameter("agreementID")));
+        // Kan vi hente user/customer fra agreement ID så der er et mindre input?
+        int userID = Integer.parseInt(Objects.requireNonNull(data.getParameter("userID")));
         String damage = data.getParameter("damage");
-        int price = Integer.parseInt(data.getParameter("price"));
+        int price = Integer.parseInt(Objects.requireNonNull(data.getParameter("price")));
         DamageReport damageReport = new DamageReport(damage,price);
         damageReportService.createDamageReport(damageReport);
         agreementService.update(userID,price);
