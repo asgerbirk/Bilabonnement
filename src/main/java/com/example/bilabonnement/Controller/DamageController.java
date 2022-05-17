@@ -1,7 +1,9 @@
 package com.example.bilabonnement.Controller;
 
 
+import com.example.bilabonnement.Model.Agreement;
 import com.example.bilabonnement.Model.CarAgreement;
+import com.example.bilabonnement.Model.Customer;
 import com.example.bilabonnement.Model.DamageReport;
 import com.example.bilabonnement.Service.AgreementService;
 import com.example.bilabonnement.Service.CarService;
@@ -29,9 +31,7 @@ public class DamageController {
 }
 
     @GetMapping("/damageReport")
-    public String damageReport(Model model){
-        model.addAttribute("rentedcars",damageReportService.getAllDamagedCars());
-        model.addAttribute("totalPrice", carService.totalPrice());
+    public String damageReport(){
     return "damageReport";
     }
 
@@ -40,8 +40,9 @@ public class DamageController {
     public String registernewcase(WebRequest data){
     try {
         int agreementID = Integer.parseInt(Objects.requireNonNull(data.getParameter("agreementID")));
-        // Kan vi hente user/customer fra agreement ID så der er et mindre input?
-        int userID = Integer.parseInt(Objects.requireNonNull(data.getParameter("userID")));
+        Agreement tempAgreement = agreementService.getAgreement(agreementID);
+        Customer tempCustomer = tempAgreement.getCustomer();
+        int userID = tempCustomer.getID();
         String damage = data.getParameter("damage");
         int price = Integer.parseInt(Objects.requireNonNull(data.getParameter("price")));
         DamageReport damageReport = new DamageReport(damage,price);
