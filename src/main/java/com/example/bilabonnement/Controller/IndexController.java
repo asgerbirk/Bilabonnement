@@ -1,7 +1,6 @@
 package com.example.bilabonnement.Controller;
 
-
-import com.example.bilabonnement.Model.AccessLevel;
+import com.example.bilabonnement.Enum.AccessLevel;
 import com.example.bilabonnement.Service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,13 +20,13 @@ public class IndexController {
         AccessLevel userAccessLevel = es.loginValidator(data.getParameter("email"), data.getParameter("password"));
         switch(userAccessLevel){
             case MASTER:
-                return "redirect:/registerAgreement";
+                return "redirect:/masterPage";
             case ADMIN:
-                return "redirect:/damageReport";
+                return "redirect:/adminPage";
             case EMPLOYEE:
-                return "redirect:/rentedCars";
+                return "redirect:/employeePage";
             case USER:
-                return "redirect:/rentedCars";
+                return "redirect:/userPage";
             default:
                 return "index";
         }
@@ -44,5 +43,4 @@ public class IndexController {
     public String test(){
         return "test";
     }
-
 }

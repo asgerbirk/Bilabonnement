@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Homepage</title>
+    <title>Login</title>
     <link rel="stylesheet" th:href="@{fragmentStyle.css}" href="../static/fragmentStyle.css">
     <link rel="stylesheet" th:href="@{frontPage.css}" href="../static/frontPage.css">
 </head>
 <body>
 
 <div th:replace="fragments/fragmentlibary :: navbar"></div>
+<form method="post" action="/logintest">
 
-<form method="post" action="logintest">
     <div class="container">
-        <h1>Login for medarbejdere</h1>
-        <label for="email"><b>Indtast email</b></label>
-        <input type="text" placeholder="email" name="email" required id="email">
+        <h2> Log in</h2>
+        <label for="email"><b>Enter email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" required minlength="1" maxlength="30" id="email">
         <br><br/>
-        <label for="password"><b>Indtast password</b></label>
-        <input type="password" placeholder="password" name="password" required id="password">
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required minlength="1" maxlength="30" id="password">
         <br><br/>
-        <button type="submit">Login</button>
+        <button type="submit">Log in</button>
     </div>
 </form>
 

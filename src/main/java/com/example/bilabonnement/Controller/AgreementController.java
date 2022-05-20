@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
-
 import java.util.Objects;
 
 @Controller
@@ -43,7 +42,6 @@ public class AgreementController {
             e.printStackTrace();
             return "redirect:/registerAgreement";
         }
-
         return "redirect:/index";
 
 

@@ -1,4 +1,4 @@
-package com.example.bilabonnement.Model;
+package com.example.bilabonnement.Enum;
 
 public enum AccessLevel {
         MASTER,
