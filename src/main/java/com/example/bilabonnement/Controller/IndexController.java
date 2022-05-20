@@ -31,7 +31,26 @@ public class IndexController {
                 return "index";
         }
 
-        //TODO check accesslevel på current user for at styre controllerne til at kunne bestemme hvor useren kan gå hen og ikke kan gå hen, evt en if employeeaccesslevel equals ved return
+    }
+
+    @GetMapping("/masterPage")
+    public String masterPage(){
+        return "masterPage";
+    }
+
+    @GetMapping("/adminPage")
+    public String adminPage(){
+        return "adminPage";
+    }
+
+    @GetMapping("/employeePage")
+    public String employeePage(){
+        return "employeePage";
+    }
+
+    @GetMapping("/userPage")
+    public String userPage(){
+        return "userPage";
     }
 
     @PostMapping("/error")

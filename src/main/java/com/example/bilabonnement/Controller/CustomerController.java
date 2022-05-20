@@ -71,10 +71,7 @@ public class CustomerController {
         return "allusers";
     }
 
-    @GetMapping("/masterPage")
-    public String masterPage(){
-        return "delete";
-    }
+
 
     @PostMapping("/delete")
     public String delete(WebRequest data){
