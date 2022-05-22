@@ -65,7 +65,7 @@ public class Car {
         return isDamaged;
     }
 
-    public void setDamaged(boolean damaged) {
+    public void setDamaged(boolean damaged)  {
         isDamaged = damaged;
     }
 

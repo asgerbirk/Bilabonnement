@@ -13,14 +13,13 @@ public class AgreementService {
 
 
     private final AgreementRepository agreementRepository;
-    private final CustomerService customerService;
+
     private final CarService carService;
 
 
     @Autowired
-    public AgreementService(AgreementRepository agreementRepository, CustomerService customerService, CarService carService) {
+    public AgreementService(AgreementRepository agreementRepository, CarService carService) {
         this.agreementRepository = agreementRepository;
-        this.customerService = customerService;
         this.carService = carService;
     }
 

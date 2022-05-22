@@ -3,9 +3,10 @@ package com.example.bilabonnement.Service;
 import com.example.bilabonnement.Model.AccessLevel;
 import com.example.bilabonnement.Model.Employee;
 import com.example.bilabonnement.Repository.*;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class EmployeeService {
 
     public Employee getEmployeeFromEmail(String email){

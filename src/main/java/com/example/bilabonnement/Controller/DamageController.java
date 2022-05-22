@@ -29,13 +29,13 @@ public class DamageController {
     @GetMapping("/damageReport")
     public String damageReport(Model model){
         model.addAttribute("rentedcars",damageReportService.getAllDamagedCars());
-        model.addAttribute("totalPrice", carService.totalPrice());
+        model.addAttribute("totalPrice", carService.priceOfAllRentedCars());
     return "damageReport";
     }
 
 
     @PostMapping("/damageReportCreated")
-    public String registernewcase(Model model, WebRequest data){
+    public String registerNewReport(Model model, WebRequest data){
     try {
         int agreementID = Integer.parseInt(data.getParameter("agreementID"));
         int userID = Integer.parseInt(data.getParameter("userID"));

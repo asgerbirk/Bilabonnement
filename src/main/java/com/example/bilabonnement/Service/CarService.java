@@ -26,11 +26,10 @@ public class CarService {
        List<Car> allRentedCars =  cars.stream().
                filter(car -> car.isRented() == true).
                collect(Collectors.toList());
-        allRentedCars.forEach(System.out::println);
         return allRentedCars;
     }
 
-    public int totalPrice(){
+    public int priceOfAllRentedCars(){
     int price = 0;
     List<Car> allCars = allRentedCars();
         for (Car c: allCars) {

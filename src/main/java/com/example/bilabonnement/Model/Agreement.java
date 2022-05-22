@@ -1,6 +1,6 @@
 package com.example.bilabonnement.Model;
 
-public class Agreement {
+public class    Agreement {
 
     private int agreementID;
     private Customer customer;

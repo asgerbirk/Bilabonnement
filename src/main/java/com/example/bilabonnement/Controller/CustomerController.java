@@ -14,12 +14,16 @@ import java.util.Objects;
 @Controller
 public class CustomerController {
 
-    private CustomerService service;
+    private final CustomerService service;
+    private final EmployeeService employeeService;
+
+    public CustomerController(CustomerService service, EmployeeService employeeService) {
+        this.service = service;
+        this.employeeService = employeeService;
+    }
 
     @Autowired
-    CustomerController(CustomerService service){
-        this.service = service;
-    }
+
 
     @GetMapping("/createuser")
     public String createUser(){
@@ -27,7 +31,7 @@ public class CustomerController {
     }
 
     @PostMapping("/createsuccess")
-    public String createsuccess(WebRequest data){
+    public String createSuccess(WebRequest data){
         try{
         service.createCustomer(
                 data.getParameter("firstname"),
@@ -81,11 +85,11 @@ public class CustomerController {
 
     @PostMapping("/delete")
     public String delete(WebRequest data){
-        EmployeeService es = new EmployeeService();
+
         String type = data.getParameter("type");
         int id = Integer.parseInt(Objects.requireNonNull(data.getParameter("id")));
         assert type != null;
-        es.whichType(type, id);
+        employeeService.whichType(type, id);
         // Kunne være blæret at lave type som en menu dropdown, således at man kun kan vælge ting der ikke fejler
         return "redirect:/masterPage";
     }
