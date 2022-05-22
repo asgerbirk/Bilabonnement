@@ -1,5 +1,7 @@
 package com.example.bilabonnement.Model;
 
+import com.example.bilabonnement.Enum.AccessLevel;
+
 public class Employee {
 
     private int employee_id;
@@ -16,7 +18,7 @@ public class Employee {
         this.accessLevel = accessLevel;
     }
 
-    public Employee (int employee_id, String email, String password, String department){
+    public Employee (int employee_id, String email, String password, AccessLevel accessLevel){
         this.employee_id = employee_id;
         this.email = email;
         this.password = password;

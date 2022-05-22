@@ -23,6 +23,9 @@ public class AgreementService {
         this.carService = carService;
     }
 
+    public Agreement getAgreement(int id){
+        return agreementRepository.getSingleEntity(id);
+    }
 
 
     public void registerNewAgreement(Customer customer, int period, int price, Car car, String location){

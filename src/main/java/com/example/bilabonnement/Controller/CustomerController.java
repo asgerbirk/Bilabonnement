@@ -54,9 +54,6 @@ public class CustomerController {
 
     @PostMapping("employeesuccess")
     public String employeeSuccess(){
-
-
-
         return "redirect:/index";
     }
 
@@ -78,10 +75,7 @@ public class CustomerController {
         return "allusers";
     }
 
-    @GetMapping("/masterPage")
-    public String masterPage(){
-        return "masterPage";
-    }
+
 
     @PostMapping("/delete")
     public String delete(WebRequest data){
@@ -91,7 +85,7 @@ public class CustomerController {
         assert type != null;
         employeeService.whichType(type, id);
         // Kunne være blæret at lave type som en menu dropdown, således at man kun kan vælge ting der ikke fejler
-        return "redirect:/masterPage";
+        return "redirect:/delete";
     }
 
 

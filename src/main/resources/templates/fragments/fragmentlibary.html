@@ -3,12 +3,71 @@
         <div class="brand-title">Bil Abonnement</div>
         <div class="navbar-links">
             <ul>
+                <li><a href="/index"> Log ud</a></li>
                 <li><a href="/index"> Hjem</a></li>
-                <li><a href="/createuser">Opret bruger</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div th:fragment="master">
+    <nav class="navbar">
+        <div class="brand-title">Bil Abonnement</div>
+        <div class="navbar-links">
+            <ul>
+                <li><a href="/index"> Log ud</a></li>
+                <li><a href="/index"> Hjem</a></li>
+                <li><a href="/delete"> Slet enhed</a></li>
                 <li><a href="/createemployee">Opret medarbejder</a></li>
                 <li><a href="/damageReport">Opret skade</a></li>
                 <li><a href="/registerAgreement">Opret lejeaftale</a></li>
                 <li><a href="/rentedCars">Udlejede biler</a></li>
+                <li><a href="/allCars">Alle biler</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div th:fragment="admin">
+    <nav class="navbar">
+        <div class="brand-title">Bil Abonnement</div>
+        <div class="navbar-links">
+            <ul>
+                <li><a href="/index"> Log ud</a></li>
+                <li><a href="/index"> Hjem</a></li>
+                <li><a href="/createemployee">Opret medarbejder</a></li>
+                <li><a href="/damageReport">Opret skade</a></li>
+                <li><a href="/registerAgreement">Opret lejeaftale</a></li>
+                <li><a href="/rentedCars">Udlejede biler</a></li>
+                <li><a href="/allCars">Alle biler</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div th:fragment="employee">
+    <nav class="navbar">
+        <div class="brand-title">Bil Abonnement</div>
+        <div class="navbar-links">
+            <ul>
+                <li><a href="/index"> Log ud</a></li>
+                <li><a href="/index"> Hjem</a></li>
+                <li><a href="/damageReport">Opret skade</a></li>
+                <li><a href="/registerAgreement">Opret lejeaftale</a></li>
+                <li><a href="/rentedCars">Udlejede biler</a></li>
+                <li><a href="/allCars">Alle biler</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div th:fragment="user">
+    <nav class="navbar">
+        <div class="brand-title">Bil Abonnement</div>
+        <div class="navbar-links">
+            <ul>
+                <li><a href="/index"> Log ud</a></li>
+                <li><a href="/index"> Hjem</a></li>
                 <li><a href="/allCars">Alle biler</a></li>
             </ul>
         </div>

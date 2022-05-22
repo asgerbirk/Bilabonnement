@@ -1,10 +1,9 @@
 package com.example.bilabonnement.Repository;
 
-import com.example.bilabonnement.Model.AccessLevel;
+import com.example.bilabonnement.Enum.AccessLevel;
 import com.example.bilabonnement.Model.Employee;
 import com.example.bilabonnement.Utility.DatabaseConnectionManager;
 
-import javax.xml.crypto.Data;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,7 +24,7 @@ public class EmployeeRepository implements CRUD<Employee>{
                     rs.getInt(1),
                     rs.getString(2),
                     rs.getString(3),
-                    rs.getString(4)
+                    AccessLevel.valueOf(rs.getString(4))
                 );
                 allEmployees.add(tempEmployee);
             }
