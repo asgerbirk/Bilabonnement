@@ -24,7 +24,7 @@ public class CarService {
     public List<Car> allRentedCars(){
         List<Car> cars = carRepository.getAllEntities();
        List<Car> allRentedCars =  cars.stream().
-               filter(car -> car.isRented() == true).
+               filter(car -> car.isRented() == true). /*illustrated as lambda in sequence diagram*/
                collect(Collectors.toList());
         allRentedCars.forEach(System.out::println);
         return allRentedCars;
