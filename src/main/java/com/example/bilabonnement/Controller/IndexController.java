@@ -28,6 +28,7 @@ public class IndexController {
             case USER:
                 return "redirect:/rentedCars";
             default:
+                System.out.println("lol");
                 return "index";
         }
 
