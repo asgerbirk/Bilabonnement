@@ -6,11 +6,9 @@ import com.example.bilabonnement.Model.CarAgreement;
 import com.example.bilabonnement.Model.Customer;
 import com.example.bilabonnement.Model.DamageReport;
 import com.example.bilabonnement.Service.AgreementService;
-import com.example.bilabonnement.Service.CarService;
 import com.example.bilabonnement.Service.DamageReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
@@ -21,13 +19,13 @@ import java.util.Objects;
 public class DamageController {
     private final DamageReportService damageReportService;
     private final AgreementService agreementService;
-    private final CarService carService;
+
 
 @Autowired
-    public DamageController(DamageReportService damageReportService, AgreementService agreementService, CarService carService) {
+    public DamageController(DamageReportService damageReportService, AgreementService agreementService) {
     this.damageReportService = damageReportService;
     this.agreementService = agreementService;
-    this.carService = carService;
+
 }
 
     @GetMapping("/damageReport")

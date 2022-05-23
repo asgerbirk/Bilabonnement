@@ -35,7 +35,7 @@ public class DamageReportService {
     public List<Car> getAllDamagedCars(){
         List<Car> cars = carRepository.getAllEntities();
        List<Car> allCars =  cars.stream()
-                .filter(damagedCars -> damagedCars.isDamaged() == false && damagedCars.isRented() == false)
+                .filter(damagedCars -> !damagedCars.isDamaged() && !damagedCars.isRented())
                .collect(Collectors.toList());
        allCars.forEach(System.out::println);
        return allCars;

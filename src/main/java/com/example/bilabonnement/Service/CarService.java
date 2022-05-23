@@ -23,10 +23,9 @@ public class CarService {
 
     public List<Car> allRentedCars(){
         List<Car> cars = carRepository.getAllEntities();
-       List<Car> allRentedCars =  cars.stream().
-               filter(car -> car.isRented() == true). /*illustrated as lambda in sequence diagram*/
-               collect(Collectors.toList());
-        return allRentedCars;
+        return cars.stream().
+                filter(Car::isRented). /*illustrated as lambda in sequence diagram*/
+                collect(Collectors.toList());
     }
 
     public int priceOfAllRentedCars(){
@@ -40,28 +39,15 @@ public class CarService {
 
     //Da vi får værdien på carnumber ind som en string fra webRequest, parser vi int i metoden her, fordi service klassen er hovedansvarlig for logikken bag
     public Car getCarFromCarNumber(String paramName){
-            Car tempcar = carRepository.getSingleEntity(Integer.parseInt(Objects.requireNonNull(paramName)));
-    return tempcar;
+        return carRepository.getSingleEntity(Integer.parseInt(Objects.requireNonNull(paramName)));
     }
 
-    public void update (int id, boolean available, String type){ // 1 er true, 0 er false
-        //Car tempCar = carRepository.getSingleEntity(id);
+    public void update (int id, boolean available, String type){
         int value = 0;
         if(available){
             value = 1;
         }
         carRepository.updateEntity(id,value, type);
     }
-
-    public String rentOrDamage(String type){
-    String result;
-    if(type.equals("damaged")){
-        result = "damaged";
-    }else {
-        result = "rented";
-    }
-    return result;
-    }
-
 
 }
