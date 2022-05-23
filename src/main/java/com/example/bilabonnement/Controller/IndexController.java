@@ -20,13 +20,13 @@ public class IndexController {
         AccessLevel userAccessLevel = es.loginValidator(data.getParameter("email"), data.getParameter("password"));
         switch(userAccessLevel){
             case MASTER:
-                return "redirect:/registerAgreement";
+                return "redirect:/masterPage";
             case ADMIN:
-                return "redirect:/damageReport";
+                return "redirect:/adminPage";
             case EMPLOYEE:
-                return "redirect:/rentedCars";
+                return "redirect:/employeePage";
             case USER:
-                return "redirect:/rentedCars";
+                return "redirect:/userPage";
             default:
                 return "index";
         }
