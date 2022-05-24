@@ -48,5 +48,4 @@ public class CarService {
         }
         carRepository.updateEntity(id,value, type);
     }
-
 }
