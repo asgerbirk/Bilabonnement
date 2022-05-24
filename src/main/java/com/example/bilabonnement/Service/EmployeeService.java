@@ -6,7 +6,6 @@ import com.example.bilabonnement.Model.Employee;
 import com.example.bilabonnement.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -82,7 +81,7 @@ public class EmployeeService {
             default:
                 return "redirect:/index";
         }
-        return "redirect:/index";
+        return "redirect:/error";
     }
 
     public AccessLevel giveAccessLevel(String email, String password){

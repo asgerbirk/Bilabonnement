@@ -34,7 +34,6 @@ public class DamageController {
 
     @GetMapping("/damageReport")
     public String damageReport(HttpSession session){
-
         String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.damageReport);
         return returnString;
     }
@@ -60,7 +59,6 @@ public class DamageController {
         e.printStackTrace();
         return "redirect:/damageReport";
     }
-
         return "redirect:/index";
     }
 }

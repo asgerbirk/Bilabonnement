@@ -2,6 +2,7 @@ package com.example.bilabonnement.Service;
 
 import com.example.bilabonnement.Model.Car;
 import com.example.bilabonnement.Repository.CarRepository;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -50,7 +51,7 @@ class CarServiceTest {
         assertEquals(expected, underTest.priceOfAllRentedCars(allCars));
 
     }
-/*
+
     @Test
     void allRentedCars() {
         Car notRentedCar = new Car(2, "bmw", "John", "black", 1000, true, false);
@@ -67,5 +68,5 @@ class CarServiceTest {
         }), !notRentedCar.isRented() && !notRentedCar1.isRented());
     }
 
- */
+
 }
