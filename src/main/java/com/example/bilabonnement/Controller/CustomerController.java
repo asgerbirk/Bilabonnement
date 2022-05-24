@@ -51,8 +51,8 @@ public class CustomerController {
 
     @GetMapping("/createemployee")
     public String createEmployee(HttpSession session){
-        EmployeeService es = new EmployeeService();
-        String returnString = es.returnPageIfAuthorized(session.getAttribute("user"), Pages.createemployee);
+
+        String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.createemployee);
         return returnString;
     }
 

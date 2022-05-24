@@ -9,8 +9,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 @ExtendWith(MockitoExtension.class)
 class EmployeeServiceTest {
 
@@ -30,11 +28,7 @@ class EmployeeServiceTest {
 
         Employee employee = new Employee(1,"master","master", AccessLevel.MASTER);
 
-
-
-
-
-        assertEquals(AccessLevel.MASTER,underTest.loginValidator(employee.getEmail(),employee.getPassword()));
+      // assertEquals(AccessLevel.MASTER,underTest.returnPageIfAuthorized(employee, Pages.masterPage);
 
 
 

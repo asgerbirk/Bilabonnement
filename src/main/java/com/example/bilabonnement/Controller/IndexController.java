@@ -32,6 +32,7 @@ public class IndexController {
 
     @PostMapping("/logintest")
     public String logintest(WebRequest data, HttpSession session){
+
         AccessLevel userAccessLevel = employeeService.giveAccessLevel(data.getParameter("email"), data.getParameter("password"));
         session.setAttribute("user",userAccessLevel);
         switch((AccessLevel) session.getAttribute("user")){
@@ -51,24 +52,28 @@ public class IndexController {
 
     @GetMapping("/masterPage")
     public String masterPage(HttpSession session){
+
         String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.masterPage);
         return returnString;
     }
 
     @GetMapping("/adminPage")
     public String adminPage(HttpSession session){
+
         String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.adminPage);
         return returnString;
     }
 
     @GetMapping("/employeePage")
     public String employeePage(HttpSession session){
+
         String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.employeePage);
         return returnString;
     }
 
     @GetMapping("/userPage")
     public String userPage(HttpSession session){
+
         String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.userPage);
         return returnString;
     }
@@ -80,6 +85,7 @@ public class IndexController {
 
     @GetMapping("/delete")
     public String delete(HttpSession session){
+
         String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.delete);
         return returnString;
     }
