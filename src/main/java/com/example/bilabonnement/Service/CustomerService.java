@@ -26,8 +26,7 @@ public class CustomerService {
     }
 
     public Customer getCustomerFromID(String paramname){
-        Customer test = customerRepository.getSingleEntity(Integer.parseInt((Objects.requireNonNull(paramname))));
-        return test;
+        return customerRepository.getSingleEntity(Integer.parseInt((Objects.requireNonNull(paramname))));
     }
 
 }

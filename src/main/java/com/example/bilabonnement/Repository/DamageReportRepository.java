@@ -19,8 +19,6 @@ public class DamageReportRepository implements CRUD<DamageReport>{
     public List<DamageReport> getAllEntities() {
         Connection con = DatabaseConnectionManager.getConnection();
         List<DamageReport> allReports = new ArrayList<>();
-        DamageReportRepository damageRepo = new DamageReportRepository();
-
         try{
             PreparedStatement pstmt = con.prepareStatement("SELECT * FROM damage_report");
             ResultSet rs = pstmt.executeQuery();
