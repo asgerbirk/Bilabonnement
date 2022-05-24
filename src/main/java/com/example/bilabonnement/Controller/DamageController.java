@@ -22,19 +22,21 @@ import java.util.Objects;
 public class DamageController {
     private final DamageReportService damageReportService;
     private final AgreementService agreementService;
+    private final EmployeeService employeeService;
 
 
 @Autowired
-    public DamageController(DamageReportService damageReportService, AgreementService agreementService) {
+    public DamageController(DamageReportService damageReportService, AgreementService agreementService, EmployeeService employeeService) {
     this.damageReportService = damageReportService;
     this.agreementService = agreementService;
 
+    this.employeeService = employeeService;
 }
 
     @GetMapping("/damageReport")
     public String damageReport(HttpSession session){
-        EmployeeService es = new EmployeeService();
-        String returnString = es.returnPageIfAuthorized(session.getAttribute("user"), Pages.damageReport);
+
+        String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.damageReport);
         return returnString;
     }
 

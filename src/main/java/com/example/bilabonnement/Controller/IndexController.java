@@ -1,6 +1,7 @@
 package com.example.bilabonnement.Controller;
 
 import com.example.bilabonnement.Enum.AccessLevel;
+import com.example.bilabonnement.Enum.Pages;
 import com.example.bilabonnement.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,8 +32,8 @@ public class IndexController {
 
     @PostMapping("/logintest")
     public String logintest(WebRequest data, HttpSession session){
-        EmployeeService es = new EmployeeService();
-        AccessLevel userAccessLevel = es.giveAccessLevel(data.getParameter("email"), data.getParameter("password"));
+
+        AccessLevel userAccessLevel = employeeService.giveAccessLevel(data.getParameter("email"), data.getParameter("password"));
         session.setAttribute("user",userAccessLevel);
         switch((AccessLevel) session.getAttribute("user")){
             case MASTER:
@@ -51,29 +52,29 @@ public class IndexController {
 
     @GetMapping("/masterPage")
     public String masterPage(HttpSession session){
-        EmployeeService es = new EmployeeService();
-        String returnString = es.returnPageIfAuthorized(session.getAttribute("user"), Pages.masterPage);
+
+        String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.masterPage);
         return returnString;
     }
 
     @GetMapping("/adminPage")
     public String adminPage(HttpSession session){
-        EmployeeService es = new EmployeeService();
-        String returnString = es.returnPageIfAuthorized(session.getAttribute("user"), Pages.adminPage);
+
+        String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.adminPage);
         return returnString;
     }
 
     @GetMapping("/employeePage")
     public String employeePage(HttpSession session){
-        EmployeeService es = new EmployeeService();
-        String returnString = es.returnPageIfAuthorized(session.getAttribute("user"), Pages.employeePage);
+
+        String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.employeePage);
         return returnString;
     }
 
     @GetMapping("/userPage")
     public String userPage(HttpSession session){
-        EmployeeService es = new EmployeeService();
-        String returnString = es.returnPageIfAuthorized(session.getAttribute("user"), Pages.userPage);
+
+        String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.userPage);
         return returnString;
     }
 
@@ -84,8 +85,8 @@ public class IndexController {
 
     @GetMapping("/delete")
     public String delete(HttpSession session){
-        EmployeeService es = new EmployeeService();
-        String returnString = es.returnPageIfAuthorized(session.getAttribute("user"), Pages.delete);
+
+        String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.delete);
         return returnString;
     }
 

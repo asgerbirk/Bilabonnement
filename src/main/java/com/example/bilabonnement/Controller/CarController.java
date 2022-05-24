@@ -15,26 +15,27 @@ import javax.servlet.http.HttpSession;
 public class CarController {
 
     private final CarService carService;
+    private final EmployeeService employeeService;
 
     @Autowired
-    public CarController(CarService carService) {
+    public CarController(CarService carService, EmployeeService employeeService) {
         this.carService = carService;
+        this.employeeService = employeeService;
     }
 
     @GetMapping("/rentedCars")
     public String rentedCars(Model model, HttpSession session){
         model.addAttribute("rentedcars", carService.allRentedCars());
-        model.addAttribute("price", carService.priceOfAllRentedCars());
-        EmployeeService es = new EmployeeService();
-        String returnString = es.returnPageIfAuthorized(session.getAttribute("user"), Pages.rentedCars);
+        model.addAttribute("price", carService.priceOfAllRentedCars(0));
+
+        String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.rentedCars);
         return returnString;
     }
 
     @GetMapping("allCars")
     public String allCars(Model model, HttpSession session){
         model.addAttribute("allCars", carService.getAllCars());
-        EmployeeService es = new EmployeeService();
-        String returnString = es.returnPageIfAuthorized(session.getAttribute("user"), Pages.allCars);
+        String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.allCars);
         return returnString;
     }
 

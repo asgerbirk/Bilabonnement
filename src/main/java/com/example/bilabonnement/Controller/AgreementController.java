@@ -18,17 +18,19 @@ public class AgreementController {
     private final AgreementService agreementService;
     private final CustomerService customerService;
     private final CarService carService;
+    private final EmployeeService employeeService;
 
-    public AgreementController(AgreementService agreementService, CustomerService customerService, CarService carService) {
+    public AgreementController(AgreementService agreementService, CustomerService customerService, CarService carService, EmployeeService employeeService) {
         this.agreementService = agreementService;
         this.customerService = customerService;
         this.carService = carService;
+        this.employeeService = employeeService;
     }
 
     @GetMapping("/registerAgreement")
     public String registerAgreement(HttpSession session) {
-        EmployeeService es = new EmployeeService();
-        String returnString = es.returnPageIfAuthorized(session.getAttribute("user"), Pages.registerAgreement);
+
+        String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.registerAgreement);
         return returnString;
     }
 
