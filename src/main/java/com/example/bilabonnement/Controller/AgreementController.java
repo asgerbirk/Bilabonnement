@@ -1,11 +1,15 @@
 package com.example.bilabonnement.Controller;
+import com.example.bilabonnement.Enum.Pages;
 import com.example.bilabonnement.Service.CarService;
 import com.example.bilabonnement.Service.AgreementService;
 import com.example.bilabonnement.Service.CustomerService;
+import com.example.bilabonnement.Service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
+
+import javax.servlet.http.HttpSession;
 import java.util.Objects;
 
 @Controller
@@ -22,8 +26,10 @@ public class AgreementController {
     }
 
     @GetMapping("/registerAgreement")
-    public String registerAgreement() {
-        return "registerAgreement";
+    public String registerAgreement(HttpSession session) {
+        EmployeeService es = new EmployeeService();
+        String returnString = es.returnPageIfAuthorized(session.getAttribute("user"), Pages.registerAgreement);
+        return returnString;
     }
 
 
@@ -42,8 +48,10 @@ public class AgreementController {
             return "redirect:/registerAgreement";
         }
         return "redirect:/index";
-
-
     }
+
+
+
+
 
 }
