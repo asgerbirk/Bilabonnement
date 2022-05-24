@@ -1,10 +1,14 @@
 package com.example.bilabonnement.Controller;
 
+import com.example.bilabonnement.Enum.Pages;
 import com.example.bilabonnement.Service.CarService;
+import com.example.bilabonnement.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import javax.servlet.http.HttpSession;
 
 
 @Controller
@@ -18,16 +22,20 @@ public class CarController {
     }
 
     @GetMapping("/rentedCars")
-    public String rentedCars(Model model){
+    public String rentedCars(Model model, HttpSession session){
         model.addAttribute("rentedcars", carService.allRentedCars());
         model.addAttribute("price", carService.priceOfAllRentedCars());
-        return "rentedCars";
+        EmployeeService es = new EmployeeService();
+        String returnString = es.returnPageIfAuthorized(session.getAttribute("user"), Pages.rentedCars);
+        return returnString;
     }
 
     @GetMapping("allCars")
-    public String allCars(Model model){
+    public String allCars(Model model, HttpSession session){
         model.addAttribute("allCars", carService.getAllCars());
-        return "allCars";
+        EmployeeService es = new EmployeeService();
+        String returnString = es.returnPageIfAuthorized(session.getAttribute("user"), Pages.allCars);
+        return returnString;
     }
 
 

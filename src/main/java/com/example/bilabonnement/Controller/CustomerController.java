@@ -1,5 +1,6 @@
 package com.example.bilabonnement.Controller;
 
+import com.example.bilabonnement.Enum.Pages;
 import com.example.bilabonnement.Service.CustomerService;
 import com.example.bilabonnement.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
 
+import javax.servlet.http.HttpSession;
 import java.util.Objects;
 
 @Controller
@@ -48,8 +50,10 @@ public class CustomerController {
     }
 
     @GetMapping("/createemployee")
-    public String createEmployee(){
-        return "createemployee";
+    public String createEmployee(HttpSession session){
+        EmployeeService es = new EmployeeService();
+        String returnString = es.returnPageIfAuthorized(session.getAttribute("user"), Pages.createemployee);
+        return returnString;
     }
 
     @PostMapping("employeesuccess")
@@ -57,10 +61,6 @@ public class CustomerController {
         return "redirect:/index";
     }
 
-    @GetMapping("/login")
-    public String login(){
-        return "login";
-    }
 
 
     @GetMapping("/allusers")

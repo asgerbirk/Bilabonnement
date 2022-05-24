@@ -1,6 +1,7 @@
 package com.example.bilabonnement.Service;
 
 import com.example.bilabonnement.Enum.AccessLevel;
+import com.example.bilabonnement.Enum.Pages;
 import com.example.bilabonnement.Model.Employee;
 import com.example.bilabonnement.Repository.*;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,61 @@ public class EmployeeService {
         return null;
     }
 
-    public AccessLevel loginValidator(String email, String password){
+    public String returnPageIfAuthorized(Object loggedEmployee, Pages reqPage){
+        AccessLevel emplAcsLvl = (AccessLevel) loggedEmployee;
+        if(loggedEmployee == null){
+            return "redirect:/index";
+        }
+        switch (reqPage){
+            case masterPage:
+                if(emplAcsLvl == AccessLevel.MASTER){
+                    return "masterPage";
+                }
+                break;
+            case adminPage:
+                if(emplAcsLvl == AccessLevel.ADMIN || emplAcsLvl == AccessLevel.MASTER){
+                    return "adminPage";
+                }
+                break;
+            case employeePage:
+                if(emplAcsLvl != AccessLevel.USER){
+                    return "employeePage";
+                }
+                break;
+            case userPage:
+                return "userPage";
+
+            case delete:
+                if(emplAcsLvl == AccessLevel.MASTER){
+                    return "delete";
+                }
+                break;
+            case createemployee:
+                if(emplAcsLvl == AccessLevel.MASTER || emplAcsLvl == AccessLevel.ADMIN){
+                    return "createemployee";
+                }
+                break;
+            case damageReport:
+                if(emplAcsLvl != AccessLevel.USER){
+                    return "damageReport";
+                }
+                break;
+            case registerAgreement:
+                if(emplAcsLvl != AccessLevel.USER){
+                    return "registerAgreement";
+                }
+                break;
+            case rentedCars:
+                return "rentedCars";
+            case allCars:
+                return "allCars";
+            default:
+                return "redirect:/index";
+        }
+        return "redirect:/index";
+    }
+
+    public AccessLevel giveAccessLevel(String email, String password){
         Employee tempEmployee = getEmployeeFromEmail(email);
         if (tempEmployee.getPassword().equals(password)){
             return tempEmployee.getAccessLevel();
