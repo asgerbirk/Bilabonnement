@@ -24,7 +24,7 @@ public class CarController {
     @GetMapping("/rentedCars")
     public String rentedCars(Model model, HttpSession session){
         model.addAttribute("rentedcars", carService.allRentedCars());
-        model.addAttribute("price", carService.priceOfAllRentedCars());
+        model.addAttribute("price", carService.priceOfAllRentedCars(0));
         EmployeeService es = new EmployeeService();
         String returnString = es.returnPageIfAuthorized(session.getAttribute("user"), Pages.rentedCars);
         return returnString;
