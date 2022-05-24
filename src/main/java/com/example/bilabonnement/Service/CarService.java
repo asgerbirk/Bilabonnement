@@ -28,8 +28,7 @@ public class CarService {
                 collect(Collectors.toList());
     }
 
-    public int priceOfAllRentedCars(){
-    int price = 0;
+    public int priceOfAllRentedCars(int price){
     List<Car> allCars = allRentedCars();
         for (Car c: allCars) {
             price += c.getPrice();
