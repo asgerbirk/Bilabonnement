@@ -13,13 +13,12 @@ public class AgreementService {
 
 
     private final AgreementRepository agreementRepository;
-    private final CarService carService;
 
 
     @Autowired
-    public AgreementService(AgreementRepository agreementRepository, CarService carService) {
+    public AgreementService(AgreementRepository agreementRepository) {
         this.agreementRepository = agreementRepository;
-        this.carService = carService;
+
     }
 
     public Agreement getAgreement(int id){
@@ -39,8 +38,8 @@ public class AgreementService {
         agreementRepository.updateEntity(id,newPrice, "total_price");
     }
 
-    public void setRented(String paramName, boolean available){
-        carService.update(Integer.parseInt(paramName), available, "rented");
-    }
+   // public void setRented(String paramName, boolean available){
+     //   carService.update(Integer.parseInt(paramName), available, "rented");
+    //}
 }
 

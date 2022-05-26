@@ -3,78 +3,81 @@ package com.example.bilabonnement.Service;
 import com.example.bilabonnement.Model.Car;
 import com.example.bilabonnement.Repository.CarRepository;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.verify;
+
+
 @ExtendWith(MockitoExtension.class)
 class CarServiceTest {
 
     @Mock
     private CarRepository carRepository;
-@InjectMocks
+    @Mock
     private CarService underTest;
-
 
     @BeforeEach
     void setUp() {
-         underTest = new CarService(carRepository);
-    }
+        underTest = new CarService(carRepository);
 
+    }
 
     @Test
     void allCars() {
         underTest.getAllCars();
          verify(carRepository).getAllEntities();
-
     }
 
     @Test
+    void test(){
+        assertTrue(underTest.getAllCars().isEmpty());
+    }
+
+    @Test
+    void getPriceOfAllRentedCars() {
+        Car car = new Car(1,"hej", "bmw", "yellow", 100,true,true);
+        Car car1 = new Car(1,"hej", "bmw", "yellow", 100,true,true);
+        Car car2 = new Car(1,"hej", "bmw", "yellow", 100,true,true);
+
+        int allCars = car1.getPrice()+car.getPrice()+car2.getPrice();
+        int expected = 300;
+
+        assertEquals(expected, underTest.priceOfAllRentedCars(allCars));
+
+    }
+
+    /*
+    @Test
+    @Disabled
     void allRentedCars() {
-
-        Car notRentedCar = new Car(2,"bmw","John", "black",1000,true,false);
-        Car notRentedCar1 = new Car(2,"bmw","John", "black",1000,true,false);
-
-        Car rentedCar = new Car(2,"bmw","John", "black",1000,true,true);
-        Car rentedCar1 = new Car(2,"bmw","John", "black",1000,true,true);
-
-        //checking if the car is rented
-        assertEquals(underTest.allRentedCars().stream().allMatch(Car -> Car.isRented()==true)
-                ,rentedCar.isRented()==true && rentedCar1.isRented() == true);
-
-        assertEquals(rentedCar.isRented() == true, rentedCar1.isRented()==true);
-
-
-        //Checking if the car is not rented
-        assertEquals(notRentedCar.isRented() == false, notRentedCar1.isRented()==false);
-
-        assertEquals(underTest.allRentedCars().stream().allMatch(Car -> Car.isRented()==false)
-                ,notRentedCar.isRented()==false && notRentedCar1.isRented() == false);
-
-
-
-
-
+        Car notRentedCar = new Car(2, "bmw", "John", "black", 1000, true, false);
+        Car notRentedCar1 = new Car(2, "bmw", "John", "black", 1000, true, false);
+        Car rentedCar = new Car(2, "bmw", "John", "black", 1000, true, true);
+        Car rentedCar1 = new Car(1, "bmw", "hej", "black", 1000, false, true);
+        Assertions.assertEquals(this.underTest.allRentedCars().stream().allMatch((Car) -> {
+            return Car.isRented();
+        }), rentedCar.isRented() && rentedCar1.isRented());
+        Assertions.assertEquals(rentedCar.isRented(), rentedCar1.isRented());
+        Assertions.assertEquals(!notRentedCar.isRented(), !notRentedCar1.isRented());
+        Assertions.assertEquals(this.underTest.allRentedCars().stream().allMatch((Car) -> {
+            return !Car.isRented();
+        }), !notRentedCar.isRented() && !notRentedCar1.isRented());
     }
 
-    @Test
-@Disabled
-    void totalPrice() {
 
-    }
+     */
 
     @Test
-    @Disabled
     void getCarFromCarNumber() {
+        int carnumber = 1;
+        Car car = new Car(carnumber, "model", "brand", "color", 100, false, false);
+
+        Car result = underTest.getCarFromCarNumber(String.valueOf(carnumber));
     }
 
-    @Test
-    @Disabled
-    void update() {
-    }
 }

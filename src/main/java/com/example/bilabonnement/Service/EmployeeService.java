@@ -1,17 +1,27 @@
 package com.example.bilabonnement.Service;
 
 import com.example.bilabonnement.Enum.AccessLevel;
+import com.example.bilabonnement.Enum.Pages;
 import com.example.bilabonnement.Model.Employee;
 import com.example.bilabonnement.Repository.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+
 @Service
 public class EmployeeService {
 
+    private final EmployeeRepository employeeRepository;
+
+    @Autowired
+    public EmployeeService(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
+
+
     public Employee getEmployeeFromEmail(String email){
-        EmployeeRepository er = new EmployeeRepository();
-        List<Employee> allEmployees = er.getAllEntities();
+
+        List<Employee> allEmployees = employeeRepository.getAllEntities();
         for (Employee e: allEmployees){
             if (e.getEmail().equals(email)){
                 return e;
@@ -20,7 +30,61 @@ public class EmployeeService {
         return null;
     }
 
-    public AccessLevel loginValidator(String email, String password){
+    public String returnPageIfAuthorized(Object loggedEmployee, Pages reqPage){
+        AccessLevel emplAcsLvl = (AccessLevel) loggedEmployee;
+        if(loggedEmployee == null){
+            return "redirect:/index";
+        }
+        switch (reqPage){
+            case masterPage:
+                if(emplAcsLvl == AccessLevel.MASTER){
+                    return "masterPage";
+                }
+                break;
+            case adminPage:
+                if(emplAcsLvl == AccessLevel.ADMIN || emplAcsLvl == AccessLevel.MASTER){
+                    return "adminPage";
+                }
+                break;
+            case employeePage:
+                if(emplAcsLvl != AccessLevel.USER){
+                    return "employeePage";
+                }
+                break;
+            case userPage:
+                return "userPage";
+
+            case delete:
+                if(emplAcsLvl == AccessLevel.MASTER){
+                    return "delete";
+                }
+                break;
+            case createemployee:
+                if(emplAcsLvl == AccessLevel.MASTER || emplAcsLvl == AccessLevel.ADMIN){
+                    return "createemployee";
+                }
+                break;
+            case damageReport:
+                if(emplAcsLvl != AccessLevel.USER){
+                    return "damageReport";
+                }
+                break;
+            case registerAgreement:
+                if(emplAcsLvl != AccessLevel.USER){
+                    return "registerAgreement";
+                }
+                break;
+            case rentedCars:
+                return "rentedCars";
+            case allCars:
+                return "allCars";
+            default:
+                return "redirect:/index";
+        }
+        return "redirect:/error";
+    }
+
+    public AccessLevel giveAccessLevel(String email, String password){
         Employee tempEmployee = getEmployeeFromEmail(email);
         if (tempEmployee.getPassword().equals(password)){
             return tempEmployee.getAccessLevel();
@@ -31,8 +95,7 @@ public class EmployeeService {
     public void whichType(String type, int id){
         switch (type) {
             case "employee":
-                EmployeeRepository er = new EmployeeRepository();
-                er.deleteEntity(id);
+                employeeRepository.deleteEntity(id);
             case "car":
                 CarRepository cr = new CarRepository();
                 cr.deleteEntity(id);

@@ -1,36 +1,41 @@
 package com.example.bilabonnement.Controller;
 
-
+import com.example.bilabonnement.Enum.Pages;
 import com.example.bilabonnement.Model.Agreement;
 import com.example.bilabonnement.Model.CarAgreement;
 import com.example.bilabonnement.Model.Customer;
 import com.example.bilabonnement.Model.DamageReport;
 import com.example.bilabonnement.Service.AgreementService;
 import com.example.bilabonnement.Service.DamageReportService;
+import com.example.bilabonnement.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
 
+import javax.servlet.http.HttpSession;
 import java.util.Objects;
 
 @Controller
 public class DamageController {
     private final DamageReportService damageReportService;
     private final AgreementService agreementService;
+    private final EmployeeService employeeService;
 
 
 @Autowired
-    public DamageController(DamageReportService damageReportService, AgreementService agreementService) {
+    public DamageController(DamageReportService damageReportService, AgreementService agreementService, EmployeeService employeeService) {
     this.damageReportService = damageReportService;
     this.agreementService = agreementService;
 
+    this.employeeService = employeeService;
 }
 
     @GetMapping("/damageReport")
-    public String damageReport(){
-    return "damageReport";
+    public String damageReport(HttpSession session){
+        String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.damageReport);
+        return returnString;
     }
 
 
@@ -53,7 +58,6 @@ public class DamageController {
         e.printStackTrace();
         return "redirect:/damageReport";
     }
-
         return "redirect:/index";
     }
 }

@@ -3,6 +3,7 @@ package com.example.bilabonnement.Repository;
 import com.example.bilabonnement.Enum.AccessLevel;
 import com.example.bilabonnement.Model.Employee;
 import com.example.bilabonnement.Utility.DatabaseConnectionManager;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class EmployeeRepository implements CRUD<Employee>{
     @Override
     public List<Employee> getAllEntities() {
