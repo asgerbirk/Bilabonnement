@@ -48,8 +48,7 @@ public class DamageController {
         int userID = tempCustomer.getID();
         String damage = data.getParameter("damage");
         int price = Integer.parseInt(Objects.requireNonNull(data.getParameter("price")));
-        DamageReport damageReport = new DamageReport(damage,price);
-        damageReportService.createDamageReport(damageReport);
+        damageReportService.createDamageReport(damage, price);
         agreementService.update(userID,price);
         CarAgreement temp =  damageReportService.getAgreementFromId(agreementID);
         int carID = temp.getCar().getCarNumber();
