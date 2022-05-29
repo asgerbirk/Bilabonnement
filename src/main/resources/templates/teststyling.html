@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testeren</title>
+    <link rel="stylesheet" th:href="@{newfragstyle.css}" href="../static/newfragstyle.css">
+    <link rel="script" th:href="@{navigatorScript.js}" href="../static/navigatorScript.js">
+</head>
+<body>
+
+<div class="navigation">
+    <ul>
+        <li class="navlist">
+            <a href="#">
+                    <img class="icon" src="../images/bilabonnementlogo.png">
+                <span class="text">Bilabonnement</span>
+            </a>
+        </li>
+        <li class="navlist">
+            <a onclick="history.back()">
+                <span class="text"> Tilbage </span>
+            </a>
+        </li>
+        <li class="navlist">
+            <a href="/delete">
+                <span class="text"> Slet enhed </span>
+            </a>
+        </li>
+        <li class="navlist">
+            <a href="/createemployee">
+                <span class="text"> Opret medarbejder </span>
+            </a>
+        </li>
+        <li class="navlist">
+            <a href="/damageReport">
+                <span class="text"> Opret skaderapport </span>
+            </a>
+        </li>
+        <li class="navlist">
+            <a href="/registerAgreement">
+                <span class="text"> Opret lejeaftale </span>
+            </a>
+        </li>
+        <li class="navlist">
+            <a href="/rentedCars">
+                <span class="text"> Udlejede biler </span>
+            </a>
+        </li>
+        <li class="navlist">
+            <a href="/allCars">
+                <span class="text"> Alle biler </span>
+            </a>
+        </li>
+        <li class="navlist">
+            <a href="/index">
+                <span class="text"> Log ud </span>
+            </a>
+        </li>
+    </ul>
+</div>
+<script>
+    const list = document.querySelectorAll('.navlist');
+    //vi vælger her alle de elementer vi kunne tænke os at arbejde med og putter dem i en liste som er navngivet, lige som en arraylist
+
+    function activator() {
+        list.forEach((item) => item.classList.remove('active'));//vi fjerner alle active tokens fra list elementerne i html
+        this.classList.add('active'); //her tildeler vi active token til vaglte list item (li segmentet i html)
+        //metoden her fjerner alle active tokens fra html listerne med classname som i ovenstående const, og tildeler den bagefter til det valgte liste element
+    }
+    list.forEach((item) => item.addEventListener('click', activator)); //her sørger vi for at
+    //her kalder vi metoden på 'click', metoden fjerner alle andre active tokens, og sætter active på den der bliver klikket på.
+
+</script>
+</body>
+</html>

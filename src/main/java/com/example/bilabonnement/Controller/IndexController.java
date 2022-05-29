@@ -90,4 +90,9 @@ public class IndexController {
         return returnString;
     }
 
+    @GetMapping("/teststyling")
+    public String teststyling(){
+        return "teststyling";
+    }
+
 }

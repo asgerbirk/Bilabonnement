@@ -27,7 +27,7 @@ class EmployeeServiceTest {
 
 
     @Test
-    void giveAccessLevel() {
+    void returnPageIfAuthorized() {
         Employee employee = new Employee(1,"master","master", AccessLevel.MASTER);
         assertEquals("masterPage",underTest.returnPageIfAuthorized(employee.getAccessLevel(), Pages.masterPage));
     }
