@@ -12,10 +12,24 @@ import java.util.List;
 public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
+    private final DamageReportRepository damageReportRepository;
+    private final CustomerRepository customerRepository;
+    private CarRepository carRepository;
+    private AgreementRepository agreementRepository;
 
     @Autowired
-    public EmployeeService(EmployeeRepository employeeRepository) {
+
+    public EmployeeService(EmployeeRepository employeeRepository,
+                           DamageReportRepository damageReportRepository,
+                           CustomerRepository customerRepository,
+                           CarRepository carRepository,
+                           AgreementRepository agreementRepository) {
+
         this.employeeRepository = employeeRepository;
+        this.damageReportRepository = damageReportRepository;
+        this.customerRepository = customerRepository;
+        this.carRepository = carRepository;
+        this.agreementRepository = agreementRepository;
     }
 
     public void createEmployee(String mail, String password, AccessLevel accessLevel){
@@ -24,7 +38,6 @@ public class EmployeeService {
     }
 
     public Employee getEmployeeFromEmail(String email){
-
         List<Employee> allEmployees = employeeRepository.getAllEntities();
         for (Employee e: allEmployees){
             if (e.getEmail().equals(email)){
@@ -101,19 +114,13 @@ public class EmployeeService {
             case "employee":
                 employeeRepository.deleteEntity(id);
             case "car":
-                CarRepository cr = new CarRepository();
-                cr.deleteEntity(id);
+                carRepository.deleteEntity(id);
             case "rental agreement":
-                AgreementRepository ar = new AgreementRepository();
-                ar.deleteEntity(id);
+                agreementRepository.deleteEntity(id);
             case "customer":
-                CustomerRepository cur = new CustomerRepository();
-                cur.deleteEntity(id);
+                customerRepository.deleteEntity(id);
             case "damage report":
-                DamageReportRepository dr = new DamageReportRepository();
-                dr.deleteEntity(id);
-
-
+                damageReportRepository.deleteEntity(id);
         }
     }
 

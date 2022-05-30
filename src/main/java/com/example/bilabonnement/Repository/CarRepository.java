@@ -36,7 +36,6 @@ public class CarRepository  implements CRUD<Car> {
             e.printStackTrace();
             System.out.println("something went wrong with the database for cars");
         }
-        System.out.println(allCars);
         return allCars;
     }
 
