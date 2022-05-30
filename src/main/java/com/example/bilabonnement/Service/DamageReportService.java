@@ -35,6 +35,5 @@ public class DamageReportService {
 
     public void setDamaged(int id, boolean test){
         carService.update(id, test, "damaged");
-
     }
 }
