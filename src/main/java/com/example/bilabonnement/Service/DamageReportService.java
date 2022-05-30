@@ -24,8 +24,8 @@ public class DamageReportService {
     this.carService = carService;
 }
 
-    public void createDamageReport(String damage, int price){
-        DamageReport newReport = new DamageReport(damage, price);
+    public void createDamageReport(String damage, int price, int agreementID){
+        DamageReport newReport = new DamageReport(damage, price, agreementID);
         damageReportRepository.createEntity(newReport);
     }
 
