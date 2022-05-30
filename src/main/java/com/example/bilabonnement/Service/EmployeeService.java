@@ -18,6 +18,10 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
+    public void createEmployee(String mail, String password, AccessLevel accessLevel){
+        Employee newEmployee = new Employee(mail, password, accessLevel);
+        employeeRepository.createEntity(newEmployee);
+    }
 
     public Employee getEmployeeFromEmail(String email){
 

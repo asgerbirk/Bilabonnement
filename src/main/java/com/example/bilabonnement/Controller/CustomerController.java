@@ -56,7 +56,14 @@ public class CustomerController {
     }
 
     @PostMapping("employeesuccess")
-    public String employeeSuccess(HttpSession session) {
+    public String employeeSuccess(WebRequest data, HttpSession session) {
+        try {
+            employeeService.createEmployee(data.getParameter("email"),
+                    data.getParameter("password"),
+                    AccessLevel.valueOf(data.getParameter("accesslevel")));
+        } catch (Exception e){
+            return "redirect:/createEmployee";
+        }
         switch ((AccessLevel) session.getAttribute("user")) {
             case MASTER:
                 return "redirect:/masterPage";
