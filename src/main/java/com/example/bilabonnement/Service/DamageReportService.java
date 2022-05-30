@@ -12,16 +12,14 @@ import org.springframework.stereotype.Service;
 public class DamageReportService {
 
     private final DamageReportRepository damageReportRepository;
-    private final CarRepository carRepository;
     private final AgreementRepository agreementRepository;
     private final CarService carService;
     
 @Autowired
     public DamageReportService(DamageReportRepository damageReportRepository, CarRepository carRepository, AgreementRepository agreementRepository, CarService carService) {
         this.damageReportRepository = damageReportRepository;
-        this.carRepository = carRepository;
-    this.agreementRepository = agreementRepository;
-    this.carService = carService;
+        this.agreementRepository = agreementRepository;
+        this.carService = carService;
 }
 
     public void createDamageReport(String damage, int price, int agreementID){
@@ -33,7 +31,7 @@ public class DamageReportService {
         return agreementRepository.getSingleEntity(id);
     }
 
-    public void setDamaged(int id, boolean test){
-        carService.update(id, test, "damaged");
+    public void setDamaged(int id, boolean isDamaged){
+        carService.update(id, isDamaged, "damaged");
     }
 }

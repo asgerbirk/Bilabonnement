@@ -24,7 +24,6 @@ public class EmployeeService {
     }
 
     public Employee getEmployeeFromEmail(String email){
-
         List<Employee> allEmployees = employeeRepository.getAllEntities();
         for (Employee e: allEmployees){
             if (e.getEmail().equals(email)){
@@ -128,8 +127,6 @@ public class EmployeeService {
             case "damage report":
                 DamageReportRepository dr = new DamageReportRepository();
                 dr.deleteEntity(id);
-
-
         }
     }
 

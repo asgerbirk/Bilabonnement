@@ -52,8 +52,4 @@ public class Employee {
     public AccessLevel getAccessLevel() {
         return accessLevel;
     }
-
-    public void setAccessLevel(AccessLevel accessLevel) {
-        this.accessLevel = accessLevel;
-    }
 }

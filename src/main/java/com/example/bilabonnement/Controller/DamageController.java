@@ -33,8 +33,7 @@ public class DamageController {
 
     @GetMapping("/damageReport")
     public String damageReport(HttpSession session){
-        String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.damageReport);
-        return returnString;
+        return employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.damageReport);
     }
 
 
@@ -44,15 +43,15 @@ public class DamageController {
         int agreementID = Integer.parseInt(Objects.requireNonNull(data.getParameter("agreementID")));
         Agreement tempAgreement = agreementService.getAgreement(agreementID);
         Customer tempCustomer = tempAgreement.getCustomer();
-        int userID = tempCustomer.getID();
+        int customerID = tempCustomer.getID();
         String damage = data.getParameter("damage");
         int price = Integer.parseInt(Objects.requireNonNull(data.getParameter("price")));
         damageReportService.createDamageReport(damage, price, agreementID);
-        agreementService.update(userID,price);
+        agreementService.update(customerID,price);
         CarAgreement temp =  damageReportService.getAgreementFromId(agreementID);
         int carID = temp.getCar().getCarNumber();
         damageReportService.setDamaged(carID, true);
-        agreementService.update(userID,price);
+        agreementService.update(customerID,price);
     } catch (Exception e){
         e.printStackTrace();
         return "redirect:/damageReport";

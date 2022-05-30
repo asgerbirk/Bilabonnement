@@ -40,30 +40,22 @@ public class IndexController {
 
     @GetMapping("/masterPage")
     public String masterPage(HttpSession session){
-
-        String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.masterPage);
-        return returnString;
+        return employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.masterPage);
     }
 
     @GetMapping("/adminPage")
     public String adminPage(HttpSession session){
-
-        String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.adminPage);
-        return returnString;
+        return employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.adminPage);
     }
 
     @GetMapping("/employeePage")
     public String employeePage(HttpSession session){
-
-        String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.employeePage);
-        return returnString;
+        return employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.employeePage);
     }
 
     @GetMapping("/userPage")
     public String userPage(HttpSession session){
-
-        String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.userPage);
-        return returnString;
+        return employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.userPage);
     }
 
     @PostMapping("/error")
@@ -73,8 +65,6 @@ public class IndexController {
 
     @GetMapping("/delete")
     public String delete(HttpSession session){
-
-        String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.delete);
-        return returnString;
+        return employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.delete);
     }
 }

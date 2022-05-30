@@ -27,16 +27,13 @@ public class CarController {
     public String rentedCars(Model model, HttpSession session){
         model.addAttribute("rentedcars", carService.allRentedCars());
         model.addAttribute("price", carService.priceOfAllRentedCars(0));
-
-        String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.rentedCars);
-        return returnString;
+        return employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.rentedCars);
     }
 
     @GetMapping("allCars")
     public String allCars(Model model, HttpSession session){
         model.addAttribute("allCars", carService.getAllCars());
-        String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.allCars);
-        return returnString;
+        return employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.allCars);
     }
 
 
