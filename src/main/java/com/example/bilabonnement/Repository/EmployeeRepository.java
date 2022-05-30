@@ -2,6 +2,7 @@ package com.example.bilabonnement.Repository;
 
 import com.example.bilabonnement.Enum.AccessLevel;
 import com.example.bilabonnement.Model.Employee;
+import com.example.bilabonnement.Service.EmployeeService;
 import com.example.bilabonnement.Utility.DatabaseConnectionManager;
 import org.springframework.stereotype.Repository;
 

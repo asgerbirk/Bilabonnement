@@ -43,7 +43,7 @@ public class CarService {
 
     public void update (int id, boolean available, String type){
         int value = 0;
-        if(available){
+        if(!available){
             value = 1;
         }
         carRepository.updateEntity(id,value, type);
