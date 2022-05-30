@@ -5,7 +5,6 @@ import com.example.bilabonnement.Enum.Pages;
 import com.example.bilabonnement.Model.Agreement;
 import com.example.bilabonnement.Model.CarAgreement;
 import com.example.bilabonnement.Model.Customer;
-import com.example.bilabonnement.Model.DamageReport;
 import com.example.bilabonnement.Service.AgreementService;
 import com.example.bilabonnement.Service.DamageReportService;
 import com.example.bilabonnement.Service.EmployeeService;
@@ -29,7 +28,6 @@ public class DamageController {
     public DamageController(DamageReportService damageReportService, AgreementService agreementService, EmployeeService employeeService) {
     this.damageReportService = damageReportService;
     this.agreementService = agreementService;
-
     this.employeeService = employeeService;
 }
 
