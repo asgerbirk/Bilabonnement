@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 @Repository
 public class CustomerRepository implements CRUD<Customer>{
+    // Kodet af Mikkel
 
     @Override
     public List<Customer> getAllEntities() {

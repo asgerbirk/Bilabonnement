@@ -19,6 +19,7 @@ import java.util.Objects;
 
 @Controller
 public class DamageController {
+    // Kodet af Asger
     private final DamageReportService damageReportService;
     private final AgreementService agreementService;
     private final EmployeeService employeeService;
@@ -56,17 +57,6 @@ public class DamageController {
         e.printStackTrace();
         return "redirect:/damageReport";
     }
-        switch((AccessLevel) session.getAttribute("user")) {
-            case MASTER:
-                return "redirect:/masterPage";
-            case ADMIN:
-                return "redirect:/adminPage";
-            case EMPLOYEE:
-                return "redirect:/employeePage";
-            case USER:
-                return "redirect:/userPage";
-            default:
-                return "index";
-        }
+        return employeeService.returnSessionPage(session.getAttribute("user"));
     }
 }

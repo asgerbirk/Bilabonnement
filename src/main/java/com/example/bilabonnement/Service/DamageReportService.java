@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class DamageReportService {
-
+    // Kodet af Asger
     private final DamageReportRepository damageReportRepository;
     private final AgreementRepository agreementRepository;
     private final CarService carService;

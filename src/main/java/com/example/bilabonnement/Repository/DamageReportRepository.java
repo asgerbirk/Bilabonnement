@@ -13,7 +13,7 @@ import java.util.List;
 
 @Repository
 public class DamageReportRepository implements CRUD<DamageReport>{
-
+    // Kodet af Mikkel
 
     @Override
     public List<DamageReport> getAllEntities() {

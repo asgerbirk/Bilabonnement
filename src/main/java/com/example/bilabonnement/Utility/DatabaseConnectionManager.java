@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 
 public class DatabaseConnectionManager {
+    // Kodet af Asger
     
     private DatabaseConnectionManager(){
     }

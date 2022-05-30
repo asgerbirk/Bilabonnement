@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AgreementService {
+    // Kodet af Mikkel og Simon
 
 
     private final AgreementRepository agreementRepository;

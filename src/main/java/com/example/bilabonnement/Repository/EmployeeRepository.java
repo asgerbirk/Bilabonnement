@@ -14,6 +14,7 @@ import java.util.List;
 
 @Repository
 public class EmployeeRepository implements CRUD<Employee>{
+    // Kodet af Mikkel
     @Override
     public List<Employee> getAllEntities() {
         Connection con = DatabaseConnectionManager.getConnection();

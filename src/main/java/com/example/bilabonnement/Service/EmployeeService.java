@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class EmployeeService {
-
+    // Kodet af Mikkel og Simon
     private final EmployeeRepository employeeRepository;
     private final DamageReportRepository damageReportRepository;
     private final CustomerRepository customerRepository;
@@ -47,7 +47,6 @@ public class EmployeeService {
         }
         return null;
     }
-
     public String returnPageIfAuthorized(Object loggedEmployee, Pages reqPage){
         AccessLevel emplAcsLvl = (AccessLevel) loggedEmployee;
         if(loggedEmployee == null){
@@ -100,6 +99,22 @@ public class EmployeeService {
                 return "redirect:/index";
         }
         return "redirect:/error";
+    }
+
+    public String returnSessionPage(Object loggedEmployee){
+        AccessLevel emplAcsLvl = (AccessLevel) loggedEmployee;
+        switch (emplAcsLvl){
+            case MASTER:
+                return "redirect:/masterPage";
+            case ADMIN:
+                return "redirect:/adminPage";
+            case EMPLOYEE:
+                return "redirect:/employeePage";
+            case USER:
+                return "redirect:/userPage";
+            default:
+                return "redirect:/index";
+        }
     }
 
     public AccessLevel giveAccessLevel(String email, String password){

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 @Repository
 public class AgreementRepository implements CRUD<CarAgreement>{
+    // kodet af Mikkel og Simon
 
     @Override
     public List<CarAgreement> getAllEntities() {

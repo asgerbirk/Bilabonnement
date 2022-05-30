@@ -1,6 +1,7 @@
 package com.example.bilabonnement.Model;
 
 public class    Agreement {
+    // Kodet af Simon
 
     private int agreementID;
     private Customer customer;

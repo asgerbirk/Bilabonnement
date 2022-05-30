@@ -1,5 +1,4 @@
 package com.example.bilabonnement.Controller;
-import com.example.bilabonnement.Enum.AccessLevel;
 import com.example.bilabonnement.Enum.Pages;
 import com.example.bilabonnement.Service.CarService;
 import com.example.bilabonnement.Service.AgreementService;
@@ -15,6 +14,7 @@ import java.util.Objects;
 
 @Controller
 public class AgreementController {
+    // Kodet af Simon
 
     private final AgreementService agreementService;
     private final CustomerService customerService;
@@ -47,15 +47,11 @@ public class AgreementController {
             e.printStackTrace();
             return "redirect:/registerAgreement";
         }
-        switch((AccessLevel) session.getAttribute("user")){
-            case MASTER:
-                return "redirect:/masterPage";
-            case ADMIN:
-                return "redirect:/adminPage";
-            case EMPLOYEE:
-                return "redirect:/employeePage";
-            default:
-                return "index";
-    }
+        return employeeService.returnSessionPage(session.getAttribute("user"));
+
+
+
+
+
 }
 }

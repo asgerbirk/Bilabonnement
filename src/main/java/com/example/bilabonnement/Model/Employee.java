@@ -3,6 +3,7 @@ package com.example.bilabonnement.Model;
 import com.example.bilabonnement.Enum.AccessLevel;
 
 public class Employee {
+    // Kodet af Mikkel
 
     private int employee_id;
 

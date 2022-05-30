@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class IndexController {
+    // Kodet af Simon
 
     private final EmployeeService employeeService;
 
@@ -35,19 +36,7 @@ public class IndexController {
 
         AccessLevel userAccessLevel = employeeService.giveAccessLevel(data.getParameter("email"), data.getParameter("password"));
         session.setAttribute("user",userAccessLevel);
-        switch((AccessLevel) session.getAttribute("user")){
-            case MASTER:
-                return "redirect:/masterPage";
-            case ADMIN:
-                return "redirect:/adminPage";
-            case EMPLOYEE:
-                return "redirect:/employeePage";
-            case USER:
-                return "redirect:/userPage";
-            default:
-                return "index";
-        }
-
+        return employeeService.returnSessionPage(session.getAttribute("user"));
     }
 
     @GetMapping("/masterPage")

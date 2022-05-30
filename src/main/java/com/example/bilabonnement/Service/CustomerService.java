@@ -9,6 +9,7 @@ import java.util.Objects;
 
 @Service
 public class CustomerService {
+    // Kodet af Simon
 
     private final CustomerRepository customerRepository;
 
