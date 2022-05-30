@@ -1,6 +1,7 @@
 package com.example.bilabonnement.Model;
 
 public class Customer {
+    // Kodet af Mikkel og Simon
 
     private int ID;
     private String firstname;

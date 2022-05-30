@@ -19,6 +19,7 @@ import java.util.Objects;
 
 @Controller
 public class DamageController {
+    // Kodet af Asger
     private final DamageReportService damageReportService;
     private final AgreementService agreementService;
     private final EmployeeService employeeService;

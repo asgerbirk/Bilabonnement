@@ -16,6 +16,7 @@ import java.util.Objects;
 
 @Controller
 public class CustomerController {
+    // Kodet af Simon
 
     private final CustomerService service;
     private final EmployeeService employeeService;

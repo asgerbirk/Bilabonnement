@@ -13,6 +13,7 @@ import java.util.List;
 
 @Repository
 public class CarRepository  implements CRUD<Car> {
+    // Kodet af Simon
     @Override
     public List<Car> getAllEntities() {
         Connection con = DatabaseConnectionManager.getConnection();

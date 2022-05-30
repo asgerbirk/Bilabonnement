@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class EmployeeService {
-
+    // Kodet af Mikkel og Simon
     private final EmployeeRepository employeeRepository;
 
     @Autowired
@@ -32,7 +32,6 @@ public class EmployeeService {
         }
         return null;
     }
-
     public String returnPageIfAuthorized(Object loggedEmployee, Pages reqPage){
         AccessLevel emplAcsLvl = (AccessLevel) loggedEmployee;
         if(loggedEmployee == null){

@@ -15,6 +15,7 @@ import java.util.Objects;
 
 @Controller
 public class AgreementController {
+    // Kodet af Simon
 
     private final AgreementService agreementService;
     private final CustomerService customerService;

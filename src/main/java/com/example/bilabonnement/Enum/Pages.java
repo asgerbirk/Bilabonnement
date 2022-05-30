@@ -1,6 +1,7 @@
 package com.example.bilabonnement.Enum;
 
 public enum Pages {
+    // Kodet af Simon
     delete,
     createemployee,
     damageReport,
