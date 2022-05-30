@@ -5,7 +5,6 @@ import com.example.bilabonnement.Enum.Pages;
 import com.example.bilabonnement.Model.Agreement;
 import com.example.bilabonnement.Model.CarAgreement;
 import com.example.bilabonnement.Model.Customer;
-import com.example.bilabonnement.Model.DamageReport;
 import com.example.bilabonnement.Service.AgreementService;
 import com.example.bilabonnement.Service.DamageReportService;
 import com.example.bilabonnement.Service.EmployeeService;
@@ -29,7 +28,6 @@ public class DamageController {
     public DamageController(DamageReportService damageReportService, AgreementService agreementService, EmployeeService employeeService) {
     this.damageReportService = damageReportService;
     this.agreementService = agreementService;
-
     this.employeeService = employeeService;
 }
 
@@ -49,7 +47,7 @@ public class DamageController {
         int userID = tempCustomer.getID();
         String damage = data.getParameter("damage");
         int price = Integer.parseInt(Objects.requireNonNull(data.getParameter("price")));
-        damageReportService.createDamageReport(damage, price);
+        damageReportService.createDamageReport(damage, price, agreementID);
         agreementService.update(userID,price);
         CarAgreement temp =  damageReportService.getAgreementFromId(agreementID);
         int carID = temp.getCar().getCarNumber();

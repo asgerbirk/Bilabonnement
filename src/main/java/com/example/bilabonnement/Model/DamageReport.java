@@ -2,8 +2,16 @@ package com.example.bilabonnement.Model;
 
 public class DamageReport {
     private int id;
+
+    private int agreementID;
     private String damage;
     private int price;
+
+    public DamageReport(String damage, int price, int agreementID){
+        this.agreementID = agreementID;
+        this.damage = damage;
+        this.price = price;
+    }
 
     public DamageReport(int id, String damage, int price) {
         this.id = id;
@@ -47,5 +55,9 @@ public class DamageReport {
                 ", damage='" + damage + '\'' +
                 ", price='" + price + '\'' +
                 '}';
+    }
+
+    public int getAgreementID() {
+        return agreementID;
     }
 }
