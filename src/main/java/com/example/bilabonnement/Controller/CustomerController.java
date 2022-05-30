@@ -66,18 +66,7 @@ public class CustomerController {
         } catch (Exception e){
             return "redirect:/createEmployee";
         }
-        switch ((AccessLevel) session.getAttribute("user")) {
-            case MASTER:
-                return "redirect:/masterPage";
-            case ADMIN:
-                return "redirect:/adminPage";
-            case EMPLOYEE:
-                return "redirect:/employeePage";
-            case USER:
-                return "redirect:/userPage";
-            default:
-                return "index";
-        }
+        return employeeService.returnSessionPage(session.getAttribute("user"));
     }
 
 
@@ -104,18 +93,7 @@ public class CustomerController {
         assert type != null;
         employeeService.whichType(type, id);
         // Kunne være blæret at lave type som en menu dropdown, således at man kun kan vælge ting der ikke fejler
-        switch((AccessLevel) session.getAttribute("user")) {
-            case MASTER:
-                return "redirect:/masterPage";
-            case ADMIN:
-                return "redirect:/adminPage";
-            case EMPLOYEE:
-                return "redirect:/employeePage";
-            case USER:
-                return "redirect:/userPage";
-            default:
-                return "index";
-        }
+        return employeeService.returnSessionPage(session.getAttribute("user"));
     }
 
 
