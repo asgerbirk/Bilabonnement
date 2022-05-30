@@ -52,12 +52,14 @@ public class DamageReportRepository implements CRUD<DamageReport>{
     @Override
     public void createEntity(DamageReport damageReport) {
         Connection con = DatabaseConnectionManager.getConnection();
+        int agreementID = damageReport.getAgreementID();
         String damage = damageReport.getDamage();
         int price = damageReport.getPrice();
         try {
-            PreparedStatement pstmt = con.prepareStatement("INSERT INTO damage_report (`damage`, `price`) VALUES (?,?)");
-            pstmt.setString(1,damage);
-            pstmt.setInt(2,price);
+            PreparedStatement pstmt = con.prepareStatement("insert into damage_report(`rental_agreement_id`, `damage`,`price`) values (?,?,?)");
+            pstmt.setInt(1,agreementID);
+            pstmt.setString(2,damage);
+            pstmt.setInt(3,price);
             pstmt.execute();
 
         }catch (SQLException e){
