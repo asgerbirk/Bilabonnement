@@ -1,6 +1,7 @@
 package com.example.bilabonnement.Model;
 
 public class CarAgreement extends Agreement{
+    // Kodet af Simon
 
     private Car car;
     private String location;

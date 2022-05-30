@@ -1,6 +1,7 @@
 package com.example.bilabonnement.Model;
 
 public class Car {
+    // Kodet af Asger
 
     private int carNumber;
     private String model;

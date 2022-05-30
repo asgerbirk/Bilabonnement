@@ -1,6 +1,7 @@
 package com.example.bilabonnement.Model;
 
 public class DamageReport {
+    // Kodet af Asger
     private int id;
 
     private int agreementID;
