@@ -1,4 +1,6 @@
-
+* {
+    flex-direction: row;
+}
 .menubar a {
     float: left;
     color: black;
