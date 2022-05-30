@@ -24,24 +24,12 @@ public class    Agreement {
         return agreementID;
     }
 
-    public void setAgreementID(int agreementID) {
-        this.agreementID = agreementID;
-    }
-
     public Customer getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
     public int getPeriod() {
         return period;
-    }
-
-    public void setPeriod(int period) {
-        this.period = period;
     }
 
     public int getPrice() {

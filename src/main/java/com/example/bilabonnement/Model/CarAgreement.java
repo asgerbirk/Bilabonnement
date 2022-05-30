@@ -21,18 +21,9 @@ public class CarAgreement extends Agreement{
         return car;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
-    }
-
     public String getLocation() {
         return location;
     }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
     @Override
     public String toString() {
         return "CarAgreement{" +
