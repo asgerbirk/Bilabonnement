@@ -12,10 +12,6 @@ table {
     width: 99%;
 
 }
-tr {
-    background-color: #cccccc;
-    opacity: 0.5;
-}
 
 th, td {
     padding: 1.5rem;

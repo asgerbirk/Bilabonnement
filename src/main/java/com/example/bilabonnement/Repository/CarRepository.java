@@ -35,9 +35,7 @@ public class CarRepository  implements CRUD<Car> {
             }
         }catch (SQLException e){
             e.printStackTrace();
-            System.out.println("something went wrong with the database for cars");
         }
-        System.out.println(allCars);
         return allCars;
     }
 
@@ -78,7 +76,6 @@ public class CarRepository  implements CRUD<Car> {
             PreparedStatement pstmt = con.prepareStatement("UPDATE car SET "+type+" = ? WHERE car_number = ?");
             pstmt.setInt(1, value);
             pstmt.setInt(2, id);
-            System.out.println(pstmt);
             pstmt.executeUpdate();
             pstmt.close();
 
