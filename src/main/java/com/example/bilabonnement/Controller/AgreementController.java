@@ -30,9 +30,7 @@ public class AgreementController {
 
     @GetMapping("/registerAgreement")
     public String registerAgreement(HttpSession session) {
-
-        String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.registerAgreement);
-        return returnString;
+        return employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.registerAgreement);
     }
 
 
@@ -45,7 +43,6 @@ public class AgreementController {
                 Integer.parseInt(Objects.requireNonNull(data.getParameter("price"))),
                 carService.getCarFromCarNumber(data.getParameter("carNumber")),
                 data.getParameter("location"));
-       // agreementService.setRented(data.getParameter("carNumber"),true);
         } catch (Exception e){
             e.printStackTrace();
             return "redirect:/registerAgreement";
@@ -60,10 +57,5 @@ public class AgreementController {
             default:
                 return "index";
     }
-
-
-
-
-
 }
 }

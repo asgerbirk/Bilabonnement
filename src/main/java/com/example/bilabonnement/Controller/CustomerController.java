@@ -52,9 +52,7 @@ public class CustomerController {
 
     @GetMapping("/createemployee")
     public String createEmployee(HttpSession session){
-
-        String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.createemployee);
-        return returnString;
+        return employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.createemployee);
     }
 
     @PostMapping("employeesuccess")
@@ -79,7 +77,6 @@ public class CustomerController {
     public String allusers(Model model){
         try{
         model.addAttribute("allusers",service.getAllCustomers());
-
         } catch (Exception e){
             e.printStackTrace();
             return "redirect:/index";

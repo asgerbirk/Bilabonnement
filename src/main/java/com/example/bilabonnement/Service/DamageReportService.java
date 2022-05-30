@@ -33,7 +33,7 @@ public class DamageReportService {
         return agreementRepository.getSingleEntity(id);
     }
 
-    public void setDamaged(int id, boolean test){
-        carService.update(id, test, "damaged");
+    public void setDamaged(int id, boolean isDamaged){
+        carService.update(id, isDamaged, "damaged");
     }
 }
