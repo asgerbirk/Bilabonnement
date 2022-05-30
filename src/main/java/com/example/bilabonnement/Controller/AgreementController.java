@@ -1,4 +1,5 @@
 package com.example.bilabonnement.Controller;
+import com.example.bilabonnement.Enum.AccessLevel;
 import com.example.bilabonnement.Enum.Pages;
 import com.example.bilabonnement.Service.CarService;
 import com.example.bilabonnement.Service.AgreementService;
@@ -36,7 +37,7 @@ public class AgreementController {
 
 
     @PostMapping("/registeredAgreement")
-    public String succesfullyRegisteredAgreement(WebRequest data) {
+    public String succesfullyRegisteredAgreement(WebRequest data, HttpSession session) {
         try{
         agreementService.registerNewAgreement(
                 customerService.getCustomerFromID(data.getParameter("customerID")),
@@ -49,11 +50,20 @@ public class AgreementController {
             e.printStackTrace();
             return "redirect:/registerAgreement";
         }
-        return "redirect:/index";
+        switch((AccessLevel) session.getAttribute("user")){
+            case MASTER:
+                return "redirect:/masterPage";
+            case ADMIN:
+                return "redirect:/adminPage";
+            case EMPLOYEE:
+                return "redirect:/employeePage";
+            default:
+                return "index";
     }
 
 
 
 
 
+}
 }

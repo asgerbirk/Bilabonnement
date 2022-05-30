@@ -1,5 +1,6 @@
 package com.example.bilabonnement.Controller;
 
+import com.example.bilabonnement.Enum.AccessLevel;
 import com.example.bilabonnement.Enum.Pages;
 import com.example.bilabonnement.Model.Agreement;
 import com.example.bilabonnement.Model.CarAgreement;
@@ -40,7 +41,7 @@ public class DamageController {
 
 
     @PostMapping("/damageReportCreated")
-    public String registernewcase(WebRequest data){
+    public String registernewcase(WebRequest data, HttpSession session){
     try {
         int agreementID = Integer.parseInt(Objects.requireNonNull(data.getParameter("agreementID")));
         Agreement tempAgreement = agreementService.getAgreement(agreementID);
@@ -58,6 +59,17 @@ public class DamageController {
         e.printStackTrace();
         return "redirect:/damageReport";
     }
-        return "redirect:/index";
+        switch((AccessLevel) session.getAttribute("user")) {
+            case MASTER:
+                return "redirect:/masterPage";
+            case ADMIN:
+                return "redirect:/adminPage";
+            case EMPLOYEE:
+                return "redirect:/employeePage";
+            case USER:
+                return "redirect:/userPage";
+            default:
+                return "index";
+        }
     }
 }
