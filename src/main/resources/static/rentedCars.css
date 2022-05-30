@@ -9,6 +9,7 @@ h1{
 table {
     border-collapse: collapse;
     width: 99%;
+
 }
 th, td {
     padding: 1.5rem;
@@ -18,4 +19,6 @@ th, td {
 h2{
     text-align: center;
 }
+
+
 

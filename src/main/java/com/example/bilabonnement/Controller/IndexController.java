@@ -89,10 +89,4 @@ public class IndexController {
         String returnString = employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.delete);
         return returnString;
     }
-
-    @GetMapping("/teststyling")
-    public String teststyling(){
-        return "teststyling";
-    }
-
 }

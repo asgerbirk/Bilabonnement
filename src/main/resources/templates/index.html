@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" th:href="@{fragmentStyle.css}" href="../static/fragmentStyle.css">
     <link rel="stylesheet" th:href="@{frontPage.css}" href="../static/frontPage.css">
+    <link rel="stylesheet" th:href="@{fragmentStyle.css}" href="../static/fragmentStyle.css">
+    <link rel="stylesheet" th:href="@{background.css}" href="../static/background.css">
+
 </head>
 <body>
 
 <div th:replace="fragments/fragmentlibary :: navbar"></div>
 <form method="post" action="/logintest">
     <div class="container">
-        <h2> Log in</h2>
-        <label for="email"><b>Enter email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" required minlength="1" maxlength="30" id="email">
-        <br><br/>
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required minlength="1" maxlength="30" id="password">
-        <br><br/>
-        <button type="submit">Log in</button>
+        <div class="login">
+            <h2> Log in</h2>
+            <label for="email"><b>Enter email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required minlength="1" maxlength="30" id="email">
+            <br><br/>
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required minlength="1" maxlength="30" id="password">
+            <br><br/>
+            <button type="submit">Log in</button>
+        </div>
     </div>
 </form>
 <div th:replace="fragments/fragmentlibary :: footer"></div>

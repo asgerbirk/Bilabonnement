@@ -1,6 +1,8 @@
-* {
-    flex-direction: row;
+img {
+    width: 100%;
+    height: auto;
 }
+
 .menubar a {
     float: left;
     color: black;
@@ -31,6 +33,14 @@ ul {
 .container{
     text-align: center;
     align-content: center;
+
 }
 
+
+.login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
