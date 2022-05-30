@@ -25,10 +25,6 @@ public class Car {
         return carNumber;
     }
 
-    public void setCarNumber(int carNumber) {
-        this.carNumber = carNumber;
-    }
-
     public String getModel() {
         return model;
     }
@@ -41,16 +37,8 @@ public class Car {
         return brand;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
     public String getColor() {
         return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
     }
 
     public int getPrice() {
@@ -64,19 +52,9 @@ public class Car {
     public boolean isDamaged() {
         return isDamaged;
     }
-
-    public void setDamaged(boolean damaged)  {
-        isDamaged = damaged;
-    }
-
     public boolean isRented() {
         return isRented;
     }
-
-    public void setRented(boolean rented) {
-        isRented = rented;
-    }
-
     @Override
     public String toString() {
         return "Car{" +

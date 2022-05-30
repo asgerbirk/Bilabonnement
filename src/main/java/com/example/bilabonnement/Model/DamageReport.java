@@ -19,11 +19,6 @@ public class DamageReport {
         this.price = price;
     }
 
-    public DamageReport(String damage,int price){
-        this.damage = damage;
-        this.price = price;
-    }
-
     public int getId() {
         return id;
     }
@@ -35,11 +30,6 @@ public class DamageReport {
     public String getDamage() {
         return damage;
     }
-
-    public void setDamage(String damage) {
-        this.damage = damage;
-    }
-
     public int getPrice() {
         return price;
     }

@@ -25,8 +25,8 @@ public class CustomerService {
         customerRepository.createEntity(newCustomer);
     }
 
-    public Customer getCustomerFromID(String paramname){
-        return customerRepository.getSingleEntity(Integer.parseInt((Objects.requireNonNull(paramname))));
+    public Customer getCustomerFromID(String customerID){
+        return customerRepository.getSingleEntity(Integer.parseInt((Objects.requireNonNull(customerID))));
     }
 
 }
