@@ -86,6 +86,22 @@ public class EmployeeService {
         return "redirect:/error";
     }
 
+    public String returnSessionPage(Object loggedEmployee){
+        AccessLevel emplAcsLvl = (AccessLevel) loggedEmployee;
+        switch (emplAcsLvl){
+            case MASTER:
+                return "redirect:/masterPage";
+            case ADMIN:
+                return "redirect:/adminPage";
+            case EMPLOYEE:
+                return "redirect:/employeePage";
+            case USER:
+                return "redirect:/userPage";
+            default:
+                return "redirect:/index";
+        }
+    }
+
     public AccessLevel giveAccessLevel(String email, String password){
         Employee tempEmployee = getEmployeeFromEmail(email);
         if (tempEmployee.getPassword().equals(password)){
