@@ -1,5 +1,6 @@
 package com.example.bilabonnement.Controller;
 
+import com.example.bilabonnement.Enum.AccessLevel;
 import com.example.bilabonnement.Enum.Pages;
 import com.example.bilabonnement.Service.CustomerService;
 import com.example.bilabonnement.Service.EmployeeService;
@@ -57,8 +58,19 @@ public class CustomerController {
     }
 
     @PostMapping("employeesuccess")
-    public String employeeSuccess(){
-        return "redirect:/index";
+    public String employeeSuccess(HttpSession session) {
+        switch ((AccessLevel) session.getAttribute("user")) {
+            case MASTER:
+                return "redirect:/masterPage";
+            case ADMIN:
+                return "redirect:/adminPage";
+            case EMPLOYEE:
+                return "redirect:/employeePage";
+            case USER:
+                return "redirect:/userPage";
+            default:
+                return "index";
+        }
     }
 
 
@@ -78,14 +90,25 @@ public class CustomerController {
 
 
     @PostMapping("/delete")
-    public String delete(WebRequest data){
+    public String delete(WebRequest data, HttpSession session){
 
         String type = data.getParameter("type");
         int id = Integer.parseInt(Objects.requireNonNull(data.getParameter("id")));
         assert type != null;
         employeeService.whichType(type, id);
         // Kunne være blæret at lave type som en menu dropdown, således at man kun kan vælge ting der ikke fejler
-        return "redirect:/delete";
+        switch((AccessLevel) session.getAttribute("user")) {
+            case MASTER:
+                return "redirect:/masterPage";
+            case ADMIN:
+                return "redirect:/adminPage";
+            case EMPLOYEE:
+                return "redirect:/employeePage";
+            case USER:
+                return "redirect:/userPage";
+            default:
+                return "index";
+        }
     }
 
 
