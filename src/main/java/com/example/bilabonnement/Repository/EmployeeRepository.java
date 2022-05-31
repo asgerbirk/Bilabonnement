@@ -34,7 +34,6 @@ public class EmployeeRepository implements CRUD<Employee>{
 
         }catch (SQLException e){
             e.printStackTrace();
-            System.out.println("Something went wrong in database for employees");
         }
         return allEmployees;
     }
@@ -70,7 +69,6 @@ public class EmployeeRepository implements CRUD<Employee>{
     }
     @Override
     public void updateEntity(int id, int value, String type){
-
     }
 
     @Override

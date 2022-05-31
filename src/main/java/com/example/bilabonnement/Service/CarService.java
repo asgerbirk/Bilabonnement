@@ -25,7 +25,7 @@ public class CarService {
     public List<Car> allRentedCars(){
         List<Car> cars = carRepository.getAllEntities();
         return cars.stream().
-                filter(Car::isRented). /*illustrated as lambda in sequence diagram*/
+                filter(Car::isRented).
                 collect(Collectors.toList());
     }
 
@@ -37,7 +37,7 @@ public class CarService {
     return price;
     }
 
-    //Da vi får værdien på carnumber ind som en string fra webRequest, parser vi int i metoden her, fordi service klassen er hovedansvarlig for logikken bag
+
     public Car getCarFromCarNumber(String paramName){
         return carRepository.getSingleEntity(Integer.parseInt(Objects.requireNonNull(paramName)));
     }
