@@ -68,21 +68,6 @@ public class CustomerController {
         return employeeService.returnSessionPage(session.getAttribute("user"));
     }
 
-
-
-    @GetMapping("/allusers")
-    public String allusers(Model model){
-        try{
-        model.addAttribute("allusers",service.getAllCustomers());
-        } catch (Exception e){
-            e.printStackTrace();
-            return "redirect:/index";
-        }
-        return "allusers";
-    }
-
-
-
     @PostMapping("/delete")
     public String delete(WebRequest data, HttpSession session){
 
