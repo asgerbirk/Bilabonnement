@@ -28,12 +28,12 @@ public class CustomerController {
     }
 
     @GetMapping("/createuser")
-    public String createUser(){
-        return "createuser";
+    public String createUser(HttpSession session){
+        return employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.createUser);
     }
 
     @PostMapping("/createsuccess")
-    public String createSuccess(WebRequest data){
+    public String createSuccess(HttpSession session, WebRequest data){
         try{
         service.createCustomer(
                 data.getParameter("firstname"),
@@ -46,7 +46,7 @@ public class CustomerController {
             e.printStackTrace();
             return "redirect:/createuser";
         }
-        return "redirect:/index";
+        return employeeService.returnSessionPage(session.getAttribute("user"));
     }
 
     @GetMapping("/createemployee")
