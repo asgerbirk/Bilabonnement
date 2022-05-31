@@ -66,6 +66,10 @@ public class EmployeeService {
                     return "createemployee";
                 }
                 break;
+            case createCar:
+                if(emplAcsLvl == AccessLevel.MASTER || emplAcsLvl == AccessLevel.ADMIN){
+                    return "createCar";
+                }
             case damageReport:
                 if(emplAcsLvl != AccessLevel.USER){
                     return "damageReport";

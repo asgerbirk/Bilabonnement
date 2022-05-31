@@ -62,8 +62,14 @@ public class CarRepository  implements CRUD<Car> {
         boolean isRented = T.isRented();
 
         try {
-            PreparedStatement pstmt = con.prepareStatement("insert into car (`model`, `brand`, `color`, `price`, `damaged`, `rented`) values("+model+", "+brand+", "+color+", "+price+", "+isDamaged+", "+isRented+")");
-            pstmt.executeQuery();
+            PreparedStatement pstmt = con.prepareStatement("insert into car (`model`, `brand`, `color`, `price`, `damaged`, `rented`) values(?, ?, ?, ?, ?, ?)");
+            pstmt.setString(1, model);
+            pstmt.setString(2, brand);
+            pstmt.setString(3, color);
+            pstmt.setInt(4, price);
+            pstmt.setBoolean(5, isDamaged);
+            pstmt.setBoolean(6, isRented);
+            pstmt.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Opret ny bil</title>
+    <link rel="stylesheet" th:href="@{fragmentStyle.css}" href="../static/fragmentStyle.css">
+    <link rel="stylesheet" th:href="@{frontPage.css}" href="../static/frontPage.css">
+    <link rel="stylesheet" th:href="@{background.css}" href="../static/background.css">
+</head>
+<body>
+
+<div th:replace="fragments/fragmentlibary :: navbar"></div>
+
+<form method="post" action="carSuccess"> <!--- --------------------  -->
+    <div class="container">
+        <h1>Opret ny bil</h1>
+        <label for="model"><b>Indtast model</b></label>
+        <input type="text" placeholder="model" name="model">
+        <br><br/>
+        <label for="brand"><b>Indtast mærke</b></label>
+        <input type="text" placeholder="mærke" name="brand">
+        <br><br/>
+        <label for="color"><b>Indtast farve</b></label>
+        <input type="text" placeholder="farve" name="color">
+        <br><br/>
+        <label for="price"><b>Indtast pris pr måned</b></label>
+        <input type="number" placeholder="total pris" name="price" required id="price">
+        <br><br/>
+        <button type="submit">Opret bil</button>
+    </div>
+
+</form>
+
+
+<div th:replace="fragments/fragmentlibary :: footer"></div>
+
+</body>

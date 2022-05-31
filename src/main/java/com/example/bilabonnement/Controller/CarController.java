@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.context.request.WebRequest;
 
 import javax.servlet.http.HttpSession;
-
+import java.util.Objects;
 
 
 @Controller
@@ -36,6 +38,23 @@ public class CarController {
     public String allCars(Model model, HttpSession session){
         model.addAttribute("allCars", carService.getAllCars());
         return employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.allCars);
+    }
+
+    @GetMapping("createCar")
+    public String createCar(HttpSession session){
+        return employeeService.returnPageIfAuthorized(session.getAttribute("user"), Pages.createCar);
+    }
+
+    @PostMapping("carSuccess")
+    public String carSuccess(WebRequest data, HttpSession session){
+        carService.createNewCar(
+                data.getParameter("model"),
+                data.getParameter("brand"),
+                data.getParameter("color"),
+                Integer.parseInt(Objects.requireNonNull(data.getParameter("price"))),
+                false,
+                false);
+    return employeeService.returnSessionPage(session.getAttribute("user"));
     }
 
 

@@ -49,4 +49,9 @@ public class CarService {
         }
         carRepository.updateEntity(id,value, type);
     }
+
+    public void createNewCar(String model, String brand, String color, int price, boolean isDamaged, boolean isRented){
+    Car tmpCar = new Car(model, brand, color, price, isDamaged, isRented);
+    carRepository.createEntity(tmpCar);
+    }
 }

@@ -22,6 +22,15 @@ public class Car {
         this.isRented = isRented;
     }
 
+    public Car(String model, String brand, String color, int price, boolean isDamaged, boolean isRented) {
+        this.model = model;
+        this.brand = brand;
+        this.color = color;
+        this.price = price;
+        this.isDamaged = isDamaged;
+        this.isRented = isRented;
+    }
+
     public int getCarNumber() {
         return carNumber;
     }

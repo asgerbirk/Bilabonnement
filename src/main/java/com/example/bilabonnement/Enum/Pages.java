@@ -12,4 +12,5 @@ public enum Pages {
     adminPage,
     employeePage,
     userPage,
+    createCar
 }
