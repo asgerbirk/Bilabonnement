@@ -1,4 +1,4 @@
-<!-- -->
+<!-- Kodet af Asger -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
@@ -14,6 +14,11 @@
 
 <div th:replace="fragments/fragmentlibary :: navbar"></div>
 <div class="body">
+
+    <table style="background-color: white" id="price">
+        <h2>Pris for alle udlejede biler: <span th:text="${price}"></span>kr.</h2>
+    </table>
+
 <h1> Udlejede biler</h1>
     <table style="background-color: white">
 
@@ -36,9 +41,6 @@
     </tr>
 </table>
 
-<table style="background-color: white" id="price">
-    <h2>Pris for alle udlejede biler: <span th:text="${price}"></span>kr.</h2>
-</table>
 
 <div th:replace="fragments/fragmentlibary :: footer"></div>
 </div>
