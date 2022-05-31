@@ -58,7 +58,6 @@ public class CustomerRepository implements CRUD<Customer>{
             String email = customer.getEmail();
             String number = customer.getPhoneNumber();
             String password = customer.getPassword();
-
             Connection con = DatabaseConnectionManager.getConnection();
             try{
                 PreparedStatement pstmt = con.prepareStatement("INSERT INTO customer (`firstname`, `lastname`, `email`, `phone_number`, `password`) VALUES (?, ?, ?, ?, ?)");
@@ -68,7 +67,6 @@ public class CustomerRepository implements CRUD<Customer>{
                 pstmt.setString(4,number);
                 pstmt.setString(5,password);
                 pstmt.execute();
-
             }catch(Exception e){
                 e.printStackTrace();
             }
@@ -82,12 +80,10 @@ public class CustomerRepository implements CRUD<Customer>{
     @Override
     public void deleteEntity(int id){
         Connection con = DatabaseConnectionManager.getConnection();
-
         try{
             PreparedStatement pstmt = con.prepareStatement("DELETE FROM customer WHERE customer_id = ?");
             pstmt.setInt(1, id);
             pstmt.execute();
-
         }catch (SQLException e){
             e.printStackTrace();
         }

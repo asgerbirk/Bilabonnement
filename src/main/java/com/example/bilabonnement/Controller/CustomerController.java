@@ -21,13 +21,11 @@ public class CustomerController {
     private final CustomerService service;
     private final EmployeeService employeeService;
 
+    @Autowired
     public CustomerController(CustomerService service, EmployeeService employeeService) {
         this.service = service;
         this.employeeService = employeeService;
     }
-
-    @Autowired
-
 
     @GetMapping("/createuser")
     public String createUser(){
@@ -75,7 +73,6 @@ public class CustomerController {
         int id = Integer.parseInt(Objects.requireNonNull(data.getParameter("id")));
         assert type != null;
         employeeService.whichType(type, id);
-        // Kunne være blæret at lave type som en menu dropdown, således at man kun kan vælge ting der ikke fejler
         return employeeService.returnSessionPage(session.getAttribute("user"));
     }
 

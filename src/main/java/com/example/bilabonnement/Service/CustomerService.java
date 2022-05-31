@@ -16,11 +16,6 @@ public class CustomerService {
     public CustomerService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
-
-    public List<Customer> getAllCustomers(){
-        return customerRepository.getAllEntities();
-    }
-
     public void createCustomer(String firstname, String lastname, String email, String number, String password){
         Customer newCustomer = new Customer(firstname, lastname, email, number, password);
         customerRepository.createEntity(newCustomer);
