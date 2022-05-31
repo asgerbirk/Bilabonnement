@@ -1,11 +1,8 @@
 package com.example.bilabonnement.Service;
 
-import com.example.bilabonnement.Model.Agreement;
 import com.example.bilabonnement.Model.CarAgreement;
-import com.example.bilabonnement.Model.Customer;
 import com.example.bilabonnement.Model.DamageReport;
 import com.example.bilabonnement.Repository.AgreementRepository;
-import com.example.bilabonnement.Repository.CarRepository;
 import com.example.bilabonnement.Repository.DamageReportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +16,7 @@ public class DamageReportService {
     private final AgreementService agreementService;
     
 @Autowired
-    public DamageReportService(DamageReportRepository damageReportRepository, CarRepository carRepository, AgreementRepository agreementRepository, CarService carService, AgreementService agreementService) {
+    public DamageReportService(DamageReportRepository damageReportRepository, AgreementRepository agreementRepository, CarService carService, AgreementService agreementService) {
         this.damageReportRepository = damageReportRepository;
         this.agreementRepository = agreementRepository;
         this.carService = carService;
