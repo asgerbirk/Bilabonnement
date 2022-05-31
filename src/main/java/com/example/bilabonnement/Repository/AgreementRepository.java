@@ -38,7 +38,6 @@ public class AgreementRepository implements CRUD<CarAgreement>{
             }
         } catch (SQLException e){
             e.printStackTrace();
-            System.out.println("Something went wrong in rental_agreement DB or REPO");
         }
 
         return allAgreements;
@@ -77,7 +76,6 @@ public class AgreementRepository implements CRUD<CarAgreement>{
             pstmt.executeUpdate();
         } catch (SQLException e){
             e.printStackTrace();
-            System.out.println("Something is wrong in creation of customeragreementrepo");
         }
     }
 
@@ -88,7 +86,6 @@ public class AgreementRepository implements CRUD<CarAgreement>{
             PreparedStatement pstmt = con.prepareStatement("UPDATE rental_agreement SET "+type+" = ? WHERE agreement_id = ?;");
             pstmt.setInt(1,value);
             pstmt.setInt(2, id);
-            System.out.println(pstmt);
             pstmt.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();

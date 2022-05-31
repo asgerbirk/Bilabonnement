@@ -1,6 +1,8 @@
 package com.example.bilabonnement.Service;
 
+import com.example.bilabonnement.Model.Agreement;
 import com.example.bilabonnement.Model.CarAgreement;
+import com.example.bilabonnement.Model.Customer;
 import com.example.bilabonnement.Model.DamageReport;
 import com.example.bilabonnement.Repository.AgreementRepository;
 import com.example.bilabonnement.Repository.CarRepository;
@@ -14,15 +16,21 @@ public class DamageReportService {
     private final DamageReportRepository damageReportRepository;
     private final AgreementRepository agreementRepository;
     private final CarService carService;
+    private final AgreementService agreementService;
     
 @Autowired
-    public DamageReportService(DamageReportRepository damageReportRepository, CarRepository carRepository, AgreementRepository agreementRepository, CarService carService) {
+    public DamageReportService(DamageReportRepository damageReportRepository, CarRepository carRepository, AgreementRepository agreementRepository, CarService carService, AgreementService agreementService) {
         this.damageReportRepository = damageReportRepository;
         this.agreementRepository = agreementRepository;
         this.carService = carService;
+        this.agreementService = agreementService;
 }
 
     public void createDamageReport(String damage, int price, int agreementID){
+        agreementService.update(agreementID,price);
+        CarAgreement temp = getAgreementFromId(agreementID);
+        int carID = temp.getCar().getCarNumber();
+        setDamaged(carID, true);
         DamageReport newReport = new DamageReport(damage, price, agreementID);
         damageReportRepository.createEntity(newReport);
     }

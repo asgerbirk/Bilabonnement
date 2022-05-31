@@ -42,17 +42,9 @@ public class DamageController {
     public String registernewcase(WebRequest data, HttpSession session){
     try {
         int agreementID = Integer.parseInt(Objects.requireNonNull(data.getParameter("agreementID")));
-        Agreement tempAgreement = agreementService.getAgreement(agreementID);
-        Customer tempCustomer = tempAgreement.getCustomer();
-        int customerID = tempCustomer.getID();
         String damage = data.getParameter("damage");
         int price = Integer.parseInt(Objects.requireNonNull(data.getParameter("price")));
         damageReportService.createDamageReport(damage, price, agreementID);
-        agreementService.update(customerID,price);
-        CarAgreement temp =  damageReportService.getAgreementFromId(agreementID);
-        int carID = temp.getCar().getCarNumber();
-        damageReportService.setDamaged(carID, true);
-        agreementService.update(customerID,price);
     } catch (Exception e){
         e.printStackTrace();
         return "redirect:/damageReport";
