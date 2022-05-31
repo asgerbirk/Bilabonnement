@@ -12,13 +12,12 @@ import java.util.List;
 public class EmployeeService {
     // Kodet af Mikkel og Simon
     private final EmployeeRepository employeeRepository;
-    private final DamageReportRepository damageReportRepository;
-    private final CustomerRepository customerRepository;
+    private DamageReportRepository damageReportRepository;
+    private CustomerRepository customerRepository;
     private CarRepository carRepository;
     private AgreementRepository agreementRepository;
 
     @Autowired
-
     public EmployeeService(EmployeeRepository employeeRepository,
                            DamageReportRepository damageReportRepository,
                            CustomerRepository customerRepository,
@@ -30,6 +29,10 @@ public class EmployeeService {
         this.customerRepository = customerRepository;
         this.carRepository = carRepository;
         this.agreementRepository = agreementRepository;
+    }
+
+    public EmployeeService(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
     }
 
     public void createEmployee(String mail, String password, AccessLevel accessLevel){

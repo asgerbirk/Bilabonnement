@@ -15,7 +15,6 @@ import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 class CarServiceTest {
-
     @Mock
     private CarRepository carRepository;
     @Mock
@@ -24,7 +23,6 @@ class CarServiceTest {
     @BeforeEach
     void setUp() {
         underTest = new CarService(carRepository);
-
     }
 
     @Test
@@ -35,7 +33,7 @@ class CarServiceTest {
 
     @Test
     void test(){
-        //assertTrue(underTest.getAllCars().isEmpty());
+        assertTrue(underTest.getAllCars().isEmpty());
     }
 
     @Test
@@ -48,36 +46,5 @@ class CarServiceTest {
         int expected = 300;
 
         assertEquals(expected, underTest.priceOfAllRentedCars(allCars));
-
     }
-
-    /*
-    @Test
-    @Disabled
-    void allRentedCars() {
-        Car notRentedCar = new Car(2, "bmw", "John", "black", 1000, true, false);
-        Car notRentedCar1 = new Car(2, "bmw", "John", "black", 1000, true, false);
-        Car rentedCar = new Car(2, "bmw", "John", "black", 1000, true, true);
-        Car rentedCar1 = new Car(1, "bmw", "hej", "black", 1000, false, true);
-        Assertions.assertEquals(this.underTest.allRentedCars().stream().allMatch((Car) -> {
-            return Car.isRented();
-        }), rentedCar.isRented() && rentedCar1.isRented());
-        Assertions.assertEquals(rentedCar.isRented(), rentedCar1.isRented());
-        Assertions.assertEquals(!notRentedCar.isRented(), !notRentedCar1.isRented());
-        Assertions.assertEquals(this.underTest.allRentedCars().stream().allMatch((Car) -> {
-            return !Car.isRented();
-        }), !notRentedCar.isRented() && !notRentedCar1.isRented());
-    }
-
-
-     */
-
-    @Test
-    void getCarFromCarNumber() {
-        int carnumber = 1;
-        Car car = new Car(carnumber, "model", "brand", "color", 100, false, false);
-
-        Car result = underTest.getCarFromCarNumber(String.valueOf(carnumber));
-    }
-
 }

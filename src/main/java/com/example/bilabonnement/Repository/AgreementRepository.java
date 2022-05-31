@@ -20,11 +20,9 @@ public class AgreementRepository implements CRUD<CarAgreement>{
         List<CarAgreement> allAgreements = new ArrayList<>();
         CustomerRepository customerRepository = new CustomerRepository();
         CarRepository carRepository = new CarRepository();
-
         try {
             PreparedStatement pstmt = con.prepareStatement("SELECT * FROM rental_agreement");
             ResultSet rs = pstmt.executeQuery();
-
             while(rs.next()){
                 CarAgreement tempAgreement = new CarAgreement(
                         rs.getInt(1),
@@ -39,7 +37,6 @@ public class AgreementRepository implements CRUD<CarAgreement>{
         } catch (SQLException e){
             e.printStackTrace();
         }
-
         return allAgreements;
     }
 
@@ -90,8 +87,6 @@ public class AgreementRepository implements CRUD<CarAgreement>{
         }catch (SQLException e){
             e.printStackTrace();
         }
-
-
     }
 
     @Override
@@ -101,10 +96,8 @@ public class AgreementRepository implements CRUD<CarAgreement>{
             PreparedStatement pstmt = con.prepareStatement("DELETE FROM rental_agreement WHERE agreement_id = ?");
             pstmt.setInt(1, id);
             pstmt.execute();
-
         }catch (SQLException e){
             e.printStackTrace();
         }
     }
-
 }

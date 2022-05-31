@@ -60,7 +60,6 @@ public class CarRepository  implements CRUD<Car> {
         int price = T.getPrice();
         boolean isDamaged = T.isDamaged();
         boolean isRented = T.isRented();
-
         try {
             PreparedStatement pstmt = con.prepareStatement("insert into car (`model`, `brand`, `color`, `price`, `damaged`, `rented`) values(?, ?, ?, ?, ?, ?)");
             pstmt.setString(1, model);
@@ -84,19 +83,14 @@ public class CarRepository  implements CRUD<Car> {
             pstmt.setInt(2, id);
             pstmt.executeUpdate();
             pstmt.close();
-
         }catch (SQLException e){
             e.printStackTrace();
         }
-
-
-
     }
 
     @Override
     public void deleteEntity(int id){
         Connection con = DatabaseConnectionManager.getConnection();
-
         try{
             PreparedStatement pstmt = con.prepareStatement("DELETE FROM car WHERE car_number = ?");
             pstmt.setInt(1, id);
