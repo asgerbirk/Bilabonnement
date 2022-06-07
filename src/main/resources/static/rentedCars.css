@@ -11,18 +11,17 @@ h1{
 table {
     border-collapse: collapse;
     width: 99%;
-
-}
-th {
-    padding: 1.5rem;
-    text-align: left;
-    border: 1.5px solid #cccc;
 }
 
 h2{
     text-align: center;
-    color: #cccc;
+    color: black;
 }
 
-
-
+th, td {
+    color: black;
+    padding: 1.5rem;
+    text-align: left;
+    border: 1.5px solid #cccc;
+    background-color: white;
+}
