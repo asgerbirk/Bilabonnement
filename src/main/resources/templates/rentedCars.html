@@ -3,7 +3,7 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Udlejede biler</title>
     <link rel="stylesheet" th:href="@{fragmentStyle.css}" href="../static/fragmentStyle.css">
     <link rel="stylesheet" th:href="@{frontPage.css}" href="../static/frontPage.css">
     <link rel="stylesheet" th:href="@{rentedCars.css}" href="../static/rentedCars.css">
@@ -15,14 +15,14 @@
 <div th:replace="fragments/fragmentlibary :: navbar"></div>
 <div class="body">
 
-    <table style="background-color: white" id="price">
+    <table style="background-color: black" id="price">
         <h2>Pris for alle udlejede biler: <span th:text="${price}"></span>kr.</h2>
     </table>
 
 <h1> Udlejede biler</h1>
     <table style="background-color: white">
-
-    <tr>
+<tbody style="background-color: white">
+    <tr style="background-color: white">
         <th>ID</th>
         <th>Model</th>
         <th>Mærke</th>
@@ -39,6 +39,7 @@
         <td th:text="${rentedcars.getColor()}"></td>
         <td th:text="${rentedcars.getPrice()}"></td>
     </tr>
+</tbody>
 </table>
 
 

@@ -6,7 +6,7 @@ img {
 
 .menubar a {
     float: left;
-    color: black;
+    color: white;
     text-align: center;
     padding: 10px 14px;
     text-decoration: none;
@@ -24,7 +24,7 @@ ul {
 }
 
 .menubar a.bilabonnement{
-    color: black;
+    color: white;
     margin: auto;
     flex-direction: row;
     float: right;
