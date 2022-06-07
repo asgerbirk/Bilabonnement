@@ -8,7 +8,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.verify;
 
 
@@ -36,10 +40,18 @@ class CarServiceTest {
         Car testCar2 = new Car(1,"hej", "bmw", "yellow", 100,true,true);
         Car testCar3 = new Car(1,"hej", "bmw", "yellow", 100,true,false);
 
+        List<Car> cars = underTest.allRentedCars();
+        cars.add(testCar);
+        cars.add(testCar2);
+        cars.add(testCar3);
 
 
 
+        assertTrue(cars.size()==3);
 
+        assertThat(cars.get(0).isRented()).isTrue();
+        assertThat(cars.get(1).isRented()).isTrue();
+        assertThat(cars.get(2).isRented()).isFalse();
 
 
     }
