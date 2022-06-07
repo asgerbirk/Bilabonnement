@@ -9,15 +9,12 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.verify;
 
 
 @ExtendWith(MockitoExtension.class)
 class CarServiceTest {
-    @Mock
-    private CarRepository carRepository;
-    @Mock
+    @Mock private CarRepository carRepository;
     private CarService underTest;
 
     @BeforeEach
@@ -25,18 +22,31 @@ class CarServiceTest {
         underTest = new CarService(carRepository);
     }
 
+
     @Test
+
     void allCars() {
         underTest.getAllCars();
          verify(carRepository).getAllEntities();
     }
 
     @Test
-    void test(){
-        assertTrue(underTest.getAllCars().isEmpty());
+    void allRentedCars(){
+        Car testCar = new Car(1,"hej", "bmw", "yellow", 100,true,true);
+        Car testCar2 = new Car(1,"hej", "bmw", "yellow", 100,true,true);
+        Car testCar3 = new Car(1,"hej", "bmw", "yellow", 100,true,false);
+
+
+
+
+
+
+
     }
 
+
     @Test
+
     void getPriceOfAllRentedCars() {
         Car car = new Car(1,"hej", "bmw", "yellow", 100,true,true);
         Car car1 = new Car(1,"hej", "bmw", "yellow", 100,true,true);

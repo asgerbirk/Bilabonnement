@@ -1,5 +1,6 @@
 package com.example.bilabonnement.Repository;
 
+import com.example.bilabonnement.Model.Car;
 import com.example.bilabonnement.Model.CarAgreement;
 import com.example.bilabonnement.Utility.DatabaseConnectionManager;
 import org.springframework.stereotype.Repository;
@@ -53,7 +54,7 @@ public class AgreementRepository implements CRUD<CarAgreement>{
     }
 
     @Override
-    public void createEntity(CarAgreement obj){
+    public Car createEntity(CarAgreement obj){
         Connection con = DatabaseConnectionManager.getConnection();
         int customerID = obj.getCustomer().getID();
         int carNumber = obj.getCar().getCarNumber();
@@ -74,6 +75,7 @@ public class AgreementRepository implements CRUD<CarAgreement>{
         } catch (SQLException e){
             e.printStackTrace();
         }
+        return null;
     }
 
     @Override

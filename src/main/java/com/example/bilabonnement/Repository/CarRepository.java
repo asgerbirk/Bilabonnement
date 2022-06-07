@@ -52,7 +52,7 @@ public class CarRepository  implements CRUD<Car> {
     }
 
     @Override
-    public void createEntity(Car T) {
+    public Car createEntity(Car T) {
         Connection con = DatabaseConnectionManager.getConnection();
         String model = T.getModel();
         String brand = T.getBrand();
@@ -72,6 +72,7 @@ public class CarRepository  implements CRUD<Car> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return T;
     }
 
     @Override

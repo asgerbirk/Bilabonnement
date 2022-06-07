@@ -6,7 +6,6 @@ import com.example.bilabonnement.Service.CustomerService;
 import com.example.bilabonnement.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
@@ -75,6 +74,7 @@ public class CustomerController {
         employeeService.whichType(type, id);
         return employeeService.returnSessionPage(session.getAttribute("user"));
     }
+
 
 
 }

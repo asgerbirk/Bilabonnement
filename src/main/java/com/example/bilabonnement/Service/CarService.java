@@ -1,11 +1,11 @@
 package com.example.bilabonnement.Service;
+
 import com.example.bilabonnement.Model.Car;
 import com.example.bilabonnement.Repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,7 +25,7 @@ public class CarService {
     public List<Car> allRentedCars(){
         List<Car> cars = carRepository.getAllEntities();
         return cars.stream().
-                filter(Car::isRented).
+                filter(car -> car.isRented()==true).
                 collect(Collectors.toList());
     }
 
@@ -38,8 +38,8 @@ public class CarService {
     }
 
 
-    public Car getCarFromCarNumber(String paramName){
-        return carRepository.getSingleEntity(Integer.parseInt(Objects.requireNonNull(paramName)));
+    public Car getCarFromCarNumber(int carNumber){
+        return carRepository.getSingleEntity(carNumber);
     }
 
     public void update (int id, boolean available, String type){
@@ -52,6 +52,7 @@ public class CarService {
 
     public void createNewCar(String model, String brand, String color, int price, boolean isDamaged, boolean isRented){
     Car tmpCar = new Car(model, brand, color, price, isDamaged, isRented);
-    carRepository.createEntity(tmpCar);
+     carRepository.createEntity(tmpCar);
+
     }
 }

@@ -41,7 +41,7 @@ public class AgreementController {
                 customerService.getCustomerFromID(data.getParameter("customerID")),
                 Integer.parseInt(Objects.requireNonNull(data.getParameter("period"))),
                 Integer.parseInt(Objects.requireNonNull(data.getParameter("price"))),
-                carService.getCarFromCarNumber(data.getParameter("carNumber")),
+                carService.getCarFromCarNumber(Integer.parseInt(data.getParameter("carNumber"))),
                 data.getParameter("location"));
         } catch (Exception e){
             e.printStackTrace();

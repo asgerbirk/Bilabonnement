@@ -1,6 +1,7 @@
 package com.example.bilabonnement.Repository;
 
 import com.example.bilabonnement.Enum.AccessLevel;
+import com.example.bilabonnement.Model.Car;
 import com.example.bilabonnement.Model.Employee;
 import com.example.bilabonnement.Utility.DatabaseConnectionManager;
 import org.springframework.stereotype.Repository;
@@ -52,7 +53,7 @@ public class EmployeeRepository implements CRUD<Employee>{
     }
 
     @Override
-    public void createEntity(Employee employee) {
+    public Car createEntity(Employee employee) {
         String email = employee.getEmail();
         String password = employee.getPassword();
         AccessLevel accessLevel = employee.getAccessLevel();
@@ -66,6 +67,7 @@ public class EmployeeRepository implements CRUD<Employee>{
         }catch (SQLException e){
             e.printStackTrace();
         }
+        return null;
     }
     @Override
     public void updateEntity(int id, int value, String type){

@@ -1,5 +1,6 @@
 package com.example.bilabonnement.Repository;
 
+import com.example.bilabonnement.Model.Car;
 import com.example.bilabonnement.Model.Customer;
 import com.example.bilabonnement.Utility.DatabaseConnectionManager;
 import org.springframework.stereotype.Repository;
@@ -52,7 +53,7 @@ public class CustomerRepository implements CRUD<Customer>{
     }
 
     @Override
-    public void createEntity(Customer customer){
+    public Car createEntity(Customer customer){
             String firstname = customer.getFirstname();
             String surname = customer.getSurname();
             String email = customer.getEmail();
@@ -70,6 +71,7 @@ public class CustomerRepository implements CRUD<Customer>{
             }catch(Exception e){
                 e.printStackTrace();
             }
+        return null;
     }
 
     @Override

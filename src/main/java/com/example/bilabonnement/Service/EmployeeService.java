@@ -6,16 +6,19 @@ import com.example.bilabonnement.Model.Employee;
 import com.example.bilabonnement.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
 public class EmployeeService {
     // Kodet af Mikkel og Simon
     private final EmployeeRepository employeeRepository;
-    private DamageReportRepository damageReportRepository;
-    private CustomerRepository customerRepository;
-    private CarRepository carRepository;
-    private AgreementRepository agreementRepository;
+    private final DamageReportRepository damageReportRepository;
+    private final CustomerRepository customerRepository;
+    private final CarRepository carRepository;
+    private final AgreementRepository agreementRepository;
+
+
 
     @Autowired
     public EmployeeService(EmployeeRepository employeeRepository,
@@ -29,11 +32,11 @@ public class EmployeeService {
         this.customerRepository = customerRepository;
         this.carRepository = carRepository;
         this.agreementRepository = agreementRepository;
+
     }
 
-    public EmployeeService(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
-    }
+
+
 
     public void createEmployee(String mail, String password, AccessLevel accessLevel){
         Employee newEmployee = new Employee(mail, password, accessLevel);
@@ -43,12 +46,15 @@ public class EmployeeService {
     public Employee getEmployeeFromEmail(String email){
 
         List<Employee> allEmployees = employeeRepository.getAllEntities();
-        for (Employee e: allEmployees){
+
+
+       for (Employee e: allEmployees){
             if (e.getEmail().equals(email)){
                 return e;
             }
         }
-        return null;
+       return null;
+
     }
     public String returnPageIfAuthorized(Object loggedEmployee, Pages reqPage){
         AccessLevel emplAcsLvl = (AccessLevel) loggedEmployee;
