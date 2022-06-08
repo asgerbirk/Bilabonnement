@@ -12,6 +12,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+//Kodet af Asger og Simon
+
 @ExtendWith(MockitoExtension.class)
 class EmployeeServiceTest {
 
@@ -26,7 +28,6 @@ class EmployeeServiceTest {
 
     @BeforeEach
     void setUp() {
-
         underTest = new EmployeeService(employeeRepository, damageReportRepository,customerRepository,carRepository,agreementRepository );
     }
 
@@ -42,4 +43,10 @@ class EmployeeServiceTest {
         Employee employee = new Employee(2, "admin", "admin", AccessLevel.ADMIN);
         assertEquals("adminPage", underTest.returnPageIfAuthorized(employee.getAccessLevel(), Pages.adminPage));
     }
-}
+
+    @Test
+    void testAccessLevelEmployee(){
+        Employee employee = new Employee(3, "employee", "employee", AccessLevel.EMPLOYEE);
+        assertEquals("employeePage", underTest.returnPageIfAuthorized(employee.getAccessLevel(), Pages.employeePage));
+    }
+    }

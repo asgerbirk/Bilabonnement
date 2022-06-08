@@ -49,9 +49,5 @@ public class AgreementController {
         }
         return employeeService.returnSessionPage(session.getAttribute("user"));
 
-
-
-
-
 }
 }

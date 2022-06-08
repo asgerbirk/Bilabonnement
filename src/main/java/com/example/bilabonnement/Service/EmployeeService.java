@@ -38,24 +38,21 @@ public class EmployeeService {
 
 
 
-    public void createEmployee(String mail, String password, AccessLevel accessLevel){
+    public Employee createEmployee(String mail, String password, AccessLevel accessLevel){
         Employee newEmployee = new Employee(mail, password, accessLevel);
-        employeeRepository.createEntity(newEmployee);
+      return employeeRepository.createEntity(newEmployee);
     }
 
     public Employee getEmployeeFromEmail(String email){
-
         List<Employee> allEmployees = employeeRepository.getAllEntities();
-
-
        for (Employee e: allEmployees){
             if (e.getEmail().equals(email)){
                 return e;
             }
         }
-       return null;
-
+return null;
     }
+
     public String returnPageIfAuthorized(Object loggedEmployee, Pages reqPage){
         AccessLevel emplAcsLvl = (AccessLevel) loggedEmployee;
         if(loggedEmployee == null){
