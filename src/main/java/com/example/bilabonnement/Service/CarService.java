@@ -2,7 +2,6 @@ package com.example.bilabonnement.Service;
 
 import com.example.bilabonnement.Model.Car;
 import com.example.bilabonnement.Repository.CarRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,10 +12,11 @@ public class CarService {
     // Kodet af Asger og Mikkel
 
     private final CarRepository carRepository;
-@Autowired
+
     public CarService(CarRepository carRepository) {
         this.carRepository = carRepository;
     }
+
 
     public List<Car> getAllCars(){
         return carRepository.getAllEntities();
