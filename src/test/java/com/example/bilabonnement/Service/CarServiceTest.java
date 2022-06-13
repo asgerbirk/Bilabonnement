@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.verify;
 
-
+//Kodet af Asger
 @ExtendWith(MockitoExtension.class)
 class CarServiceTest {
     @Mock private CarRepository carRepository;
@@ -52,6 +52,8 @@ class CarServiceTest {
         assertThat(cars.get(0).isRented()).isTrue();
         assertThat(cars.get(1).isRented()).isTrue();
         assertThat(cars.get(2).isRented()).isFalse();
+
+        
 
 
     }
